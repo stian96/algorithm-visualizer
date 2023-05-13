@@ -64,20 +64,18 @@ class BinIntTree:
             elif node.right is None:
                 tmp = node.left
                 return tmp
+            else:
+                # Node with two children
+                # Get the in-order successor (smallest in the right subtree)
+                current = node.right
+                while current.left is not None:
+                    current = current.left
 
-        # Node with two children
-        # Get the in-order successor (smallest in the right subtree)
-        current = node.right
-        while current.left is not None:
-            current = current.left
+                # Copy the in-order successor's value to this node
+                node.value = current.value
 
-        tmp = current
-
-        # Copy the in-order successor's value to this node
-        node.value = tmp.value
-
-        # Delete the in-order successor
-        node.right = self._remove(node.right, tmp.value)
+                # Delete the in-order successor
+                node.right = self._remove(node.right, current.value)
 
     # Prints out all the values in the binary tree.
     def print_tree(self):
