@@ -10,8 +10,9 @@ pygame.display.set_caption("Binary Tree Traversal")
 
 colors = {
     'green': (0, 150, 0),
-    'red': (255, 255, 255)
-
+    'red': (255, 255, 255),
+    'black': (80, 80, 80),
+    'gray': (240, 240, 240)
 }
 
 
@@ -28,10 +29,10 @@ def draw_tree(win, tree, node, x, y, z):
 
     # Draw the children
     if node.left is not None:
-        pygame.draw.line(win, (255, 255, 255), (x, y), (x - z, y + 80))
+        pygame.draw.line(win, colors.get('gray'), (x, y), (x - z, y + 80))
         draw_tree(win, tree, node.left, x - z, y + 80, z // 2)
     if node.right is not None:
-        pygame.draw.line(win, (255, 255, 255), (x, y), (x + z, y + 80))
+        pygame.draw.line(win, colors.get('gray'), (x, y), (x + z, y + 80))
         draw_tree(win, tree, node.right, x + z, y + 80, z // 2)
 
 
@@ -84,7 +85,7 @@ while not traversal_finished:
             traversal_finished = True
 
     # Draw tree
-    window.fill((0, 0, 0))
+    window.fill((colors.get('black')))
     draw_tree(window, root, root.root, 400, 80, 200)
 
     pygame.display.update()
