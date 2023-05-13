@@ -1,11 +1,10 @@
-from node import Node
+from datastructures.trees.node import Node
 
 
-class BinIntTree:
+class BinaryTree:
     """
     A binary tree class containing integer values.
     """
-
     def __init__(self):
         self.root = None
 
@@ -89,5 +88,9 @@ class BinIntTree:
         if node is not None:
             # In-order traversal of the tree.
             self._print_tree(node.left)
-            print(str(node.value))
+            print(str(node.value), end=" ")
             self._print_tree(node.right)
+
+    # Checks if tree is empty.
+    def is_empty(self):
+        return self.root is None

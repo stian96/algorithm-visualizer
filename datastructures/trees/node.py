@@ -1,6 +1,8 @@
-# Simple node class with a value field, and left and right pointers.
 class Node:
-
+    """
+    Simple node class containing a value and
+    number field, plus left and right pointers.
+    """
     def __init__(self, value):
         self.value = value
         self.number = 0
