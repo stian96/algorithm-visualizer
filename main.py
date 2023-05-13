@@ -19,4 +19,8 @@ root.insert(22)
 root.insert(15)
 
 # Print out the tree
-root.print_tree()
+root.inorder_traversal()
+print()
+root.postorder_traversal()
+print()
+root.preorder_traversal()

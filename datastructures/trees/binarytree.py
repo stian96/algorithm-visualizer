@@ -77,19 +77,48 @@ class BinaryTree:
                 node.right = self._remove(node.right, current.value)
 
     # Prints out all the values in the binary tree.
-    def print_tree(self):
-        if self.root is not None:
-            self._print_tree(self.root)
+    def inorder_traversal(self):
+        if not self.is_empty():
+            print("Inorder traversal of binary tree:")
+            self._inorder(self.root)
         else:
             raise Exception("Root is empty, cannot print tree.")
 
     # Internal recursive method for printing values.
-    def _print_tree(self, node):
+    def _inorder(self, node):
         if node is not None:
             # In-order traversal of the tree.
-            self._print_tree(node.left)
+            self._inorder(node.left)
             print(str(node.value), end=" ")
-            self._print_tree(node.right)
+            self._inorder(node.right)
+
+    def postorder_traversal(self):
+        if self.root is not None:
+            print("Postorder traversal of binary tree:")
+            self._postorder(self.root)
+        else:
+            raise Exception("Root is empty, cannot print tree.")
+
+    def _postorder(self, node):
+        if node is not None:
+            # Post-order traversal of the tree.
+            self._postorder(node.left)
+            self._postorder(node.right)
+            print(str(node.value), end=" ")
+
+    def preorder_traversal(self):
+        if not self.is_empty():
+            print("Preorder traversal of binary tree:")
+            self._preorder(self.root)
+        else:
+            raise Exception("Root is empty, cannot print tree.")
+
+    def _preorder(self, node):
+        if node is not None:
+            # Post-order traversal of the tree.
+            print(str(node.value), end=" ")
+            self._preorder(node.left)
+            self._preorder(node.right)
 
     # Checks if tree is empty.
     def is_empty(self):
