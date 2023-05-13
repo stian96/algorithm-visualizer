@@ -1,4 +1,5 @@
 from datastructures.trees.node import Node
+from collections import deque
 
 
 class BinaryTree:
@@ -76,7 +77,7 @@ class BinaryTree:
                 # Delete the in-order successor
                 node.right = self._remove(node.right, current.value)
 
-    # Prints out all the values in the binary tree.
+    # Prints left subtree, then root and right subtree last.
     def inorder_traversal(self):
         if not self.is_empty():
             print("Inorder traversal of binary tree:")
@@ -92,6 +93,7 @@ class BinaryTree:
             print(str(node.value), end=" ")
             self._inorder(node.right)
 
+    # Prints left and right subtrees, then the root.
     def postorder_traversal(self):
         if self.root is not None:
             print("Postorder traversal of binary tree:")
@@ -106,6 +108,7 @@ class BinaryTree:
             self._postorder(node.right)
             print(str(node.value), end=" ")
 
+    # Prints root, then left and right subtrees.
     def preorder_traversal(self):
         if not self.is_empty():
             print("Preorder traversal of binary tree:")
@@ -119,6 +122,23 @@ class BinaryTree:
             print(str(node.value), end=" ")
             self._preorder(node.left)
             self._preorder(node.right)
+
+    # Uses a queue to print the order.
+    def level_order_traversal(self):
+        print("Level-order traversal of binary tree:")
+        if self.is_empty():
+            raise Exception("Root is empty, cannot print tree.")
+
+        queue = deque([self.root])
+        while queue:
+            node = queue.popleft()
+            print(str(node.value), end=' ')
+
+            # Enqueue left and right children.
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
 
     # Checks if tree is empty.
     def is_empty(self):
