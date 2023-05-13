@@ -44,11 +44,12 @@ class BinIntTree:
     def print_tree(self):
         if self.root is not None:
             self._print_tree(self.root)
-
-        return Exception("Root is empty, cannot print tree.")
+        else:
+            raise Exception("Root is empty, cannot print tree.")
 
     def _print_tree(self, node):
         if node is not None:
+            # In-order traversal of the tree.
             self._print_tree(node.left)
             print(str(node.value))
             self._print_tree(node.right)
