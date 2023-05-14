@@ -51,20 +51,32 @@ def draw_tree(win, tree, node, x, y, z):
         draw_tree(win, tree, node.right, x + z, y + 80, z // 2)
 
 
-def traverse_tree(win, tree, node, x, y, dx, order):
-    if node is None:
-        return
+def traverse_tree(win, tree, node, x, y, z, order):
+    if order == "level":
+        queue = [(node, x, y, z)]
+        while queue:
+            curr_node, curr_x, curr_y, curr_z = queue.pop(0)
+            if curr_node is None:
+                continue
+            highlight_node(win, curr_x, curr_y, curr_node.value)
+            if curr_node.left is not None:
+                queue.append((curr_node.left, curr_x - curr_z, curr_y + 80, curr_z // 2))
+            if curr_node.right is not None:
+                queue.append((curr_node.right, curr_x + curr_z, curr_y + 80, curr_z // 2))
+    else:
+        if node is None:
+            return
 
-    if order == 'pre':
-        highlight_node(win, x, y, node.value)
-    traverse_tree(win, tree, node.left, x - dx, y + 80, dx // 2, order)
+        if order == 'pre':
+            highlight_node(win, x, y, node.value)
+        traverse_tree(win, tree, node.left, x - z, y + 80, z // 2, order)
 
-    if order == 'in':
-        highlight_node(win, x, y, node.value)
-    traverse_tree(win, tree, node.right, x + dx, y + 80, dx // 2, order)
+        if order == 'in':
+            highlight_node(win, x, y, node.value)
+        traverse_tree(win, tree, node.right, x + z, y + 80, z // 2, order)
 
-    if order == 'post':
-        highlight_node(win, x, y, node.value)
+        if order == 'post':
+            highlight_node(win, x, y, node.value)
 
 
 def highlight_node(win, x, y, value):
@@ -98,6 +110,20 @@ def button_hover(mose_x, mouse_y, x, y, rec_width, rec_height):
         return False
 
 
+def pick_traversal_method():
+    w = 400
+    h = 200
+
+    if handle_button_hover(window, 130, 50, 100, 40, "Preorder"):
+        traverse_tree(window, root, root.root, w, h, h, "pre")
+    elif handle_button_hover(window, 280, 50, 100, 40, "Inorder"):
+        traverse_tree(window, root, root.root, w, h, h, "in")
+    elif handle_button_hover(window, 430, 50, 100, 40, "Postorder"):
+        traverse_tree(window, root, root.root, w, h, h, "post")
+    elif handle_button_hover(window, 580, 50, 100, 40, "Level-order"):
+        traverse_tree(window, root, root.root, w, h, h, "level")
+
+
 # Main code
 root = BinaryTree()
 
@@ -123,19 +149,15 @@ while not traversal_finished:
             sys.exit()
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if handle_button_hover(window, 210, 50, 90, 40, "Preorder"):
-                traverse_tree(window, root, root.root, 400, 200, 200, "pre")
-            elif handle_button_hover(window, 360, 50, 90, 40, "Inorder"):
-                traverse_tree(window, root, root.root, 400, 200, 200, "in")
-            elif handle_button_hover(window, 510, 50, 90, 40, "Postorder"):
-                traverse_tree(window, root, root.root, 400, 200, 200, "post")
+            pick_traversal_method()
 
     # Draw tree
     window.fill((colors.get('black')))
 
-    handle_button_hover(window, 210, 50, 90, 40, "Preorder")
-    handle_button_hover(window, 360, 50, 90, 40, "Inorder")
-    handle_button_hover(window, 510, 50, 90, 40, "Postorder")
+    handle_button_hover(window, 130, 50, 100, 40, "Preorder")
+    handle_button_hover(window, 280, 50, 100, 40, "Inorder")
+    handle_button_hover(window, 430, 50, 100, 40, "Postorder")
+    handle_button_hover(window, 580, 50, 100, 40, "Level-order")
 
     draw_tree(window, root, root.root, 400, 200, 200)
     pygame.display.update()
