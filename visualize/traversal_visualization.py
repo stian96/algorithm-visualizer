@@ -21,12 +21,15 @@ colors = {
 # Input box
 input_box = pygame.Rect(10, 550, 140, 32)
 color_inactive = pygame.Color('lightgreen')
-color_active = pygame.Color('green')
 color_i = color_inactive
 typing = False
 text_area = ''
 font_i = pygame.font.Font(None, 32)
 align = 5
+
+# Input box label
+input_label_rect = pygame.Rect(10, 530, 140, 32)
+input_label_text = pygame.font.Font(None, 24)
 
 
 def draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height, btn_text):
@@ -104,7 +107,7 @@ def highlight_node(win, x, y, value):
 
     win.blit(text, text_rect)
     pygame.display.update()
-    pygame.time.delay(600)
+    pygame.time.delay(400)
 
 
 def handle_button_hover(win, x_pos, y_pos, rec_width, rec_height, btn_text):
@@ -161,7 +164,6 @@ while not traversal_finished:
                 typing = True
             else:
                 typing = False
-            color = color_active if typing else color_inactive
 
         if event.type == pygame.KEYDOWN:
             if typing:
@@ -187,10 +189,13 @@ while not traversal_finished:
 
     draw_tree(window, root, root.root, 400, 200, 200)
 
+    label = input_label_text.render("Insert values:", True, color_i)
+    window.blit(label, input_label_rect)
+
     txt_surface = font_i.render(text_area, True, color_i)
     window.blit(txt_surface, (input_box.x + align, input_box.y + align))
-    pygame.draw.rect(window, color_i, input_box, 2)
 
+    pygame.draw.rect(window, color_i, input_box, 2)
     pygame.display.update()
 
     pygame.display.flip()
