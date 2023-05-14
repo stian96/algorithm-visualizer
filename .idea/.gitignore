@@ -2,6 +2,53 @@
 /shelf/
 /workspace.xml
 
-# Ignore .DS_Store files
+# .DS_Store filer
 .DS_Store
 **/.DS_Store
+
+# Icon-filer
+Icon?
+
+# Thumbnails
+._*
+
+# Filer som kan komme fra diverse verktøy
+*.swp
+*.lock
+*.bak
+
+# Python spesifikke
+*.pyc
+*.pyo
+*.pyd
+*.pyb
+__pycache__/
+*.egg-info/
+dist/
+build/
+*.egg
+*.so
+
+# virtualenv
+venv/
+ENV/
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# macOS spesifikke
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+*.xcuserstate
+xcuserdata/
+DerivedData/
+.idea/
+
+# Flask
+instance/
+.webassets-cache
