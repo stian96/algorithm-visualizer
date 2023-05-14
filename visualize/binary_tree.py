@@ -25,10 +25,10 @@ def draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height, btn_text):
 
     # Add font.
     btn_font = pygame.font.Font(None, 24)
-    text = btn_font.render(btn_text, True, colors.get('black'))
+    text = btn_font.render(str(btn_text), True, colors.get('green'))
 
     # Add text in the center of the rectangle.
-    rect = text.get_rect(center=((x_pos + rec_width) // 2, (y_pos + rec_height) // 2))
+    rect = text.get_rect(center=(x_pos + rec_width // 2, y_pos + rec_height // 2))
     win.blit(text, rect)
 
 
@@ -119,20 +119,17 @@ while not traversal_finished:
     # Draw tree
     window.fill((colors.get('black')))
 
-    # Store the mouse (x, y) coordinates
-
-    draw_buttons(window, colors.get('gray'), 200, 50, 90, 40, "Preorder")
-    draw_buttons(window, colors.get('gray'), 350, 50, 90, 40, "Inorder")
-    draw_buttons(window, colors.get('gray'), 500, 50, 90, 40, "Postorder")
+    handle_button_hover(window, 200, 50, 90, 40, "Preorder")
+    handle_button_hover(window, 350, 50, 90, 40, "Inorder")
+    handle_button_hover(window, 500, 50, 90, 40, "Postorder")
 
     draw_tree(window, root, root.root, 400, 200, 200)
-
     pygame.display.update()
 
     # Traverse tree
     # traverse_tree(window, root, root.root, 400, 200, 200, 'in')
     # traversal_finished = True
-    clock.tick(1)
+    clock.tick(60)
 
 pygame.display.quit()
 pygame.quit()
