@@ -23,7 +23,7 @@ Algorithm Visualizer is an interactive and visually appealing learning tool desi
 
 Clone the repository to your local machine
 ```bash
-git clone https://github.com/stian96/algorithm-visualizer.git
+git clone https://github.com/stian96/Algorithm-visualizer.git
 ```
 
 Navigate to the project directory:
