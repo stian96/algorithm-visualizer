@@ -18,6 +18,16 @@ colors = {
     'gray': (240, 240, 240)
 }
 
+# Input box
+input_box = pygame.Rect(10, 550, 140, 32)
+color_inactive = pygame.Color('lightgreen')
+color_active = pygame.Color('green')
+color_i = color_inactive
+typing = False
+text_area = ''
+font_i = pygame.font.Font(None, 32)
+align = 5
+
 
 def draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height, btn_text):
     # Draw button
@@ -33,6 +43,9 @@ def draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height, btn_text):
 
 
 def draw_tree(win, tree, node, x, y, z):
+    if node is None:
+        return
+
     # Draw the root.
     pygame.draw.circle(win, colors.get('green'), (x, y), 20)
     font = pygame.font.Font(None, 24)
@@ -53,12 +66,15 @@ def draw_tree(win, tree, node, x, y, z):
 
 def traverse_tree(win, tree, node, x, y, z, order):
     if order == "level":
+        # Create a queue to store the nodes.
         queue = [(node, x, y, z)]
         while queue:
             curr_node, curr_x, curr_y, curr_z = queue.pop(0)
             if curr_node is None:
                 continue
             highlight_node(win, curr_x, curr_y, curr_node.value)
+
+            # Add children to the queue.
             if curr_node.left is not None:
                 queue.append((curr_node.left, curr_x - curr_z, curr_y + 80, curr_z // 2))
             if curr_node.right is not None:
@@ -126,19 +142,6 @@ def pick_traversal_method():
 
 # Main code
 root = BinaryTree()
-
-# Insert children.
-root.insert(10)
-root.insert(8)
-root.insert(15)
-root.insert(14)
-root.insert(2)
-root.insert(9)
-root.insert(22)
-root.insert(15)
-root.insert(1)
-root.insert(7)
-
 traversal_finished = False
 clock = pygame.time.Clock()
 
@@ -148,8 +151,31 @@ while not traversal_finished:
             pygame.quit()
             sys.exit()
 
+        # Handle traversal method.
         if event.type == pygame.MOUSEBUTTONDOWN:
             pick_traversal_method()
+
+        # Handle insertion event of a new node.
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if input_box.collidepoint(event.pos):
+                typing = True
+            else:
+                typing = False
+            color = color_active if typing else color_inactive
+
+        if event.type == pygame.KEYDOWN:
+            if typing:
+                if event.key == pygame.K_RETURN:
+                    try:
+                        value = int(text_area)
+                        root.insert(value)  # Insert value as new node.
+                    except ValueError:
+                        print(f"Invalid integer value: {text_area}")
+                    text_area = ''
+                elif event.key == pygame.K_BACKSPACE:
+                    text_area = text_area[:-1]
+                else:
+                    text_area += event.unicode
 
     # Draw tree
     window.fill((colors.get('black')))
@@ -160,9 +186,15 @@ while not traversal_finished:
     handle_button_hover(window, 580, 50, 100, 40, "Level-order")
 
     draw_tree(window, root, root.root, 400, 200, 200)
+
+    txt_surface = font_i.render(text_area, True, color_i)
+    window.blit(txt_surface, (input_box.x + align, input_box.y + align))
+    pygame.draw.rect(window, color_i, input_box, 2)
+
     pygame.display.update()
 
-    clock.tick(60)
+    pygame.display.flip()
+    pygame.time.Clock().tick(30)
 
 pygame.display.quit()
 pygame.quit()
