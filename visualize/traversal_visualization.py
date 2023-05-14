@@ -12,9 +12,9 @@ window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Binary Tree Traversal")
 
 colors = {
-    'green': (0, 150, 0),
+    'green': (25, 100, 30),
     'red': (255, 255, 255),
-    'black': (80, 80, 80),
+    'black': (21, 45, 50),
     'gray': (240, 240, 240)
 }
 
@@ -179,7 +179,6 @@ while not traversal_finished:
                 else:
                     text_area += event.unicode
 
-    # Draw tree
     window.fill((colors.get('black')))
 
     handle_button_hover(window, 130, 50, 100, 40, "Preorder")
