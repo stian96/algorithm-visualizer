@@ -83,9 +83,12 @@ def handle_button_hover(win, x_pos, y_pos, rec_width, rec_height, btn_text):
     mouse = pygame.mouse.get_pos()
     if button_hover(mouse[0], mouse[1], x_pos, y_pos, rec_width, rec_height):
         color = colors.get('red')
+        hover = True
     else:
         color = colors.get('gray')
+        hover = False
     draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height, btn_text)
+    return hover
 
 
 def button_hover(mose_x, mouse_y, x, y, rec_width, rec_height):
@@ -102,10 +105,13 @@ root = BinaryTree()
 root.insert(10)
 root.insert(8)
 root.insert(15)
+root.insert(14)
 root.insert(2)
 root.insert(9)
 root.insert(22)
 root.insert(15)
+root.insert(1)
+root.insert(7)
 
 traversal_finished = False
 clock = pygame.time.Clock()
@@ -116,19 +122,24 @@ while not traversal_finished:
             pygame.quit()
             sys.exit()
 
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if handle_button_hover(window, 210, 50, 90, 40, "Preorder"):
+                traverse_tree(window, root, root.root, 400, 200, 200, "pre")
+            elif handle_button_hover(window, 360, 50, 90, 40, "Inorder"):
+                traverse_tree(window, root, root.root, 400, 200, 200, "in")
+            elif handle_button_hover(window, 510, 50, 90, 40, "Postorder"):
+                traverse_tree(window, root, root.root, 400, 200, 200, "post")
+
     # Draw tree
     window.fill((colors.get('black')))
 
-    handle_button_hover(window, 200, 50, 90, 40, "Preorder")
-    handle_button_hover(window, 350, 50, 90, 40, "Inorder")
-    handle_button_hover(window, 500, 50, 90, 40, "Postorder")
+    handle_button_hover(window, 210, 50, 90, 40, "Preorder")
+    handle_button_hover(window, 360, 50, 90, 40, "Inorder")
+    handle_button_hover(window, 510, 50, 90, 40, "Postorder")
 
     draw_tree(window, root, root.root, 400, 200, 200)
     pygame.display.update()
 
-    # Traverse tree
-    # traverse_tree(window, root, root.root, 400, 200, 200, 'in')
-    # traversal_finished = True
     clock.tick(60)
 
 pygame.display.quit()
