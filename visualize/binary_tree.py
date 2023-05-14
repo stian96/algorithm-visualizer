@@ -1,5 +1,6 @@
 from datastructures.trees.binarytree import BinaryTree
 import pygame
+import sys
 
 # Initialize pygame.
 pygame.init()
@@ -18,12 +19,16 @@ colors = {
 }
 
 
-def draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height):
+def draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height, btn_text):
+    # Draw button
     pygame.draw.rect(win, color, (x_pos, y_pos, rec_width, rec_height))
-    btn_font = pygame.font.Font(None, 24)
-    text = btn_font.render("Preorder", True, colors.get('black'))
-    rect = text.get_rect(center=(x_pos + rec_width//2, y_pos + rec_height//2))
 
+    # Add font.
+    btn_font = pygame.font.Font(None, 24)
+    text = btn_font.render(btn_text, True, colors.get('black'))
+
+    # Add text in the center of the rectangle.
+    rect = text.get_rect(center=(x_pos + rec_width//2, y_pos + rec_height//2))
     win.blit(text, rect)
 
 
@@ -93,10 +98,15 @@ while not traversal_finished:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+            sys.exit()
 
     # Draw tree
     window.fill((colors.get('black')))
-    draw_buttons(window, colors.get('gray'), 150, 50, 90, 40)
+
+    draw_buttons(window, colors.get('gray'), 200, 50, 90, 40, "Preorder")
+    draw_buttons(window, colors.get('gray'), 350, 50, 90, 40, "Inorder")
+    draw_buttons(window, colors.get('gray'), 500, 50, 90, 40, "Postorder")
+
     draw_tree(window, root, root.root, 400, 200, 200)
 
     pygame.display.update()
