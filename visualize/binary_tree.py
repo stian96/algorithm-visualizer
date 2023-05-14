@@ -5,7 +5,9 @@ import pygame
 pygame.init()
 
 # Create a window
-window = pygame.display.set_mode((800, 600))
+width = 800
+height = 600
+window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Binary Tree Traversal")
 
 colors = {
@@ -14,6 +16,16 @@ colors = {
     'black': (80, 80, 80),
     'gray': (240, 240, 240)
 }
+
+
+def draw_buttons(win, x, y, z):
+    pygame.draw.rect(win, x, y, z)
+    btn_font = pygame.font.Font(None, 24)
+    text = btn_font.render("Preorder", True, colors.get('black'))
+    rect = text.get_rect(center=(x, y))
+
+    win.blit(text, rect)
+    pygame.display.update()
 
 
 def draw_tree(win, tree, node, x, y, z):
@@ -82,17 +94,18 @@ clock = pygame.time.Clock()
 while not traversal_finished:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            traversal_finished = True
+            pygame.quit()
 
     # Draw tree
     window.fill((colors.get('black')))
-    draw_tree(window, root, root.root, 400, 80, 200)
+    draw_buttons(window)
+    draw_tree(window, root, root.root, 400, 200, 200)
 
     pygame.display.update()
 
     # Traverse tree
-    traverse_tree(window, root, root.root, 400, 80, 200, 'in')
-    traversal_finished = True
+    # traverse_tree(window, root, root.root, 400, 200, 200, 'in')
+    # traversal_finished = True
     clock.tick(1)
 
 pygame.display.quit()
