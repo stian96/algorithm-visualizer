@@ -28,7 +28,7 @@ def draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height, btn_text):
     text = btn_font.render(btn_text, True, colors.get('black'))
 
     # Add text in the center of the rectangle.
-    rect = text.get_rect(center=(x_pos + rec_width//2, y_pos + rec_height//2))
+    rect = text.get_rect(center=((x_pos + rec_width) // 2, (y_pos + rec_height) // 2))
     win.blit(text, rect)
 
 
@@ -79,6 +79,22 @@ def highlight_node(win, x, y, value):
     pygame.time.delay(600)
 
 
+def handle_button_hover(win, x_pos, y_pos, rec_width, rec_height, btn_text):
+    mouse = pygame.mouse.get_pos()
+    if button_hover(mouse[0], mouse[1], x_pos, y_pos, rec_width, rec_height):
+        color = colors.get('red')
+    else:
+        color = colors.get('gray')
+    draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height, btn_text)
+
+
+def button_hover(mose_x, mouse_y, x, y, rec_width, rec_height):
+    if x < mose_x < x + rec_width and y < mouse_y < y + rec_height:
+        return True
+    else:
+        return False
+
+
 # Main code
 root = BinaryTree()
 
@@ -102,6 +118,8 @@ while not traversal_finished:
 
     # Draw tree
     window.fill((colors.get('black')))
+
+    # Store the mouse (x, y) coordinates
 
     draw_buttons(window, colors.get('gray'), 200, 50, 90, 40, "Preorder")
     draw_buttons(window, colors.get('gray'), 350, 50, 90, 40, "Inorder")
