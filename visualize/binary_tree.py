@@ -18,14 +18,13 @@ colors = {
 }
 
 
-def draw_buttons(win, x, y, z):
-    pygame.draw.rect(win, x, y, z)
+def draw_buttons(win, color, x_pos, y_pos, rec_width, rec_height):
+    pygame.draw.rect(win, color, (x_pos, y_pos, rec_width, rec_height))
     btn_font = pygame.font.Font(None, 24)
     text = btn_font.render("Preorder", True, colors.get('black'))
-    rect = text.get_rect(center=(x, y))
+    rect = text.get_rect(center=(x_pos + rec_width//2, y_pos + rec_height//2))
 
     win.blit(text, rect)
-    pygame.display.update()
 
 
 def draw_tree(win, tree, node, x, y, z):
@@ -37,7 +36,6 @@ def draw_tree(win, tree, node, x, y, z):
 
     # Blit the text on the window.
     win.blit(text, text_rect)
-    pygame.display.update()
 
     # Draw the children
     if node.left is not None:
@@ -98,7 +96,7 @@ while not traversal_finished:
 
     # Draw tree
     window.fill((colors.get('black')))
-    draw_buttons(window)
+    draw_buttons(window, colors.get('gray'), 150, 50, 90, 40)
     draw_tree(window, root, root.root, 400, 200, 200)
 
     pygame.display.update()
