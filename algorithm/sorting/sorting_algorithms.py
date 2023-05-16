@@ -4,6 +4,7 @@ class SortingAlgorithms:
     1. Selection sort
     2. Insertion sort
     """
+
     def __init__(self, array):
         self.array = array
 
@@ -53,5 +54,32 @@ class SortingAlgorithms:
             self.array[first + 1] = second
         return self.array
 
+    def quicksort(self):
+        """
+        Sorts the array in ascending order using the quick sort algorithm.
+        This algorithm has a time complexity of O(log n), where n is the length of the list.
+        :return: The sorted array
+        """
+        n = len(self.array)
 
+        # Does the array only contain one element?
+        if n <= 1:
+            return self.array
+        # Execute the quick sort algorithm.
+        else:
+            self.array = self._quicksort(self.array)
+            return self.array
+
+    def _quicksort(self, array):
+        n = len(array)
+
+        # Does the array only contain one element?
+        if n <= 1:
+            return array
+        else:
+            partition = array[n // 2]
+            left = [x for x in array if x < partition]
+            middle = [x for x in array if x == partition]
+            right = [x for x in array if x > partition]
+            return self._quicksort(left) + middle + self._quicksort(right)
 
