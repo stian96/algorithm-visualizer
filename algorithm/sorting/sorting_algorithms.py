@@ -72,7 +72,7 @@ class SortingAlgorithms:
 
     def _quicksort(self, array):
         """
-        Internal recursive function executing the quicksort algortihm.
+        Internal recursive function executing the quicksort algorithm.
         :param array: The array to be sorted.
         :return: The sorted array.
         """
