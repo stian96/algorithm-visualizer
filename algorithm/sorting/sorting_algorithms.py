@@ -71,15 +71,28 @@ class SortingAlgorithms:
             return self.array
 
     def _quicksort(self, array):
+        """
+        Internal recursive function executing the quicksort algortihm.
+        :param array: The array to be sorted.
+        :return: The sorted array.
+        """
         n = len(array)
 
-        # Base case.
+        # Base case: if the array contains 1 or 0 elements, it's already sorted
         if n <= 1:
             return array
         else:
+            # Choose the partition element (in this case, the middle element of the array)
             partition = array[n // 2]
+
+            # Split array into three parts:
+            # 'left' contains elements less than the partition
+            # 'middle' contains elements equal to the partition
+            # 'right' contains elements greater than the partition
             left = [x for x in array if x < partition]
             middle = [x for x in array if x == partition]
             right = [x for x in array if x > partition]
+
+            # Recursively sort the 'left' and 'right' parts and combine them with 'middle'
             return self._quicksort(left) + middle + self._quicksort(right)
 
