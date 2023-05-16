@@ -1,28 +1,14 @@
-from datastructures.trees.binarytree import BinaryTree
+from algorithm.sorting.sorting_algorithms import SortingAlgorithms
 
-# Initialize the binary tree.
-root = BinaryTree()
 
-# Insert root
-root.insert(10)
+# Create a array with random numbers.
+array = [30, 2, 5, 66, 731, 2, 8, 74, 13]
 
-# Insert left child
-root.insert(8)
+algorithm = SortingAlgorithms(array)
 
-# Insert right child
-root.insert(15)
+# Before sort:
+print(array)
 
-# Insert more nodes
-root.insert(2)
-root.insert(9)
-root.insert(22)
-root.insert(15)
-
-# Print out the tree
-root.inorder_traversal()
-print("\n")
-root.postorder_traversal()
-print("\n")
-root.preorder_traversal()
-print("\n")
-root.level_order_traversal()
+# After quicksort:
+new_array = algorithm.quicksort()
+print(new_array)
