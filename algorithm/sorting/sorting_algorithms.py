@@ -57,7 +57,7 @@ class SortingAlgorithms:
     def quicksort(self):
         """
         Sorts the array in ascending order using the quick sort algorithm.
-        This algorithm has a time complexity of O(log n), where n is the length of the list.
+        This algorithm has a time complexity of O(n log n), where n is the length of the list.
         :return: The sorted array
         """
         n = len(self.array)
@@ -73,7 +73,7 @@ class SortingAlgorithms:
     def _quicksort(self, array):
         n = len(array)
 
-        # Does the array only contain one element?
+        # Base case.
         if n <= 1:
             return array
         else:
