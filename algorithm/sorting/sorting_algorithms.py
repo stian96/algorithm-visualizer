@@ -101,4 +101,17 @@ class SortingAlgorithms:
         Sorts the array in ascending order using the bubble sort algorithm.
         This algorithm has a time complexity of O(n^2), where n is the length of the list.
         """
+        n = len(self.array)
+
+        # Iterate over all elements
+        for i in range(n):
+
+            # Perform (n - i - 1) comparisons and swaps.
+            for j in range(n - i - 1):
+                if self.array[j] > self.array[j + 1]:
+                    self.array[j], self.array[j + 1] = self.array[j + 1], self.array[j]
+
+        return self.array
+
+
 
