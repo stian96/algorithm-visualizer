@@ -96,3 +96,9 @@ class SortingAlgorithms:
             # Recursively sort the 'left' and 'right' parts and combine them with 'middle'
             return self._quicksort(left) + middle + self._quicksort(right)
 
+    def bubble_sort(self):
+        """
+        Sorts the array in ascending order using the bubble sort algorithm.
+        This algorithm has a time complexity of O(n^2), where n is the length of the list.
+        """
+
