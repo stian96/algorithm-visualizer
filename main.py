@@ -10,5 +10,5 @@ algorithm = SortingAlgorithms(array)
 print(array)
 
 # After quicksort:
-new_array = algorithm.quicksort()
+new_array = algorithm.bubble_sort()
 print(new_array)
