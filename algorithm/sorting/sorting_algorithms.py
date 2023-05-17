@@ -108,6 +108,8 @@ class SortingAlgorithms:
 
             # Perform (n - i - 1) comparisons and swaps.
             for j in range(n - i - 1):
+
+                # If the current element is greater than the next, swap them.
                 if self.array[j] > self.array[j + 1]:
                     self.array[j], self.array[j + 1] = self.array[j + 1], self.array[j]
 
