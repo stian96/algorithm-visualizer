@@ -15,12 +15,26 @@ class MaxHeap:
         return (index - 1) // 2
 
     def left_child(self, index):
+        """
+        Function used to get the left child of an parent node.
+        :param index: The parent nodes index.
+        :return: The left child of the parent.
+        """
         return 2 * index + 1
 
     def right_child(self, index):
+        """
+        Function used to get the right child of an parent node.
+        :param index: The parent node index.
+        :return: The right child of the parent node.
+        """
         return 2 * index + 2
 
     def add(self, value):
+        """
+        Function used to add a new value to the max-heap.
+        :param value: The value to be inserted.
+        """
         self.heap.append(value)
         self._sift_up(len(self.heap) - 1)
 
@@ -28,7 +42,7 @@ class MaxHeap:
         while index > 0:
             parent = self.parent(index)
             if self.heap[parent] < self.heap[index]:
-                self.heap[parent], self.heap[index] = self.heap[index], self.heap[parent]
+                self.swap(self.heap[parent], self.heap[index])
                 index = parent
             else:
                 break
@@ -45,7 +59,7 @@ class MaxHeap:
                 largest = right
 
             if largest != index:
-                self.heap[largest], self.heap[index] = self.heap[index], self.heap[largest]
+                self.swap(self.heap[largest], self.heap[index])
                 index = largest
             else:
                 break
@@ -56,4 +70,15 @@ class MaxHeap:
         self.heap.pop()
         self._sift_down(0)
         return max_value
+
+    def swap(self, index1, index2):
+        """
+        Function used ot swap the places of two elements in the max-heap.
+        :param index1:
+        :param index2:
+        :return:
+        """
+        self.heap[index1], self.heap[index2] = self.heap[index2], self.heap[index1]
+
+
 
