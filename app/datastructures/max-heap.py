@@ -39,6 +39,13 @@ class MaxHeap:
         self._sift_up(len(self.heap) - 1)
 
     def _sift_up(self, index):
+        """
+        Function that sifts up a node to its correct position in the max-heap.
+        This is called after a node is added to the heap, to ensure that
+        the heap property is maintained.
+
+        :param index: The index of the node in the heap to be sifted up.
+        """
         while index > 0:
             parent = self.parent(index)
             if self.heap[parent] < self.heap[index]:
