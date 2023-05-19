@@ -3,6 +3,9 @@ class SortingAlgorithms:
     Class containing different sorting algorithms:
     1. Selection sort
     2. Insertion sort
+    3. Quick sort
+    4. Bubble sort
+    5. Merge sort
     """
 
     def __init__(self, array):
