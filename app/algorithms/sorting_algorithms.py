@@ -115,6 +115,14 @@ class SortingAlgorithms:
 
         return self.array
 
+    def merge_sort(self):
+        """
+        Sorts the array in ascending order using the merge sort algorithm.
+        This algorithm has a time complexity of O(n log n), where n is the length of the list.
+        """
+        self.array = self._merge_sort(self.array)
+        return self.array
+
     def _merge_sort(self, array):
         """
            Internal recursive function executing the merge sort algorithm.
@@ -138,3 +146,30 @@ class SortingAlgorithms:
 
         # Merge the sorted halves
         return self._merge(left, right)
+
+    def _merge(self, left, right):
+        """
+        Helper function to merge two sorted arrays.
+        :param left: Sorted array.
+        :param right: Sorted array.
+        :return: Merged sorted array.
+        """
+        merged = list()
+        i = j = 0
+
+        # Compare elements and insert the smallest into the result.
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                merged.append(left[i])
+                i += 1
+            else:
+                merged.append(right[j])
+                j += 1
+
+        # If there are any elements left in either array, append them to the result.
+        merged.extend(left[i:])
+        merged.extend(right[j:])
+        return merged
+
+
+
