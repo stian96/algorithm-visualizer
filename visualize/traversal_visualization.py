@@ -1,4 +1,4 @@
-from datastructures.trees.binarytree import BinaryTree
+from app.datastructures.binarytree import BinaryTree
 import pygame
 import sys
 

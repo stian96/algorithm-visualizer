@@ -114,7 +114,3 @@ class SortingAlgorithms:
                     self.array[j], self.array[j + 1] = self.array[j + 1], self.array[j]
 
         return self.array
-
-
-
-
