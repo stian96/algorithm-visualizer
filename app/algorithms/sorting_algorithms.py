@@ -114,3 +114,10 @@ class SortingAlgorithms:
                     self.array[j], self.array[j + 1] = self.array[j + 1], self.array[j]
 
         return self.array
+
+    def _merge_sort(self, array):
+        """
+           Internal recursive function executing the merge sort algorithm.
+           :param array: The array to be sorted.
+           :return: The sorted array.
+           """
