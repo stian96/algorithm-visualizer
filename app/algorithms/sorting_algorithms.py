@@ -1,3 +1,5 @@
+from app.datastructures.maxheap import MaxHeap
+
 class SortingAlgorithms:
     """
     Class containing different sorting algorithms:
@@ -173,6 +175,24 @@ class SortingAlgorithms:
         merged.extend(left[i:])
         merged.extend(right[j:])
         return merged
+
+    def heap_sort(self):
+        """
+        Sorts the array in ascending order using the heap sort algorithm.
+        This algorithm has a time complexity of O(n log n), where n is the length of the list.
+        """
+        heap = MaxHeap()
+        n = len(self.array)
+
+        # Add all array elements to the max-heap.
+        for i in range(n):
+            heap.add(self.array[i])
+
+        # Pop all the elements from the max-heap.
+        for i in range(n-1, -1, -1):
+            self.array[i] = heap.pop_max()
+
+        return self.array
 
 
 
