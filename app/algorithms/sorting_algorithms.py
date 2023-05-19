@@ -121,3 +121,20 @@ class SortingAlgorithms:
            :param array: The array to be sorted.
            :return: The sorted array.
            """
+        n = len(array)
+
+        # Base case: If array contains 0 or 1 element it is already sorted.
+        if n <= 1:
+            return array
+
+        # Split the array in half
+        mid = n // 2
+        left = array[:mid]
+        right = array[mid:]
+
+        # Recursively sort each half
+        left = self._merge_sort(left)
+        right = self._merge_sort(right)
+
+        # Merge the sorted halves
+        return self._merge(left, right)
