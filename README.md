@@ -28,7 +28,7 @@ git clone https://github.com/stian96/Algorithm-visualizer.git
 
 Navigate to the project directory:
 ```bash
-cd algorithm-visualizer
+cd algorithms-visualizer
 ```
 
 Install the required Python libraries:

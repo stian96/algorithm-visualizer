@@ -10,8 +10,8 @@ class SortingAlgorithms:
 
     def selection_sort(self):
         """
-        Sorts the array in ascending order using the selection sort algorithm.
-        This algorithm has a time complexity of O(n^2), where n is the length of the list.
+        Sorts the array in ascending order using the selection sort algorithms.
+        This algorithms has a time complexity of O(n^2), where n is the length of the list.
         """
         n = len(self.array)
 
@@ -33,8 +33,8 @@ class SortingAlgorithms:
 
     def insertion_sort(self):
         """
-        Sorts the array in ascending order using the insertion sort algorithm.
-        This algorithm has a time complexity of O(n^2), where n is the length of the list.
+        Sorts the array in ascending order using the insertion sort algorithms.
+        This algorithms has a time complexity of O(n^2), where n is the length of the list.
         Returns: list: The sorted array
         """
         n = len(self.array)
@@ -56,8 +56,8 @@ class SortingAlgorithms:
 
     def quicksort(self):
         """
-        Sorts the array in ascending order using the quick sort algorithm.
-        This algorithm has a time complexity of O(n log n), where n is the length of the list.
+        Sorts the array in ascending order using the quick sort algorithms.
+        This algorithms has a time complexity of O(n log n), where n is the length of the list.
         :return: The sorted array
         """
         n = len(self.array)
@@ -65,14 +65,14 @@ class SortingAlgorithms:
         # Does the array only contain one element?
         if n <= 1:
             return self.array
-        # Execute the quick sort algorithm.
+        # Execute the quick sort algorithms.
         else:
             self.array = self._quicksort(self.array)
             return self.array
 
     def _quicksort(self, array):
         """
-        Internal recursive function executing the quicksort algorithm.
+        Internal recursive function executing the quicksort algorithms.
         :param array: The array to be sorted.
         :return: The sorted array.
         """
@@ -98,8 +98,8 @@ class SortingAlgorithms:
 
     def bubble_sort(self):
         """
-        Sorts the array in ascending order using the bubble sort algorithm.
-        This algorithm has a time complexity of O(n^2), where n is the length of the list.
+        Sorts the array in ascending order using the bubble sort algorithms.
+        This algorithms has a time complexity of O(n^2), where n is the length of the list.
         """
         n = len(self.array)
 

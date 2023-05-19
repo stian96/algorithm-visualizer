@@ -1,4 +1,4 @@
-from app.algorithm.sorting_algorithms import SortingAlgorithms
+from app.algorithms.sorting_algorithms import SortingAlgorithms
 
 
 # Create a array with random numbers.
