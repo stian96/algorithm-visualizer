@@ -103,5 +103,8 @@ class MaxHeap:
         """
         self.heap[index1], self.heap[index2] = self.heap[index2], self.heap[index1]
 
+    def print(self):
+        print(self.heap)
+
 
 
