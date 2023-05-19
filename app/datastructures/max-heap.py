@@ -42,7 +42,7 @@ class MaxHeap:
         while index > 0:
             parent = self.parent(index)
             if self.heap[parent] < self.heap[index]:
-                self.swap(self.heap[parent], self.heap[index])
+                self.swap(parent, index)
                 index = parent
             else:
                 break
@@ -59,17 +59,25 @@ class MaxHeap:
                 largest = right
 
             if largest != index:
-                self.swap(self.heap[largest], self.heap[index])
+                self.swap(largest, index)
                 index = largest
             else:
                 break
 
     def pop_max(self):
-        max_value = self.heap[0]
-        self.heap[0] = self.heap[-1]
-        self.heap.pop()
-        self._sift_down(0)
-        return max_value
+        """
+        Function that removes and returns the max value of the heap.
+        :return: The value to be returned.
+        """
+        if self.heap:
+            max_value = self.heap[0]
+            self.heap[0] = self.heap[-1]
+            self.heap.pop()
+            if self.heap:
+                self._sift_down(0)
+            return max_value
+        else:
+            return None
 
     def swap(self, index1, index2):
         """
