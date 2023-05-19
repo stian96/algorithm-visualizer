@@ -55,6 +55,14 @@ class MaxHeap:
                 break
 
     def _sift_down(self, index):
+        """
+        Function that sifts down a node to its correct position in the max-heap.
+        This method is primarily called when the root of the heap is removed, and
+        the last element of the heap is moved to the root. It then sifts this node down
+        to maintain the heap property.
+
+        :param index: The index of the node in the heap to be sifted down.
+        """
         while self.left_child(index) < len(self.heap):
             left = self.left_child(index)
             right = self.right_child(index)
