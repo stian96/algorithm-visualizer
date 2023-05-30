@@ -1,5 +1,6 @@
 from app.datastructures.maxheap import MaxHeap
 
+
 class SortingAlgorithms:
     """
     Class containing different sorting algorithms:
@@ -189,10 +190,7 @@ class SortingAlgorithms:
             heap.add(self.array[i])
 
         # Pop all the elements from the max-heap.
-        for i in range(n-1, -1, -1):
+        for i in range(n - 1, -1, -1):
             self.array[i] = heap.pop_max()
 
         return self.array
-
-
-
