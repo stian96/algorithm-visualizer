@@ -19,3 +19,25 @@ class SearchingAlgorithms:
 
         return None
 
+    def binary_search(self, element):
+        low = 0
+        high = len(self.array) - 1
+
+        while low <= high:
+            mid = (low + high) // 2
+            found = self.array[mid]
+
+            if element == found:
+                return mid
+            if element < found:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return None
+
+
+
+
+
+
+
