@@ -4,6 +4,7 @@ class SearchingAlgorithms:
     1. Linear search
     2. Binary search
     """
+
     def __init__(self, array):
         self.array = array
 
@@ -51,9 +52,24 @@ class SearchingAlgorithms:
 
         return None
 
+    def recursive_linear_search(self, element):
+        """
+        Public function that sets up the recursive call.
+        :param element: The element to search for.
+        :return:
+        """
+        self._recursive_linear_search(element, 0)
 
-
-
-
-
-
+    def _recursive_linear_search(self, element, index):
+        """
+        Private internal recursive method executing a linear search.
+        :param element: The element to search for.
+        :param index: Index used to find the right element.
+        :return: Index if element is found, None else.
+        """
+        if index >= len(self.array):
+            return None
+        elif element == self.array[index]:
+            return index
+        else:
+            return self._recursive_linear_search(element, index + 1)
