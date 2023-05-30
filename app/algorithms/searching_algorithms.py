@@ -4,7 +4,6 @@ class SearchingAlgorithms:
     1. Linear search
     2. Binary search
     """
-
     def __init__(self, array):
         self.array = array
 
@@ -18,8 +17,6 @@ class SearchingAlgorithms:
         :return: Index of the element if found, None else.
         """
         n = len(self.array)
-
-        # Iterate over the list sequentially.
         for i in range(n):
             if self.array[i] == element:
                 return i
@@ -37,7 +34,6 @@ class SearchingAlgorithms:
         """
         low = 0
         high = len(self.array) - 1
-
         while low <= high:
 
             mid = (low + high) // 2

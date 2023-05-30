@@ -1,9 +1,18 @@
+from app.algorithms.searching_algorithms import SearchingAlgorithms
 from app.algorithms.sorting_algorithms import SortingAlgorithms
 
 array = [4, 100, 1, 56, 23, 7, 8, 5, 99]
-sort = SortingAlgorithms(array)
 
-# Perform heap sort
-print(sort.heap_sort())
+sorted_array = SortingAlgorithms(array)
+sorted_array.bubble_sort()
+
+print("Array after sort with bubble sort algorithm:")
+print(sorted_array.array)
+
+print("\nTest of recursive sorting algorithm:")
+search = SearchingAlgorithms(sorted_array.array)
+index = search.recursive_linear_search(23)
+print(sorted_array.array[index])
+
 
 
