@@ -20,10 +20,18 @@ class SearchingAlgorithms:
         return None
 
     def binary_search(self, element):
+        """
+        A divide an conquer algorithm that excludes half of the array
+        in every iteration of the search.
+        It has a time complexity of O(log n)
+        :param element: The element to search for.
+        :return: Index of the element if found, None else.
+        """
         low = 0
         high = len(self.array) - 1
 
         while low <= high:
+
             mid = (low + high) // 2
             found = self.array[mid]
 
@@ -33,6 +41,7 @@ class SearchingAlgorithms:
                 high = mid - 1
             else:
                 low = mid + 1
+
         return None
 
 
