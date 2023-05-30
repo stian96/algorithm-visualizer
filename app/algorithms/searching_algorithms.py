@@ -82,6 +82,15 @@ class SearchingAlgorithms:
         return self._recursive_binary_search(element, 0, len(self.array) - 1)
 
     def _recursive_binary_search(self, element, low, high):
+        """
+        Private internal recursive binary search method.
+        This method has a time complexity of O(log n).
+
+        :param element: Element to search for.
+        :param low: The index of the first element in the current search segment.
+        :param high: The index of the last element in the current search segment.
+        :return: Index of the element if found, None else.
+        """
         if low > high:
             return None
         else:
