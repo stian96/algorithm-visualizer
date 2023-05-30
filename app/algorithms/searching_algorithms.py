@@ -8,14 +8,20 @@ class SearchingAlgorithms:
         self.array = array
 
     def linear_search(self, element):
+        """
+        Sequential linear search algorithm.
+        It has a time complexity of O(n), since it iterates
+        over all the elements in the list at worst case.
 
-        # Get length of the array
+        :param element: The element to be found.
+        :return: Index of the element if found, None else.
+        """
         n = len(self.array)
 
         # Iterate over the list sequentially.
         for i in range(n):
             if self.array[i] == element:
-                return self.array[i]
+                return i
 
         return None
 
@@ -24,6 +30,7 @@ class SearchingAlgorithms:
         A divide an conquer algorithm that excludes half of the array
         in every iteration of the search.
         It has a time complexity of O(log n)
+
         :param element: The element to search for.
         :return: Index of the element if found, None else.
         """
