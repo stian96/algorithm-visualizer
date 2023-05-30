@@ -71,3 +71,28 @@ class SearchingAlgorithms:
             return index
         else:
             return self._recursive_linear_search(element, index + 1)
+
+    def recursive_binary_search(self, element):
+        """
+        Public function that sets up the recursive binary search call.
+
+        :param element: The element to search for.
+        :return: Index of the element if found, None else.
+        """
+        return self._recursive_binary_search(element, 0, len(self.array) - 1)
+
+    def _recursive_binary_search(self, element, low, high):
+        if low > high:
+            return None
+        else:
+            mid = (low + high) // 2
+            if element == self.array[mid]:
+                return mid
+            elif element < self.array[mid]:
+                return self._recursive_binary_search(element, low, mid - 1)
+            else:
+                return self._recursive_binary_search(element, mid + 1, high)
+
+
+
+

@@ -11,7 +11,7 @@ print(sorted_array.array)
 
 print("\nTest of recursive sorting algorithm:")
 search = SearchingAlgorithms(sorted_array.array)
-index = search.recursive_linear_search(23)
+index = search.recursive_linear_search(99)
 print(sorted_array.array[index])
 
 
