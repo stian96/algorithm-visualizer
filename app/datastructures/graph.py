@@ -13,12 +13,24 @@ class Graph:
         self.graph = dict()
 
     def add_edge(self, node, neighbour):
+        """
+        Function that adds an edge between two nodes in the graph.
+
+        :param node: The node to link to another neighbour node.
+        :param neighbour: The neighbour to link to the main-node.
+        """
         if node not in self.graph:
             self.graph[node] = neighbour
         else:
             self.graph[node].append(neighbour)
 
     def remove_edge(self, node, neighbour):
+        """
+        Function that removes an edge between two nodes in the graph.
+
+        :param node: The node to remove the edge from.
+        :param neighbour: The neighbour linked with the node.
+        """
         if node in self.graph:
             self.graph[node].remove(neighbour)
 
