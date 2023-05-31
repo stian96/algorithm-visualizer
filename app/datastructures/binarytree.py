@@ -4,7 +4,8 @@ from collections import deque
 
 class BinaryTree:
     """
-    A binary tree class containing integer values.
+    A binary tree class containing the data structure itself, and
+    in, pre, post and level-order traversal functions.
     """
     def __init__(self):
         self.root = None
