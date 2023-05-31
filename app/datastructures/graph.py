@@ -21,6 +21,16 @@ class Graph:
         if node in self.graph:
             self.graph[node].remove(neighbour)
 
+    def remove_node(self, node):
+
+        # Delete the node.
+        if node in self.graph:
+            del self.graph[node]
+
+        # Check if that node is neighbour with some of the other nodes.
+        for other_node in self.graph:
+            # Remove values from nodes that have the node as neighbour.
+            self.graph[other_node] = [n for n in self.graph[other_node] if n != node]
 
     def display(self):
         for node in self.graph:
