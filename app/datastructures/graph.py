@@ -32,6 +32,13 @@ class Graph:
             # Remove values from nodes that have the node as neighbour.
             self.graph[other_node] = [n for n in self.graph[other_node] if n != node]
 
+    def get_nodes(self):
+        return list(self.graph.keys())
+
+    def get_neighbours(self, node):
+        return self.graph.get(node, [])
+
+
     def display(self):
         for node in self.graph:
             for neighbour in self.graph[node]:
