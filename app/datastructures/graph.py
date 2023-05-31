@@ -17,6 +17,11 @@ class Graph:
         else:
             self.graph[node].append(neighbour)
 
+    def remove_edge(self, node, neighbour):
+        if node in self.graph:
+            self.graph[node].remove(neighbour)
+
+
     def display(self):
         for node in self.graph:
             for neighbour in self.graph[node]:
