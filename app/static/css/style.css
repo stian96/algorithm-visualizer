@@ -16,6 +16,15 @@ body {
 
 .logo {
     color: 	#DCDCDC;
+    font-size: 2em;
+    font-family: Arial, sans-serif;
+    color: #a5e99e;
+    text-shadow: 2px 2px 4px #000000;
+    background-color: #626566;
+    padding: 10px;
+    border-radius: 5px;
+    
+
 }
 
 .nav-list {
