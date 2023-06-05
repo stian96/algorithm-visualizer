@@ -8,29 +8,29 @@ body {
     background-color:#353839;
 }
 
-header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-h1 {
+.logo {
     color: 	#DCDCDC;
 }
 
-nav ul {
+.nav-list {
     display: flex;
     gap: 2rem;
     list-style: none;
 }
 
-nav ul a {
+.nav-links {
     text-decoration: none;
     color:#DCDCDC;
     font-size: 1.3rem;
 }
 
-nav ul a:hover {
+.nav-links:hover {
     color: white;
 }
 
