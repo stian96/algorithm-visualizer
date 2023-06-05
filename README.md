@@ -51,6 +51,7 @@ The project includes the following algorithms:
 2. Searching Algorithms
    - Linear Search
    - Binary Search
+   - Recurive Search
 3. Graph Algorithms
    - Depth-First Search (DFS)
    - Breadth-First Search (BFS)
