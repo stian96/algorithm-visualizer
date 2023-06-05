@@ -83,4 +83,16 @@ body {
     flex-wrap: wrap;
 }
 
+.category-card {
+    background-color: #3b3f47;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 30%;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+}
 
