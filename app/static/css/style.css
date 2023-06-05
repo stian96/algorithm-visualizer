@@ -16,6 +16,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
+    margin-bottom: 5rem;
 }
 
 .logo {
@@ -45,4 +46,24 @@ body {
 .nav-links:hover {
     color: #DCDCDC;
 }
+
+#introduction {
+    padding: 2rem;
+    color: #fff;
+    width: 73%;
+    margin: 0 auto;
+}
+
+#introduction h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+#introduction p {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    margin-bottom: 1rem;
+
+}
+
 
