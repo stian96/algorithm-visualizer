@@ -135,7 +135,7 @@ body {
     margin-bottom: 1.5em;
 }
 
-.algorithms-container {
+.sorting-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,6 +148,11 @@ body {
 .category-image img {
     width: 100%;
     height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.category-image img:hover {
+    transform: scale(1.05);
 }
 
 .category-list {
@@ -161,12 +166,17 @@ body {
     color: #a5e99e;
 }
 
-.algorithm-list {
+.sorting-list {
     list-style: none;
     font-size: 1.2em;
 }
 
-.algorithm-list li {
+.sorting-list li {
     margin-bottom: 0.8rem;
     font-size: 1em;
+}
+
+.sorting-list li:hover {
+    color:#a5e99e;
+    cursor: pointer;
 }
