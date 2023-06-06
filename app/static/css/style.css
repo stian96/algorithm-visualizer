@@ -124,37 +124,50 @@ body {
 }
 
 #algorithms {
-    padding: 2rem;
+    padding: 2.2rem;
     color: #fff;
     background-color: #1d2026;
 }
 
 #algorithms h2 {
     font-size: 2em;
+    text-align: center;
     margin-bottom: 1em;
 }
 
-.algorithm-container {
+.algorithms-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
-.category-column {
-    flex: 1 1 30%;
+.category-image {
+    flex: 0 1 450px;
 }
 
-.category-column h3 {
+.category-image img {
+    width: 100%;
+    height: auto;
+}
+
+.category-list {
+    flex: 0 0 auto;
+    align-items: center;
+    margin-right: 300px; /* Need to change later. */
+}
+
+.category-list h3 {
     margin-bottom: 1rem;
+    font-size: 1.5em;
     color: #a5e99e;
 }
 
 .algorithm-list {
     list-style: none;
-    margin-left: 1rem;
-    padding-left: 0;
+    font-size: 1.2em;
 }
 
 .algorithm-list li {
-    margin-bottom: 0.5rem;
-    font-size: 1.1em;
+    margin-bottom: 0.8rem;
+    font-size: 1em;
 }
