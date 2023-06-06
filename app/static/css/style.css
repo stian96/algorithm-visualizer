@@ -132,14 +132,14 @@ body {
 #algorithms h2 {
     font-size: 2em;
     text-align: center;
-    margin-bottom: 1.5em;
+    margin-bottom: 3em;
 }
 
 .sorting-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10rem;
+    margin-bottom: 11rem;
 }
 
 .category-image {
@@ -147,7 +147,7 @@ body {
 }
 
 .category-image img {
-    width: 100%;
+    width: 75%;
     height: auto;
     transition: transform 0.2s ease-in-out;
 }
@@ -157,7 +157,7 @@ body {
 }
 
 .category-list {
-    flex: 0 1 auto;
+    flex: 0 1 27%;
     align-items: center;
 }
 
@@ -168,7 +168,6 @@ body {
 }
 
 .sorting-list {
-    flex: 0 1 50%;
     list-style: none;
     font-size: 1.2em;
 }
@@ -190,26 +189,15 @@ body {
 }
 
 .searching-image {
-    flex: 0 1 50%;
+    flex: 0 1 40%;
 }
 
 .searching-image img {
     width: 100%;
     height: auto;
+    transition: transform 0.2s ease-in-out;
 }
 
-.searching-list {
-    flex: 0 1 50%;
-    list-style: none;
-    font-size: 1.1em;
-}
-
-.searching-list h3 {
-    margin-bottom: 1rem;
-    font-size: 1.4em;
-    color: #a5e99e;
-}
-
-.searching-list li {
-    margin-bottom: 0.8rem;
+.searching-image img:hover {
+    transform: scale(1.05);
 }
