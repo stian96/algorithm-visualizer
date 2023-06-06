@@ -151,9 +151,8 @@ body {
 }
 
 .category-list {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
     align-items: center;
-    margin-right: 300px; /* Need to change later. */
 }
 
 .category-list h3 {
