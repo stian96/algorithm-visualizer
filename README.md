@@ -4,7 +4,7 @@
 ![Python 3.9](https://img.shields.io/badge/Python-3.9-blue) 
 ![License MIT](https://img.shields.io/badge/License-MIT-orange)
 
-Algorithm Visualizer is an interactive and visually appealing learning tool designed to help students and enthusiasts understand and appreciate the beauty of algorithms and data structures taught in the "Algorithms and Data Structures" university course. This project not only provides the code for these algorithms but also visualizes their steps using Pygame, making learning a delightful experience.
+Algorithm Visualizer is an interactive and visually appealing learning tool designed to help students and enthusiasts understand and appreciate the beauty of algorithms and data structures taught in the "Algorithms and Data Structures" university course. This project not only provides the code for these algorithms but also visualizes their steps using HTML, CSS and Javascript, making learning a delightful experience.
 
 ## Table of Contents
 
