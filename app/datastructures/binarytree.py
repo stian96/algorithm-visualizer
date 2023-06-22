@@ -81,8 +81,7 @@ class BinaryTree:
     # Prints left subtree, then root and right subtree last.
     def inorder_traversal(self):
         if not self.is_empty():
-            print("Inorder traversal of binary tree:")
-            self._inorder(self.root)
+            return self._inorder(self.root)
         else:
             raise Exception("Root is empty, cannot print tree.")
 
@@ -99,49 +98,51 @@ class BinaryTree:
     # Prints left and right subtrees, then the root.
     def postorder_traversal(self):
         if self.root is not None:
-            print("Postorder traversal of binary tree:")
-            self._postorder(self.root)
+            return self._postorder(self.root)
         else:
             raise Exception("Root is empty, cannot print tree.")
 
     def _postorder(self, node):
+        result = []
         if node is not None:
             # Post-order traversal of the tree.
-            self._postorder(node.left)
-            self._postorder(node.right)
-            print(str(node.value), end=" ")
+            result.extend(self._postorder(node.left))
+            result.extend(self._postorder(node.right))
+            result.append(node.value)
+        return result
 
     # Prints root, then left and right subtrees.
     def preorder_traversal(self):
         if not self.is_empty():
-            print("Preorder traversal of binary tree:")
-            self._preorder(self.root)
+            return self._preorder(self.root)
         else:
             raise Exception("Root is empty, cannot print tree.")
 
     def _preorder(self, node):
+        result = []
         if node is not None:
-            # Post-order traversal of the tree.
-            print(str(node.value), end=" ")
-            self._preorder(node.left)
-            self._preorder(node.right)
+            result.append(node.value)
+            result.extend(self._preorder(node.left))
+            result.extend(self._preorder(node.right))
+        return result
 
     # Uses a queue to print the order.
     def level_order_traversal(self):
-        print("Level-order traversal of binary tree:")
+        result = []
         if self.is_empty():
             raise Exception("Root is empty, cannot print tree.")
 
         queue = deque([self.root])
         while queue:
             node = queue.popleft()
-            print(str(node.value), end=' ')
+            result.append(node.value)
 
             # Enqueue left and right children.
             if node.left is not None:
                 queue.append(node.left)
             if node.right is not None:
                 queue.append(node.right)
+        return result
 
     # Checks if tree is empty.
     def is_empty(self):
