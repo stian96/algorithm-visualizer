@@ -1,19 +1,37 @@
-from app.algorithms.searching_algorithms import SearchingAlgorithms
-from app.algorithms.sorting_algorithms import SortingAlgorithms
+from flask import Flask, request, jsonify
+from app.datastructures.binarytree import BinaryTree
 
-array = [4, 100, 1, 56, 23, 7, 8, 5, 99]
+app = Flask(__name__)
 
-sorted_array = SortingAlgorithms(array)
-sorted_array.bubble_sort()
+# Storing the tree to keep state between calls.
+tree = BinaryTree()
 
-print("Array after sort with bubble sort algorithm:")
-print(sorted_array.array)
+@app.route('/insert', methods=['POST'])
+def insert():
+    if not request.is_json:
+        return jsonify({"msg": "Missing JSON in request"}), 400
 
-print("\nTest of recursive sorting algorithm:")
-search = SearchingAlgorithms(sorted_array.array)
-index = search.recursive_binary_search(7)
-print(f"Value: {sorted_array.array[index]}")
-print(f"Index: {index}")
+    data = request.get_json()
+
+    if 'value' not in data:
+        return jsonify({"msg:" "Missing 'value' in JSON"}), 400
+
+    tree.insert(data['value'])
+
+    return jsonify({"msg:" "Value inserted successfully"}), 200
+
+@app.route('/remove', methods=['POST'])
+def remove():
+    if not request.is_json:
+        return jsonify({"msg:" "Missing JSON in request"}), 400
+
+    data = request.get_json()
+
+    if 'value' not in data:
+        return jsonify({"msg:" "Missing 'value' in JSON"}), 400
+
+    tree.remove(data['value'])
+
 
 
 
