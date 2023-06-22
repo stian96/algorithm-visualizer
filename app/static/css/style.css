@@ -231,8 +231,12 @@ footer {
 }
 
 .social-links a {
-    display: inline-block;
-    margin-right: 10px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.social-links i {
+    margin-right: 5px;
 }
 
 .footer-content a:hover {
