@@ -88,11 +88,13 @@ class BinaryTree:
 
     # Internal recursive method for printing values.
     def _inorder(self, node):
+        result = []
         if node is not None:
             # In-order traversal of the tree.
-            self._inorder(node.left)
-            print(str(node.value), end=" ")
-            self._inorder(node.right)
+            result.extend(self._inorder(node.left))
+            result.append(node.value)
+            result.extend(self._inorder(node.right))
+        return result
 
     # Prints left and right subtrees, then the root.
     def postorder_traversal(self):
