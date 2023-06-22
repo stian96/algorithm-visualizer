@@ -6,6 +6,10 @@ app = Flask(__name__)
 # Storing the tree to keep state between calls.
 tree = BinaryTree()
 
+@app.route('/')
+def home():
+    return app.send_static_file('index.html')
+
 @app.route('/insert', methods=['POST'])
 def insert():
     if not request.is_json:

@@ -1,30 +1,9 @@
 var treeData = {
     "name": "Root",
-    "children": [
-        {
-            "name": "Node1",
-            "children": [
-                {
-                    "name": "Node1.1",
-                    "children": [
-                        {
-                            "name": "Node1.1.1"
-                        },
-                        {
-                            "name": "Node1.1.2"
-                        }
-                    ]
-                },
-                {
-                    "name": "Node1.2"
-                }
-            ]
-        },
-        {
-            "name": "Node2"
-        }
-    ]
+    "children": []
 };
+
+updateTreeData();
 
 // Set the dimensions and margins of the diagram
 var margin = {top: 20, right: 90, bottom: 30, left: 90},
@@ -200,4 +179,51 @@ function update(source) {
         }
         update(d);
     }
+}
+
+document.getElementById('insert-btn').addEventListener('click', function() {
+    const value = document.getElementById('value-input').value;
+    insertNode(root, value);
+    update(root);
+});
+
+function insertNode(node, value) {
+    if (!node.children) {
+        node.children = [];
+    }
+    node.children.push({ name: value });
+}
+
+document.getElementById('remove-btn').addEventListener('click', function() {
+    const value = document.getElementById('value-input').value;
+    fetch('/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ value: value}),
+    })
+    .then(updateTreeData)
+    .catch(console.error);
+});
+
+document.getElementById('traversal-btn').addEventListener('click', function() {
+    const order = document.getElementById('traversal-select').value;
+    fetch(`/traverse/${order}`, { method: 'GET' })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Traversal result:', data.result);
+    })
+    .catch(console.error);
+});
+
+function updateTreeData() {
+    fetch('/api/tree', { method: 'GET' })
+    .then(response => response.json())
+    .then(data => {
+        treeData = data;
+        root = d3.hierarchy(treeData, function(d) {return d.children; });
+        update(root);
+    })
+    .catch(console.error);
 }
