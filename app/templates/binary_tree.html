@@ -19,6 +19,21 @@
     </head>
     <body>
         <div id="tree-container"></div>
+        <form id="tree-form">
+            <label for="value-input">Value</label>
+            <input type="text" id="value-input">
+            <button type="button" id="insert-btn">Insert</button>
+            <button type="button" id="remove-btn">Remove</button>
+
+            <label for="traversal-select">Traversal order:</label>
+            <select id="traversal-select">
+                <option value="inorder">In-order</option>
+                <option value="postorder">Post-order</option>
+                <option value="preorder">Pre-order</option>
+                <option value="level_order">Level-order</option>
+            </select>
+            <button type="button" id="traversal-btn">Traverse</button>
+        </form>
         <script src="../static/js/binary_tree.js"></script>
     </body>
 </html>
