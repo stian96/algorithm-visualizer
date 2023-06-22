@@ -32,6 +32,27 @@ def remove():
 
     tree.remove(data['value'])
 
+    return jsonify({"msg:" "Value removed successfully"}), 200
+
+@app.route('/traverse/<string:order>', methods=['GET'])
+def traverse(order):
+    if order not in ['inorder', 'postorder', 'preorder', 'level_order']:
+        return jsonify({"msg": "Invalid traversal order"}), 400
+
+    if order == 'inorder':
+        result = tree.inorder_traversal()
+    elif order == 'postorder':
+        result = tree.postorder_traversal()
+    elif order == 'preorder':
+        result = tree.preorder_traversal()
+    elif order == 'level_order':
+        result = tree.level_order_traversal()
+
+    return jsonify({"result": result}), 200
+
+if __name__ == "__main__":
+    app.run()
+
 
 
 
