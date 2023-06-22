@@ -201,3 +201,17 @@ body {
 .searching-image img:hover {
     transform: scale(1.05);
 }
+
+footer {
+    background-color: #2b2f37;
+    padding: 2rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-content {
+    
+}
