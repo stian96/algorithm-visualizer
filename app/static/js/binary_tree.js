@@ -37,3 +37,18 @@ var svg = d3.select("#tree-container").append("svg")
     .attr("height", height + margin-top + margin-bottom)
     .append("g")
     .attr("transform", "translate(" + margin-left + "," + margin-top + ")");
+
+var i = 0,
+    duration = 750,
+    root;
+
+// Declare a tree layout and assign the size.
+var treeMap = d3.tree().size([height, width]);
+
+// Assign parent, children, height, depth.
+root = d3.hierarchy(treeData, function(d) {return d.children; });
+root.x0 = height / 2;
+root.y0 = 0;
+
+// Collapse after the second level.
+root.children.forEach(collapse);
