@@ -33,10 +33,10 @@ var margin = {top: 20, right: 90, bottom: 30, left: 90},
 
 // Append a svg placeholder in the div element.
 var svg = d3.select("#tree-container").append("svg")
-    .attr("width", width + margin-right + margin.left)
-    .attr("height", height + margin-top + margin-bottom)
+    .attr("width", width + margin.right + margin.left)
+    .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin-left + "," + margin-top + ")");
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var i = 0,
     duration = 750,
