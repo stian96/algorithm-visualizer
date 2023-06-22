@@ -57,16 +57,20 @@ update(root);
 
 // Collapse the node and all its children.
 function collapse(d) {
-    if (d.children) {
-        d._children = d.children
-        d._children.forEach(collapse)
-        d.children = null
+    if (d.depth >= 2) {
+        if (d.children) {
+            d._children = d.children;
+            d._children.forEach(collapse);
+            d.children = null;
+        }
+    } else if (d.children) {
+        d.children.forEach(collapse);
     }
 }
 
 function update(source) {
     // Assigns the x and y position for the nodes
-    var treeData = treemap(root);
+    var treeData = treeMap(root);
 
     // Compute the new tree layout.
     var nodes = treeData.descendants(),
