@@ -1,21 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Binary Tree Visualization</title>
-        <script src="https://d3js.org/d3.v5.min.js"></script>
-        <style>
-            .node {
-                fill: #fff;
-                stroke: steelblue;
-                stroke-width: 2px;
-            }
-
-            .link {
-                fill: none;
-                stroke: #ccc;
-                stroke-width: 1.5px;
-            }
-        </style>
     </head>
     <body>
         <div id="tree-container"></div>
@@ -23,17 +11,10 @@
             <label for="value-input">Value</label>
             <input type="text" id="value-input">
             <button type="button" id="insert-btn">Insert</button>
-            <button type="button" id="remove-btn">Remove</button>
-
-            <label for="traversal-select">Traversal order:</label>
-            <select id="traversal-select">
-                <option value="inorder">In-order</option>
-                <option value="postorder">Post-order</option>
-                <option value="preorder">Pre-order</option>
-                <option value="level_order">Level-order</option>
-            </select>
-            <button type="button" id="traversal-btn">Traverse</button>
         </form>
+        <div class="binarytree-area">
+            <!-- Her nodes for the bin tree will be drawed -->
+        </div>
         <script src="../static/js/binary_tree.js"></script>
     </body>
 </html>
