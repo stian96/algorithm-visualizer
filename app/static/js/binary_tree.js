@@ -12,7 +12,7 @@ window.onload = function() {
 
         // Create a new node.
         var node = document.createElement('div');
-        node.className = 'node';
+        node.className = 'node fade-in';
 
         // Add the value to the node.
         node.innerHTML = value;
