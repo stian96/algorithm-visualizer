@@ -1,4 +1,4 @@
-from app.datastructures.node import Node
+from datastructures.node import Node
 from collections import deque
 
 
