@@ -1,5 +1,6 @@
 let levelCounter = 1;
 var root = null;
+let currentNode = null;
 
 // When page has loaded.
 window.onload = function() {
@@ -23,6 +24,7 @@ window.onload = function() {
 
                     // Update tree in frontend and redraw nodes.
                     insertNode(response['node-value']);
+                    currentNode = findNode(response['node-value'], root);  // keep track of the current node
                     redrawNodes(binary_tree);
                 } else {
                     console.error('Error:', xml_request.responseText);
@@ -83,30 +85,35 @@ window.onload = function() {
             if (nodeData === null) {
                 return;
             }
-
-            if (treeArea.className === 'level-1') {
-                var nodeElement = document.createElement('div');
-                nodeElement.className = 'node fade-in';
-                nodeElement.innerHTML = nodeData.value;
     
-                // Append the node element to the parent element.
-                parentElement.appendChild(nodeElement);
+            // Create a new div for each node
+            var nodeElement = document.createElement('div');
+            nodeElement.className = 'node fade-in level-' + level;
+            nodeElement.innerHTML = nodeData.value;
+            parentElement.appendChild(nodeElement);
+    
+            // Recursively create and append child nodes
+            if (nodeData.left !== null) {
+                createNodeElement(nodeData.left, nodeElement, level + 1);
             }
-            else {
-                // Recursively create and append child nodes
-                if (nodeData < root.nodeData) {
-                    var leftElement = document.createElement('div');
-                    parentElement.appendChild(leftElement);
-                    createNodeElement(nodeData.left, leftElement, level + 1);
-                }
-                else {
-                    var rightElement = document.createElement('div');
-                    parentElement.appendChild(rightElement);
-                    createNodeElement(nodeData.right, rightElement, level + 1);
-                }
+            if (nodeData.right !== null) {
+                createNodeElement(nodeData.right, nodeElement, level + 1);
             }
         }
+    
         // Call the helper function with the root node of the tree.
         createNodeElement(root, treeArea, 1);
     }
+
+    function findNode(value, node) {
+        if (node === null) {
+            return null;
+        }
+        if (node.value === value) {
+            return node;
+        }
+
+        return findNode(value, node.left) || findNode(value, node.right);
+    }
 };
+
