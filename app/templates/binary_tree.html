@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="tree-container"></div>
-        <form id="tree-form">
+        <form id="tree-form" action="{{ url_for('insert_node') }}" method="POST">
             <label for="value-input">Value</label>
             <input type="text" id="value-input">
             <button type="button" id="insert-btn">Insert</button>
