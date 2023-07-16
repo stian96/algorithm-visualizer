@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color:#1d2026;
+    background-color: #1d2026;
     min-height: 100vh;
     width: 100%;
 }
@@ -36,23 +36,40 @@ body {
     background-color: #a5e99e;
 }
 
+.level-1 {
+    display: flex;
+    justify-content: center;
+}
+  
+.level-2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+  
+.level-3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+}
+
 .node {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #a5e99e;
     padding: 1.8rem;
-    border-radius: 2rem;
+    border-radius: 50%;
     width: 3rem;
     height: 3rem;
     font-size: 1.3rem;
     font-weight: bold;
-    margin-top: 5rem;
 }
 
 @keyframes fade-in {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .fade-in {

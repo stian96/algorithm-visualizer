@@ -9,12 +9,15 @@
     <body>
         <div id="tree-container"></div>
         <form id="tree-form" action="{{ url_for('insert_node') }}" method="POST">
-            <label for="value-input">Value</label>
+            <label for="value-input"></label>
             <input type="text" id="value-input">
             <button type="button" id="insert-btn">Insert</button>
         </form>
         <div class="binarytree-area">
-            <!-- Her nodes for the bin tree will be drawed -->
+            <div id="level-1"></div>
+            <div id="level-2"></div>
+            <div id="level-3"></div>
+            <div id="level-4"></div>
         </div>
         <script src="../static/js/binary_tree.js"></script>
     </body>

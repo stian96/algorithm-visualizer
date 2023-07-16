@@ -16,10 +16,11 @@ def bin_tree():
 
 @app.route('/insert', methods=['POST'])
 def insert_node():
-    value = request.form.get('node-value')
+    value = request.json.get('node-value')
     tree.insert(value)
 
-    return jsonify({'message': 'Node inserted successfully'})
+    print(f"Value from javascript: {value}")
+    return jsonify({'node-value': value})
 
 if __name__ == "__main__":
     app.run()
