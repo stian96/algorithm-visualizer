@@ -6,6 +6,18 @@ window.onload = function() {
     button.addEventListener('click', function() {
         
         var value = document.getElementById('value-input').value;
-        console.log("value: " + value)
+        
+        // Get the area for the binary tree.
+        var binary_tree = document.getElementsByClassName('binarytree-area')[0];
+
+        // Create a new node.
+        var node = document.createElement('div');
+        node.className = 'node';
+
+        // Add the value to the node.
+        node.innerHTML = value;
+
+        // Append new node to the binary tree area.
+        binary_tree.appendChild(node);
     });
 };
