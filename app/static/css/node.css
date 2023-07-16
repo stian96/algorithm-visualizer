@@ -15,6 +15,10 @@ body {
     margin-top: 2rem;
 }
 
+.binarytree-area {
+    margin-top: 2rem;
+}
+
 #value-input {
     padding: 0.4rem;
     font-size: 1.1rem;
@@ -35,11 +39,6 @@ body {
 #insert-btn:hover {
     background-color: #a5e99e;
 }
-
-.level-1 {
-    display: flex;
-    justify-content: center;
-}
   
 .level-2 {
     display: flex;
@@ -54,7 +53,6 @@ body {
 }
 
 .node {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

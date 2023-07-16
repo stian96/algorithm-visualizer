@@ -1,14 +1,14 @@
-let nodeCounter = 0;
+let levelCounter = 1;
+var root = null;
 
 // When page has loaded.
 window.onload = function() {
     var button = document.getElementById("insert-btn");
-    var binary_tree = document.getElementsByClassName('binarytree-area')[0];
-    var root = null;
 
     // Add event listener for click
     button.addEventListener('click', function() {
         var value = document.getElementById('value-input').value;
+        var binary_tree = document.getElementsByClassName('level-' + levelCounter)[0];
 
         // Send data to Flask endpoint '/insert'.
         var xml_request = new XMLHttpRequest();
@@ -29,8 +29,8 @@ window.onload = function() {
                 }
             }
         };
-
         xml_request.send(JSON.stringify({ 'node-value': value }));
+        levelCounter++;
     });
 
     function insertNode(nodeValue) {
@@ -77,49 +77,36 @@ window.onload = function() {
     function redrawNodes(treeArea) {
         // Clear the binary tree area.
         treeArea.innerHTML = "";
-      
+    
         // Recursive helper function to create and append nodes.
         function createNodeElement(nodeData, parentElement, level) {
             if (nodeData === null) {
                 return;
             }
-      
-            // Create new node element.
-            if (nodeCounter === 0) {
-                level = document.getElementById('level-1');
-                nodeCounter++;
-            }
-            else if (nodeCounter === 1 || nodeCounter === 2) {
-                level = document.getElementById('level-2');
-                nodeCounter++;
-            }
-            else if (nodeCounter === 3 || nodeCounter === 4) {
-                level = document.getElementById('level-3');
-                nodeCounter++;
+
+            if (treeArea.className === 'level-1') {
+                var nodeElement = document.createElement('div');
+                nodeElement.className = 'node fade-in';
+                nodeElement.innerHTML = nodeData.value;
+    
+                // Append the node element to the parent element.
+                parentElement.appendChild(nodeElement);
             }
             else {
-                level = document.getElementById('level-4');
-                nodeCounter++;
+                // Recursively create and append child nodes
+                if (nodeData < root.nodeData) {
+                    var leftElement = document.createElement('div');
+                    parentElement.appendChild(leftElement);
+                    createNodeElement(nodeData.left, leftElement, level + 1);
+                }
+                else {
+                    var rightElement = document.createElement('div');
+                    parentElement.appendChild(rightElement);
+                    createNodeElement(nodeData.right, rightElement, level + 1);
+                }
             }
-
-            var nodeElement = document.createElement('div');
-            nodeElement.className = 'node fade-in';
-            nodeElement.innerHTML = nodeData.value;
-      
-            // Set margin based on the level.
-            if (level > 1) {
-                nodeElement.style.marginLeft = (level - 1) * 30 + "px";
-            }
-      
-            // Append the node element to the parent element.
-            level.appendChild(nodeElement);
-      
-            // Recursively create and append left and right children.
-            createNodeElement(nodeData.left, nodeElement, level + 1);
-            createNodeElement(nodeData.right, nodeElement, level + 1);
-            }
-      
-            // Call the helper function with the root node of the tree.
-            createNodeElement(root, treeArea, 1);
         }
+        // Call the helper function with the root node of the tree.
+        createNodeElement(root, treeArea, 1);
+    }
 };
