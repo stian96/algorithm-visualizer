@@ -11,14 +11,6 @@ body {
     width: 100%;
 }
 
-#tree-container {
-    margin-top: 2rem;
-}
-
-.binarytree-area {
-    margin-top: 2rem;
-}
-
 #value-input {
     padding: 0.4rem;
     font-size: 1.1rem;
@@ -39,31 +31,32 @@ body {
 #insert-btn:hover {
     background-color: #a5e99e;
 }
-  
-.level-2 {
-    display: flex;
-    justify-content: center;
-    margin-top: 4rem;
+
+#tree-wrapper {
+    position: relative;
+    margin-top: 2rem;
 }
-  
-.level-3 {
-    display: flex;
-    justify-content: center;
-    margin-top: 6rem;
+
+#tree-container {
+    position: relative;
+    margin: 0 auto;
 }
 
 .node {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #a5e99e;
-    padding: 1.8rem;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    font-size: 1.3rem;
-    font-weight: bold;
+    background-color: #a5e99e;
+    text-align: center;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
 }
+
 
 @keyframes fade-in {
     0% { opacity: 0; }

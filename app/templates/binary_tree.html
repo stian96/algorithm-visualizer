@@ -7,18 +7,12 @@
         <title>Binary Tree Visualization</title>
     </head>
     <body>
-        <div id="tree-container"></div>
-        <form id="tree-form" action="{{ url_for('insert_node') }}" method="POST">
+        <form id="tree-form">
             <label for="value-input"></label>
             <input type="text" id="value-input">
             <button type="button" id="insert-btn">Insert</button>
         </form>
-        <div class="binarytree-area">
-            <div class="level-1"></div>
-            <div class="level-2"></div>
-            <div class="level-3"></div>
-            <div class="level-4"></div>
-        </div>
+        <div id="tree-container"></div>
         <script src="../static/js/binary_tree.js"></script>
     </body>
 </html>
