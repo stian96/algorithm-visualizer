@@ -12,32 +12,72 @@ body {
 }
 
 #tree-container {
-    position: relative;
-    margin: 0 auto;
+    margin-top: 8rem;
 }
 
 .node {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
     border-radius: 50%;
     background-color: #a5e99e;
     text-align: center;
-    font-size: 16px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+.level-2 {
+    display: flex;
+    align-items: center;
+    width: 55%;
+    margin-top: 3.5rem;
+}
+
+.level-3 {
+    display: flex;
+    align-items: center;
+    width: 55%;
+    margin-top: 4rem;
+}
+
+.level-4 {
+    display: flex;
+    align-items: center;
+    width: 55%;
+    margin-top: 4.5rem;
+}
+
+/* Draw lines between the nodes for the third level */
+.line-left-3::after {
+    content: "";
     position: absolute;
-    top: 50%;
+    width: 2px;
+    height: 200%;
+    background-color: #ffff;
+    transform: rotate(30deg);
+    transform-origin: top left;
+}
+
+
+.line-left-3::after {
     left: 50%;
+    top: 100%;
+}
+
+.line-rigth-3::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 200%;
+    background-color: #ffff;
+    transform: rotate(-30deg);
+    transform-origin: top right;
+}
+
+
+.line-rigth-3::after {
     right: 50%;
-    transform: translate(-50%, -50%);
-}
-
-
-@keyframes fade-in {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-.fade-in {
-    animation-name: fade-in;
-    animation-duration: 1.5s;
+    top: 100%;
 }
