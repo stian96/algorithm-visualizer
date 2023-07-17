@@ -11,8 +11,34 @@ body {
     width: 100%;
 }
 
+.navbar {
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7bb374;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+.nav-items {
+    color: #fff;
+    padding: 1.7rem;
+    list-style: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.method:hover {
+    cursor: pointer;
+    color: black;
+}
+
 #tree-container {
-    margin-top: 10rem;
+    margin-top: 8rem;
 }
 
 .node {
