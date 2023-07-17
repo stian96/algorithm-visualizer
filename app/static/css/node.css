@@ -26,6 +26,7 @@ body {
     font-size: 1.1rem;
     font-weight: bold;
     border: 1px solid white;
+    z-index: 2;
 }
 
 .level-2 {
@@ -49,7 +50,39 @@ body {
     margin-top: 4.5rem;
 }
 
-/* Draw lines between nodes for the second level. */
+/* Lines between nodes for first level. */
+.line-left-1::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 395%;
+    background-color: #ffff;
+    transform: rotate(70deg);
+    transform-origin: top left;
+}
+
+.line-left-1::after {
+    left: 50%;
+    top: 100%;
+}
+
+.line-right-1::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 400%;
+    background-color: #ffff;
+    transform: rotate(-70deg);
+    transform-origin: top left;
+    z-index: 1;
+}
+
+.line-right-1::after {
+    right: 50%;
+    top: 100%;
+}
+
+/* Lines between nodes for the second level. */
 .line-left-2::after {
     content: "";
     position: absolute;
@@ -80,7 +113,7 @@ body {
     top: 100%;
 }
 
-/* Draw lines between the nodes for the third level */
+/* Lines between the nodes for the third level */
 .line-left-3::after {
     content: "";
     position: absolute;
