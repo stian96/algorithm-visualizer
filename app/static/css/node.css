@@ -12,7 +12,7 @@ body {
 }
 
 #tree-container {
-    margin-top: 8rem;
+    margin-top: 10rem;
 }
 
 .node {
@@ -47,6 +47,37 @@ body {
     align-items: center;
     width: 55%;
     margin-top: 4.5rem;
+}
+
+/* Draw lines between nodes for the second level. */
+.line-left-2::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 235%;
+    background-color: #ffff;
+    transform: rotate(52deg);
+    transform-origin: top left;
+}
+
+.line-left-2::after {
+    left: 50%;
+    top: 100%;
+}
+
+.line-rigth-2::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 235%;
+    background-color: #ffff;
+    transform: rotate(-52deg);
+    transform-origin: top left;
+}
+
+.line-rigth-2::after {
+    right: 50%;
+    top: 100%;
 }
 
 /* Draw lines between the nodes for the third level */
