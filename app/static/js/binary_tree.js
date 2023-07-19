@@ -30,4 +30,10 @@ let tree = new Node(100,
         )
     )
 );
+
+// Function that changes color of a spesific node.
+function highlightNode(nodeValue, color = 'red') {
+    let node = document.getElementById('node-' + nodeValue);
+
+}
   
