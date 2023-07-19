@@ -81,6 +81,26 @@ async function inorder(node) {
     }
 }
 
+// Recursive function for level-order traversal.
+async function levelOrder(node) {
+    if (!node) return;
+
+    const queue = [];
+    queue.push(node);
+
+    while (queue.length > 0) {
+        const currentNode = queue.shift();
+        await highlightNodeWithDelay(currentNode.value);
+
+        if (currentNode.left) {
+            queue.push(currentNode.left);
+        }
+        if (currentNode.right) {
+            queue.push(currentNode.right);
+        }
+    }
+}
+
 // Function to get the delay from the slider.
 function getDelay() {
     return Number(document.getElementById('speed').value);
@@ -98,5 +118,6 @@ function connectToButton(buttonId, traversalFunction) {
 connectToButton('preorder', preorder);
 connectToButton('inorder', inorder);
 connectToButton('postorder', postorder);
+connectToButton('level-order', levelOrder);
 
   
