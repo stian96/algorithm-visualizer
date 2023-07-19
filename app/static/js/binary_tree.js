@@ -33,14 +33,17 @@ let tree = new Node(100,
     )
 );
 
-// Function that changes color of a spesific node.
-function highlightNode(nodeValue, delay = 0, color = 'rgb(248, 110, 110)') {
-    setTimeout(() => {
-        let node = document.getElementById('node-' + nodeValue);
-        if (node) {
-            node.style.backgroundColor = color;
-        }
-    }, delay)
+// Function that changes color of a spesific node with delay.
+function highlightNodeWithDelay(nodeValue, color = 'rgb(248, 110, 110)') {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            let node = document.getElementById('node-' + nodeValue);
+            if (node) {
+                node.style.backgroundColor = color;
+            }
+            resolve();
+        }, getDelay())
+    });
 }
 
 // Function to reset colors on all nodes.
@@ -51,53 +54,49 @@ function resetColors() {
     }
 }
 
-// Function for preorder traversal.
-function preorder(node, delay) {
+// Recursive function for preorder traversal.
+async function preorder(node) {
     if (node) {
-        highlightNode(node.value, totalDelay);
-        totalDelay += delay;
-        preorder(node.left);
-        preorder(node.right);
+        await highlightNodeWithDelay(node.value);
+        await preorder(node.left);
+        await preorder(node.right);
     }
 }
 
-// Function for postorder traversal.
-function postorder(node, delay) {
+// Recursive function for postorder traversal.
+async function postorder(node) {
     if (node) {
-        postorder(node.left);
-        postorder(node.right);
-        highlightNode(node.value, totalDelay);
-        totalDelay += delay;
+        await postorder(node.left);
+        await postorder(node.right);
+        await highlightNodeWithDelay(node.value);
     }
 }
 
-// Function for inorder traversal.
-function inorder(node, delay) {
+// Recursive function for inorder traversal.
+async function inorder(node) {
     if (node) {
-        inorder(node.left);
-        highlightNode(node.value, totalDelay);
-        totalDelay += delay;
-        inorder(node.right);
+        await inorder(node.left);
+        await highlightNodeWithDelay(node.value);
+        await inorder(node.right);
     }
 }
 
 // Function to get the delay from the slider.
 function getDelay() {
-    return document.getElementById('speed').value;
+    return Number(document.getElementById('speed').value);
 }
 
 // Connect the functions to the navigation buttons.
 function connectToButton(buttonId, traversalFunction) {
-    document.getElementById(buttonId).addEventListener('click', function() {
-        totalDelay = 0;
-        let delay = getDelay();
-        traversalFunction(tree, delay);
-        setTimeout(resetColors, totalDelay);
+    document.getElementById(buttonId).addEventListener('click', async function() {
+        await traversalFunction(tree);
+        await new Promise(resolve => setTimeout(resolve, getDelay()));
+        resetColors();
     });
 }
 
-connectToButton('preorder', (tree, delay) => preorder(tree, delay));
-connectToButton('inorder', (tree, delay) => inorder(tree, delay));
-connectToButton('postorder', (tree, delay) => postorder(tree, delay));
+connectToButton('preorder', preorder);
+connectToButton('inorder', inorder);
+connectToButton('postorder', postorder);
 
   
