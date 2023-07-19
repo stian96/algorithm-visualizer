@@ -55,7 +55,7 @@ function resetColors() {
 function preorder(node) {
     if (node) {
         highlightNode(node.value, totalDelay);
-        totalDelay += 900;
+        totalDelay += 800;
         preorder(node.left);
         preorder(node.right);
     }
@@ -67,20 +67,31 @@ function postorder(node) {
         postorder(node.left);
         postorder(node.right);
         highlightNode(node.value, totalDelay);
-        totalDelay += 900;
+        totalDelay += 800;
+    }
+}
+
+// Function for inorder traversal.
+function inorder(node) {
+    if (node) {
+        inorder(node.left);
+        highlightNode(node.value, totalDelay);
+        totalDelay += 800;
+        inorder(node.right);
     }
 }
 
 // Connect the functions to the navigation buttons.
-document.getElementById('preorder').addEventListener('click', function() {
-    totalDelay = 0;
-    preorder(tree);
-    setTimeout(resetColors, totalDelay);
-});
+function connectToButton(buttonId, traversalFunction) {
+    document.getElementById(buttonId).addEventListener('click', function() {
+        totalDelay = 0;
+        traversalFunction(tree);
+        setTimeout(resetColors, totalDelay);
+    });
+}
 
-document.getElementById('postorder').addEventListener('click', function() {
-    totalDelay = 0;
-    postorder(tree);
-    setTimeout(resetColors, totalDelay);
-});
+connectToButton('preorder', preorder);
+connectToButton('inorder', inorder);
+connectToButton('postorder', postorder);
+
   
