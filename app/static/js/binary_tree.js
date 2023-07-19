@@ -52,46 +52,52 @@ function resetColors() {
 }
 
 // Function for preorder traversal.
-function preorder(node) {
+function preorder(node, delay) {
     if (node) {
         highlightNode(node.value, totalDelay);
-        totalDelay += 800;
+        totalDelay += delay;
         preorder(node.left);
         preorder(node.right);
     }
 }
 
 // Function for postorder traversal.
-function postorder(node) {
+function postorder(node, delay) {
     if (node) {
         postorder(node.left);
         postorder(node.right);
         highlightNode(node.value, totalDelay);
-        totalDelay += 800;
+        totalDelay += delay;
     }
 }
 
 // Function for inorder traversal.
-function inorder(node) {
+function inorder(node, delay) {
     if (node) {
         inorder(node.left);
         highlightNode(node.value, totalDelay);
-        totalDelay += 800;
+        totalDelay += delay;
         inorder(node.right);
     }
+}
+
+// Function to get the delay from the slider.
+function getDelay() {
+    return document.getElementById('speed').value;
 }
 
 // Connect the functions to the navigation buttons.
 function connectToButton(buttonId, traversalFunction) {
     document.getElementById(buttonId).addEventListener('click', function() {
         totalDelay = 0;
-        traversalFunction(tree);
+        let delay = getDelay();
+        traversalFunction(tree, delay);
         setTimeout(resetColors, totalDelay);
     });
 }
 
-connectToButton('preorder', preorder);
-connectToButton('inorder', inorder);
-connectToButton('postorder', postorder);
+connectToButton('preorder', (tree, delay) => preorder(tree, delay));
+connectToButton('inorder', (tree, delay) => inorder(tree, delay));
+connectToButton('postorder', (tree, delay) => postorder(tree, delay));
 
   
