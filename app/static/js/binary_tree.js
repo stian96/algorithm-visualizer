@@ -1,3 +1,5 @@
+let totalDelay = 0;
+
 // Class for the nodes in the binary tree.
 class Node {
     constructor(value, left = null, right = null) {
@@ -50,17 +52,19 @@ function resetColors() {
 }
 
 // Function for preorder traversal.
-function preorder(node, delay = 0) {
+function preorder(node) {
     if (node) {
-        highlightNode(node.value, delay);
-        preorder(node.left, delay + 500);
-        preorder(node.right, delay + 1000);
+        highlightNode(node.value, totalDelay);
+        totalDelay += 1500;
+        preorder(node.left);
+        preorder(node.right);
     }
 }
 
 // Connect the functions to the navigation buttons.
 document.getElementById('preorder').addEventListener('click', function() {
     resetColors();
+    totalDelay = 0;
     preorder(tree);
 });
   
