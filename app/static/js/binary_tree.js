@@ -34,7 +34,7 @@ let tree = new Node(100,
 );
 
 // Function that changes color of a spesific node.
-function highlightNode(nodeValue, delay = 0, color = 'red') {
+function highlightNode(nodeValue, delay = 0, color = 'rgb(248, 110, 110)') {
     setTimeout(() => {
         let node = document.getElementById('node-' + nodeValue);
         if (node) {
@@ -47,7 +47,7 @@ function highlightNode(nodeValue, delay = 0, color = 'red') {
 function resetColors() {
     let nodes = document.getElementsByClassName('node');
     for (let i = 0; i < nodes.length; i++) {
-        nodes[i].style.backgroundColor = '#a5e99e';
+        nodes[i].style.setProperty('background-color', '#a5e99e', 'important');
     }
 }
 
@@ -55,7 +55,7 @@ function resetColors() {
 function preorder(node) {
     if (node) {
         highlightNode(node.value, totalDelay);
-        totalDelay += 1500;
+        totalDelay += 1100;
         preorder(node.left);
         preorder(node.right);
     }
@@ -63,8 +63,8 @@ function preorder(node) {
 
 // Connect the functions to the navigation buttons.
 document.getElementById('preorder').addEventListener('click', function() {
-    resetColors();
     totalDelay = 0;
     preorder(tree);
+    setTimeout(resetColors, totalDelay);
 });
   
