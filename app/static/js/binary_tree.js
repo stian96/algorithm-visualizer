@@ -46,4 +46,13 @@ function resetColors() {
         nodes[i].style.backgroundColor = '#a5e99e';
     }
 }
+
+// Function for preorder traversal.
+function preorder(node) {
+    if (node) {
+        highlightNode(node.value);
+        preorder(node.left);
+        preorder(node.right);
+    }
+}
   
