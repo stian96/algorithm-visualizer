@@ -55,9 +55,19 @@ function resetColors() {
 function preorder(node) {
     if (node) {
         highlightNode(node.value, totalDelay);
-        totalDelay += 1100;
+        totalDelay += 900;
         preorder(node.left);
         preorder(node.right);
+    }
+}
+
+// Function for postorder traversal.
+function postorder(node) {
+    if (node) {
+        postorder(node.left);
+        postorder(node.right);
+        highlightNode(node.value, totalDelay);
+        totalDelay += 900;
     }
 }
 
@@ -65,6 +75,12 @@ function preorder(node) {
 document.getElementById('preorder').addEventListener('click', function() {
     totalDelay = 0;
     preorder(tree);
+    setTimeout(resetColors, totalDelay);
+});
+
+document.getElementById('postorder').addEventListener('click', function() {
+    totalDelay = 0;
+    postorder(tree);
     setTimeout(resetColors, totalDelay);
 });
   
