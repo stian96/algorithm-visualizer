@@ -32,11 +32,13 @@ let tree = new Node(100,
 );
 
 // Function that changes color of a spesific node.
-function highlightNode(nodeValue, color = 'red') {
-    let node = document.getElementById('node-' + nodeValue);
-    if (node) {
-        node.style.backgroundColor = color;
-    }
+function highlightNode(nodeValue, delay = 0, color = 'red') {
+    setTimeout(() => {
+        let node = document.getElementById('node-' + nodeValue);
+        if (node) {
+            node.style.backgroundColor = color;
+        }
+    }, delay)
 }
 
 // Function to reset colors on all nodes.
@@ -48,11 +50,17 @@ function resetColors() {
 }
 
 // Function for preorder traversal.
-function preorder(node) {
+function preorder(node, delay = 0) {
     if (node) {
-        highlightNode(node.value);
-        preorder(node.left);
-        preorder(node.right);
+        highlightNode(node.value, delay);
+        preorder(node.left, delay + 500);
+        preorder(node.right, delay + 1000);
     }
 }
+
+// Connect the functions to the navigation buttons.
+document.getElementById('preorder').addEventListener('click', function() {
+    resetColors();
+    preorder(tree);
+});
   
