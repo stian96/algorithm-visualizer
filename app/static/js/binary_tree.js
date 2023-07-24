@@ -81,7 +81,7 @@ async function inorder(node) {
     }
 }
 
-// Recursive function for level-order traversal.
+// Function for level-order traversal.
 async function levelOrder(node) {
     if (!node) return;
 
