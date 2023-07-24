@@ -84,19 +84,18 @@ addEventListenerForTraversal('level-order', '/levelorder');
 
 
 window.onload = function() {
-    document.addEventListener('DOMContentLoaded', function() {
-        let slider = document.getElementById("speed");
-        slider.oninput = function() {
-            let value = ((this.value - this.min) / (this.max - this.min)) * 100;
-            this.style.background = `linear-gradient(to right, #a5e99e ${value}%, #ffffff ${value}%)`;
-        }
+    let slider = document.getElementById("speed");
+    slider.oninput = function() {
+        let value = ((this.value - this.min) / (this.max - this.min)) * 100;
+        this.style.background = `linear-gradient(to right, #a5e99e ${value}%, #ffffff ${value}%)`;
+    }
     
-        // Trigger the input event manually for initial page load
-        slider.dispatchEvent(new Event('input'));
-    });
+    // Trigger the input event manually for initial page load
+    slider.dispatchEvent(new Event('input'));
 };
 
 window.onunload = function(){};
+
 
 
 
