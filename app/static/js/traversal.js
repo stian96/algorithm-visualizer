@@ -31,13 +31,20 @@ function resetColors() {
     }
 }
 
-async function getPreorderTraversal() {
-    let response = await fetch('/preorder');
+async function getTraversal(url) {
+    let response = await fetch(url);
     let data = await response.json();
     return data['order'];
 }
 
-document.getElementById('preorder').addEventListener('click', async function() {
-    let order = await getPreorderTraversal();
-    await highlightNodesInOrder(order);
-});
+function addEventListenerForTraversal(elementId, url) {
+    document.getElementById(elementId).addEventListener('click', async function() {
+        let order = await getTraversal(url);
+        await highlightNodesInOrder(order);
+    });
+}
+
+addEventListenerForTraversal('preorder', '/preorder');
+addEventListenerForTraversal('postorder', '/postorder');
+addEventListenerForTraversal('inorder', '/inorder');
+addEventListenerForTraversal('level-order', '/levelorder');
