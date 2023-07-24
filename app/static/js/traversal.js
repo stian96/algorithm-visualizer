@@ -26,13 +26,16 @@ function getDelay() {
 // Asynchronous function that highlights nodes in the order provided as an argument.
 // It iteratively highlights each node with a delay, and resets colors after highlighting all nodes.
 async function highlightNodesInOrder(order) {
-    for (let i = 0; i < order.length; i++) {
-        await highlightNodesWithDelay(order[i]);
+    try {
+        for (let i = 0; i < order.length; i++) {
+            await highlightNodesWithDelay(order[i]);
+        }
+        await new Promise(resolve => setTimeout(resolve, getDelay()));
+        resetColors();
+    } catch (error) {
+        console.error('A problem occurred while highlighting nodes in order:', error);
     }
-    await new Promise(resolve => setTimeout(resolve, getDelay()));
-    resetColors();
 }
-
 
 // Function to reset the colors of all nodes.
 // It resets the background color of all elements with the class 'node' to '#a5e99e'.

@@ -127,7 +127,7 @@ class BinaryTree:
         return result
 
     # Uses a queue to print the order.
-    def level_order_traversal(self):
+    def levelorder_traversal(self):
         result = []
         if self.is_empty():
             raise Exception("Root is empty, cannot print tree.")

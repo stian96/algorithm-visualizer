@@ -116,7 +116,7 @@ body {
     content: "";
     position: absolute;
     width: 2px;
-    height: 395%;
+    height: 450%;
     background-color: #ffff;
     transform: rotate(70deg);
     transform-origin: top left;
@@ -131,7 +131,7 @@ body {
     content: "";
     position: absolute;
     width: 2px;
-    height: 400%;
+    height: 450%;
     background-color: #ffff;
     transform: rotate(-70deg);
     transform-origin: top left;
@@ -148,7 +148,7 @@ body {
     content: "";
     position: absolute;
     width: 2px;
-    height: 235%;
+    height: 255%;
     background-color: #ffff;
     transform: rotate(52deg);
     transform-origin: top left;
@@ -163,7 +163,7 @@ body {
     content: "";
     position: absolute;
     width: 2px;
-    height: 235%;
+    height: 255%;
     background-color: #ffff;
     transform: rotate(-52deg);
     transform-origin: top left;
