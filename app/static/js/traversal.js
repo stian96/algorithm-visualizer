@@ -1,4 +1,6 @@
-// Function that changes color of a spesific node with delay.
+// Function that highlights a specific node with a delay.
+// It changes the background color of the node to the given color (default is 'rgb(248, 110, 110)').
+// After the delay, it resolves the Promise.
 function highlightNodesWithDelay(nodeValue, color = 'rgb(248, 110, 110)') {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -11,10 +13,13 @@ function highlightNodesWithDelay(nodeValue, color = 'rgb(248, 110, 110)') {
     });
 }
 
+// Function to get the delay value from the 'speed' HTML element.
 function getDelay() {
     return Number(document.getElementById('speed').value);
 }
 
+// Asynchronous function that highlights nodes in the order provided as an argument.
+// It iteratively highlights each node with a delay, and resets colors after highlighting all nodes.
 async function highlightNodesInOrder(order) {
     for (let i = 0; i < order.length; i++) {
         await highlightNodesWithDelay(order[i]);
@@ -23,7 +28,9 @@ async function highlightNodesInOrder(order) {
     resetColors();
 }
 
-// Function to reset colors on all nodes.
+
+// Function to reset the colors of all nodes.
+// It resets the background color of all elements with the class 'node' to '#a5e99e'.
 function resetColors() {
     let nodes = document.getElementsByClassName('node');
     for (let i = 0; i < nodes.length; i++) {
@@ -31,12 +38,17 @@ function resetColors() {
     }
 }
 
+// Asynchronous function that fetches tree traversal order from a given URL.
+// It returns the 'order' array from the JSON response.
 async function getTraversal(url) {
     let response = await fetch(url);
     let data = await response.json();
     return data['order'];
 }
 
+
+// Function to add an event listener to a specific HTML element identified by its ID.
+// The event listener triggers the fetching and highlighting of nodes when the element is clicked.
 function addEventListenerForTraversal(elementId, url) {
     document.getElementById(elementId).addEventListener('click', async function() {
         let order = await getTraversal(url);
@@ -44,6 +56,7 @@ function addEventListenerForTraversal(elementId, url) {
     });
 }
 
+// Add event listeners for different tree traversal orders.
 addEventListenerForTraversal('preorder', '/preorder');
 addEventListenerForTraversal('postorder', '/postorder');
 addEventListenerForTraversal('inorder', '/inorder');
