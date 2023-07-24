@@ -41,9 +41,19 @@ function resetColors() {
 // Asynchronous function that fetches tree traversal order from a given URL.
 // It returns the 'order' array from the JSON response.
 async function getTraversal(url) {
-    let response = await fetch(url);
-    let data = await response.json();
-    return data['order'];
+    try {
+        let response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('HTTP error! status: ${response.status}');
+        }
+        let data = await response.json();
+        if (!data.hasOwnProperty('order')) {
+            throw new Error("Missing 'order' key in response.");
+        }
+        return data['order'];
+    } catch (error) {
+        console.log('A problem occurred while fetchong the traversal:', error);
+    }
 }
 
 
