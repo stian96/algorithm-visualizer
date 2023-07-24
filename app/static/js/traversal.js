@@ -4,9 +4,14 @@
 function highlightNodesWithDelay(nodeValue, color = 'rgb(248, 110, 110)') {
     return new Promise(resolve => {
         setTimeout(() => {
-            let node = document.getElementById('node-' + nodeValue);
-            if (node) {
+            try {
+                let node = document.getElementById('node-' + nodeValue);
+                if (!node) {
+                    throw new Error(`Node with value ${nodeValue} not found.`);
+                }
                 node.style.backgroundColor = color;
+            } catch (error) {
+                console.error('A problem occurred while highlighting the node:', error);
             }
             resolve();
         }, getDelay())
@@ -44,7 +49,7 @@ async function getTraversal(url) {
     try {
         let response = await fetch(url);
         if (!response.ok) {
-            throw new Error('HTTP error! status: ${response.status}');
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         let data = await response.json();
         if (!data.hasOwnProperty('order')) {
