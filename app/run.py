@@ -6,6 +6,24 @@ app = Flask(__name__)
 # Storing the tree to keep state betwee calls.
 tree = BinaryTree()
 
+# Fill the tree with the nodes from the html file.
+tree.insert(100)
+tree.insert(50)
+tree.insert(120)
+tree.insert(45)
+tree.insert(63)
+tree.insert(110)
+tree.insert(135)
+tree.insert(35)
+tree.insert(47)
+tree.insert(60)
+tree.insert(77)
+tree.insert(102)
+tree.insert(117)
+tree.insert(125)
+tree.insert(150)
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
