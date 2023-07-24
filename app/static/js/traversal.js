@@ -10,6 +10,8 @@ function highlightNodesWithDelay(nodeValue, color = 'rgb(248, 110, 110)') {
                     throw new Error(`Node with value ${nodeValue} not found.`);
                 }
                 node.style.backgroundColor = color;
+                node.classList.add('node-highlighted');
+                setTimeout(() => node.classList.remove('node-highlighted'), 500);
             } catch (error) {
                 console.error('A problem occurred while highlighting the node:', error);
             }
