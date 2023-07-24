@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, jsonify
 from datastructures.binarytree import BinaryTree
 
 app = Flask(__name__)
@@ -14,13 +14,10 @@ def home():
 def bin_tree():
     return render_template('binary_tree.html')
 
-@app.route('/insert', methods=['POST'])
-def insert_node():
-    value = request.json.get('node-value')
-    tree.insert(value)
-
-    print(f"Value from javascript: {value}")
-    return jsonify({'node-value': value})
+@app.route('/preorder', methods=['GET'])
+def preorder_traversal():
+    result = tree.preorder_traversal()
+    return jsonify({'order': result})
 
 if __name__ == "__main__":
     app.run()
