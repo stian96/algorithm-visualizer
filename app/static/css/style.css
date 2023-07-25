@@ -201,7 +201,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5rem;
+    margin-bottom: 7.5rem;
 }
 
 .searching-image {
@@ -222,6 +222,7 @@ body {
 
 .traversal-container {
     margin-bottom: 4rem;
+    margin-top: 5rem;
 }
 
 .bintree-image img {

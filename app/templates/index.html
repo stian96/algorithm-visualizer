@@ -7,6 +7,7 @@
     <meta name="keywords" content="Algorithms, Data structures, Visualizer, Python, Javascript">
     <meta name="author" content="Stian Rusvik">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/nav-menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Algorithm Visualizer</title>
 </head>
@@ -15,7 +16,14 @@
         <h1 class="logo">Algo<span class="green-text">Viz</span></h1>
         <nav class="navbar">
             <ul class="nav-list">
-                <li class="nav-items"><a class="nav-links" href="#">ALGORITHMS</a></li>
+                <li class="nav-items dropdown">
+                    <a class="nav-links" href="#">ALGORITHMS</a>
+                    <div class="dropdown-menu">
+                        <a href="#">Searching</a>
+                        <a href="#">Sorting</a>
+                        <a href="http://127.0.0.1:5000/bintree">Traversal</a>
+                    </div>
+                </li>
                 <li class="nav-items"><a class="nav-links" href="#">DATA-STRUCTURES</a></li>
                 <li class="nav-items"><a class="nav-links" href="#">ABOUT US</a></li>
             </ul>
