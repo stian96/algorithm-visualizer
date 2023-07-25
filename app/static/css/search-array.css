@@ -1,0 +1,48 @@
+.navbar {
+    margin-top: 1.5rem;
+}
+
+.flex-container {
+    display: flex;
+    margin-top: 19rem;
+}
+
+.flex-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.flex-item {
+    color: #fff;
+    padding: 2rem;
+    border: 1px solid #fff;
+    font-size: 1.2em;
+}
+
+/* CSS for input field. */
+.input-container {
+    float: right;
+    margin-right: 5rem;
+    margin-top: -2.9rem;
+}
+
+.element-label {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+#element {
+    margin-left: 0.8rem;
+    min-width: 4.5rem;
+    height: 1.8rem;
+    border: 1px solid #fff;
+    border-radius: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 1.1em;
+    padding: 0.5rem;
+
+}
