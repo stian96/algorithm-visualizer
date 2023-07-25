@@ -297,3 +297,13 @@ footer {
 .fade-in.active {
     opacity: 1;
 }
+
+figcaption {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.image-align {
+    margin-right: 7.5rem;
+    margin-top: 2rem;
+}
