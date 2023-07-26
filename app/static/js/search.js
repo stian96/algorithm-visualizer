@@ -1,11 +1,18 @@
-function addEventListenerForSearch(elementId, url) {
-    document.getElementById(elementId).addEventListener('click', async function() {
+function addEventListenerForSearch(elementId, url) 
+{
+    document.getElementById(elementId).addEventListener('click', async function() 
+    {
         let element = document.getElementById('element').value;
-        let result = await getSearchResult(url, element);
-        console.log(result);
+        let steps = await getSearchResult(url, element);
+        let listItems = document.querySelectorAll('.flex-item');
 
-        // Use this result to visualize the algorithm.
+        for (let step of steps) {
+            let listItem = Array.from(listItems).find(item => item.textContent === step.value.toString());
 
+            if (listItem) {
+                listItem.style.backgroundColor = step.found ? 'green' : 'red';
+            }
+        }
     });
 }
 
@@ -23,17 +30,18 @@ async function getSearchResult(url, element) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         let data = await response.json();
-        if (!data.hasOwnProperty('result')) {
-            throw new Error("Missing 'result' key in response.");
+        if (!data.hasOwnProperty('steps')) {
+            throw new Error("Missing 'steps' key in response.");
         }
-        return data['result'];
+        return data['steps'];
     } 
     catch(error) {
-        console.log('A problem occurred while fetching the search result:', error);
+        console.log('A problem occurred while fetching the search steps:', error);
     }
 }
 
+
 // Add event listeners for different search algorithms.
 addEventListenerForSearch('linear-search', '/linear-search');
-addEventListenerForSearch('binary-search', '/binary-search');
-addEventListenerForSearch('recursive-search', '/recursive-search');
+// addEventListenerForSearch('binary-search', '/binary-search');
+// addEventListenerForSearch('recursive-search', '/recursive-search');

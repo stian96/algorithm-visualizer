@@ -34,8 +34,8 @@ def create_app():
         element = request.get_json().get('element')
         if element is None:
             return jsonify({'error': 'Missing element parameter.'}), 400
-        result = search.linear_search(int(element))
-        return jsonify({'result': result})
+        steps = search.linear_search(int(element))
+        return jsonify({'steps': steps})
 
     return app
 
