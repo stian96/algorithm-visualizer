@@ -1,8 +1,14 @@
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function addEventListenerForSearch(elementId, url) 
 {
     document.getElementById(elementId).addEventListener('click', async function() 
     {
         let element = document.getElementById('element').value;
+        
+        console.log(`Element to search for: ${element}`);
         let steps = await getSearchResult(url, element);
         let listItems = document.querySelectorAll('.flex-item');
 
@@ -12,6 +18,8 @@ function addEventListenerForSearch(elementId, url)
             if (listItem) {
                 listItem.style.backgroundColor = step.found ? 'green' : 'red';
             }
+            // Wait 1 secound before the next step.
+            await sleep(1000);
         }
     });
 }

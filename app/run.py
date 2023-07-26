@@ -6,7 +6,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object("config.DevelopmentConfig")
     tree = create_tree(app)
-    search = SearchingAlgorithms('ARRAY_VALUES')
+    search = create_search(app)
 
     @app.route('/')
     def home():
@@ -46,6 +46,10 @@ def create_tree(app):
     for node in nodes:
         tree.insert(node)
     return tree
+
+def create_search(app):
+    search = SearchingAlgorithms(app.config['ARRAY_VALUES'])
+    return search
 
 if __name__ == "__main__":
     app = create_app()
