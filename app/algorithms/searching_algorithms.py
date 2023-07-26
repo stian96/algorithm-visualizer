@@ -49,14 +49,14 @@ class SearchingAlgorithms:
             found = self.array[mid]
 
             if element == found:
-                steps.append({'value': mid, 'found': True})
+                steps.append({'value': found, 'found': True})
                 return steps
             elif element < found:
                 high = mid - 1
             else:
                 low = mid + 1
             
-            steps.append({'value': mid, 'found': False})
+            steps.append({'value': found, 'found': False})
 
         return steps
 

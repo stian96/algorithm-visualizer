@@ -36,11 +36,12 @@ def create_app():
             return jsonify({'error': 'Missing element parameter.'}), 400
         steps = search.linear_search(int(element))
         return jsonify({'steps': steps})
-        
+
 
     @app.route('/binary-search', methods=['POST'])
     def binary_search():
         element = request.get_json().get('element')
+        print(f"Result element: {element}")
         if element is None:
             return jsonify({'error': 'Missing element parameter.'}), 400
         steps = search.binary_search(int(element))
