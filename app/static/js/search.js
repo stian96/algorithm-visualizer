@@ -20,3 +20,14 @@ async function getSearchResult(url, element) {
         console.log('A problem occurred while fetching the search result:', error);
     }
 }
+
+function addEventListenerForSearch(elementId, url) {
+    document.getElementById(elementId).addEventListener('click', async function() {
+        let element = document.getElementById('element').value;
+        let result = await getSearchResult(url, element);
+        console.log(result);
+
+        // Use this result to visualize the algorithm.
+
+    });
+}
