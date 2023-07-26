@@ -40,21 +40,25 @@ class SearchingAlgorithms:
         :param element: The element to search for.
         :return: Index of the element if found, None else.
         """
+        steps = []
         low = 0
         high = len(self.array) - 1
-        while low <= high:
 
+        while low <= high:
             mid = (low + high) // 2
             found = self.array[mid]
 
             if element == found:
-                return mid
-            if element < found:
+                steps.append({'value': mid, 'found': True})
+                return steps
+            elif element < found:
                 high = mid - 1
             else:
                 low = mid + 1
+            
+            steps.append({'value': mid, 'found': False})
 
-        return None
+        return steps
 
     def recursive_linear_search(self, element):
         """

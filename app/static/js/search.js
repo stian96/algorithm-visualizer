@@ -22,7 +22,7 @@ function addEventListenerForSearch(elementId, url)
             let listItem = Array.from(listItems).find(item => item.textContent === step.value.toString());
 
             if (listItem) {
-                listItem.style.backgroundColor = step.found ? '#a5e99e' : 'rgb(248, 110, 110)';
+                listItem.style.backgroundColor = step.found ? 'green' : 'rgb(248, 110, 110)';
             }
             // Wait 1 secound before the next step.
             await sleep(1000);
@@ -59,5 +59,5 @@ async function getSearchResult(url, element) {
 
 // Add event listeners for different search algorithms.
 addEventListenerForSearch('linear-search', '/linear-search');
-// addEventListenerForSearch('binary-search', '/binary-search');
+addEventListenerForSearch('binary-search', '/binary-search');
 // addEventListenerForSearch('recursive-search', '/recursive-search');
