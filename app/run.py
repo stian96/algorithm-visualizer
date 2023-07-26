@@ -1,10 +1,12 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from datastructures.binarytree import BinaryTree
+from algorithms.searching_algorithms import SearchingAlgorithms
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object("config.DevelopmentConfig")
     tree = create_tree(app)
+    search = SearchingAlgorithms('ARRAY_VALUES')
 
     @app.route('/')
     def home():
@@ -26,7 +28,17 @@ def create_app():
         except AttributeError:
             return jsonify({'error': f'Invalid traversal type: {traversal_type}'}), 400
 
+
+    @app.route('/linear-search', methods=['POST'])
+    def linear_search():
+        element = request.get_json().get('element')
+        if element is None:
+            return jsonify({'error': 'Missing element parameter.'}), 400
+        result = search.linear_search(int(element))
+        return jsonify({'result': result})
+
     return app
+
 
 def create_tree(app):
     tree = BinaryTree()

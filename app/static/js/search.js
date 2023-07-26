@@ -1,3 +1,15 @@
+function addEventListenerForSearch(elementId, url) {
+    document.getElementById(elementId).addEventListener('click', async function() {
+        let element = document.getElementById('element').value;
+        let result = await getSearchResult(url, element);
+        console.log(result);
+
+        // Use this result to visualize the algorithm.
+
+    });
+}
+
+// Function to get the search result from the backend code.
 async function getSearchResult(url, element) {
     try {
         let response = await fetch(url, {
@@ -21,13 +33,7 @@ async function getSearchResult(url, element) {
     }
 }
 
-function addEventListenerForSearch(elementId, url) {
-    document.getElementById(elementId).addEventListener('click', async function() {
-        let element = document.getElementById('element').value;
-        let result = await getSearchResult(url, element);
-        console.log(result);
-
-        // Use this result to visualize the algorithm.
-
-    });
-}
+// Add event listeners for different search algorithms.
+addEventListenerForSearch('linear-search', '/linear-search');
+addEventListenerForSearch('binary-search', '/binary-search');
+addEventListenerForSearch('recursive-search', '/recursive-search');
