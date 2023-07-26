@@ -1,13 +1,18 @@
+// Function to reset background color of HTML elements
 function resetBackgroundColors(elements) {
     for (let item of elements) {
         item.style.backgroundColor = '';
     }
 }
 
+// Sleep function to delay execution
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// Function to add an event listener to a specified element
+// The listener sends a POST request to the specified url when the element is clicked
+// and changes the background color of the elements in a list based on the response
 function addEventListenerForSearch(elementId, url) 
 {
     document.getElementById(elementId).addEventListener('click', async function() 
@@ -32,7 +37,8 @@ function addEventListenerForSearch(elementId, url)
     });
 }
 
-// Function to get the search result from the backend code.
+// Function to send a POST request to the specified url with the element to search for
+// and return the steps to find the element as a promise
 async function getSearchResult(url, element) {
     try {
         let response = await fetch(url, {
