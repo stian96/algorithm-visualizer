@@ -1,3 +1,9 @@
+function resetBackgroundColors(elements) {
+    for (let item of elements) {
+        item.style.backgroundColor = '';
+    }
+}
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -7,7 +13,7 @@ function addEventListenerForSearch(elementId, url)
     document.getElementById(elementId).addEventListener('click', async function() 
     {
         let element = document.getElementById('element').value;
-        
+
         console.log(`Element to search for: ${element}`);
         let steps = await getSearchResult(url, element);
         let listItems = document.querySelectorAll('.flex-item');
@@ -16,11 +22,13 @@ function addEventListenerForSearch(elementId, url)
             let listItem = Array.from(listItems).find(item => item.textContent === step.value.toString());
 
             if (listItem) {
-                listItem.style.backgroundColor = step.found ? 'green' : 'red';
+                listItem.style.backgroundColor = step.found ? '#a5e99e' : 'rgb(248, 110, 110)';
             }
             // Wait 1 secound before the next step.
             await sleep(1000);
         }
+        await sleep(2000)
+        resetBackgroundColors(listItems)
     });
 }
 
