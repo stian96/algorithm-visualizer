@@ -38,7 +38,7 @@ class SearchingAlgorithms:
         It has a time complexity of O(log n)
 
         :param element: The element to search for.
-        :return: Index of the element if found, None else.
+        :return: The steps of the algorithm as a list of dicts.
         """
         steps = []
         low = 0
