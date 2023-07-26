@@ -14,6 +14,10 @@ def create_app():
     def bin_tree():
         return render_template('binary_tree.html')
 
+    @app.route('/searching')
+    def searching():
+        return render_template('search_array.html')
+
     @app.route('/<traversal_type>', methods=['GET'])
     def tree_traversal(traversal_type):
         try:
