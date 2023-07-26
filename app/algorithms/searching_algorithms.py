@@ -16,14 +16,20 @@ class SearchingAlgorithms:
         over all the elements in the list at worst case.
 
         :param element: The element to be found.
-        :return: Index of the element if found, None else.
+        :return: All the steps of the algorithm as a list of dictionaries.
         """
+        steps = []
         n = len(self.array)
         for i in range(n):
+            steps.append({
+                'step': i,
+                'value': self.array[i],
+                'found': self.array[i] == element
+            })
             if self.array[i] == element:
-                return i
+                break
 
-        return None
+        return steps
 
     def binary_search(self, element):
         """
