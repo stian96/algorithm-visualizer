@@ -60,7 +60,7 @@ def create_app():
         steps = search.binary_search(int(element))
         return jsonify({'steps': steps})
 
-    @app.route('recursive-search', methods=['POST'])
+    @app.route('/recursive-search', methods=['POST'])
     def recursive_search():
         element = request.get_json().get('element')
         if element is None:

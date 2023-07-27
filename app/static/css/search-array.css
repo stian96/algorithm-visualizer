@@ -1,13 +1,13 @@
 .flex-container {
     display: flex;
+    align-items: start;
     margin-top: 19rem;
 }
 
 .flex-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     list-style: none;
+    margin-left: -9rem;
 }
 
 .flex-item {
@@ -44,4 +44,29 @@
     color: #fff;
     font-size: 1.1em;
     padding: 0.5rem;
+}
+
+/* CSS for callstack items */
+.call-stack-container {
+    height: 500px; 
+    overflow-y: auto;
+    margin-left: 2.5rem; 
+}
+
+#call-stack {
+    display: flex;
+    flex-direction: column-reverse;
+    list-style: none;
+    text-align: center;
+}
+
+#call-stack .stack-item {
+    color: #fff;
+    padding: 2rem;
+    border: 1px solid #fff;
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 1rem;
 }
