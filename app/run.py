@@ -60,6 +60,15 @@ def create_app():
         steps = search.binary_search(int(element))
         return jsonify({'steps': steps})
 
+    @app.route('recursive-search', methods=['POST'])
+    def recursive_search():
+        element = request.get_json().get('element')
+        if element is None:
+            return jsonify({'error': 'Missing element parameter.'}), 400
+
+        steps = search.recursive_linear_search(int(element))
+        return jsonify({'steps': steps})
+
     return app
 
 # Create a BinaryTree object and populate it with nodes from the configuration
