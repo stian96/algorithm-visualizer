@@ -31,11 +31,12 @@ function addEventListenerForSearch(elementId, url, onStepCallback)
             if (listItem) {
                 listItem.style.backgroundColor = step.found ? 'green' : 'rgb(248, 110, 110)';
             }
-            onStepCallback(step)
+            onStepCallback(step);
             await sleep(1000);
         }
-        await sleep(2000)
-        resetBackgroundColors(listItems)
+        await sleep(2000);
+        resetBackgroundColors(listItems);
+        setCallStackVisibility(false);
     });
 }
 
@@ -79,6 +80,19 @@ function clearCallStack() {
     }
 }
 
+function setCallStackVisibility(isRecursiveSearch) {
+    let callStackContainer = document.getElementsByClassName('call-stack-container')[0];
+    let heading = callStackContainer.querySelector('h2');
+    if (isRecursiveSearch) {
+        callStackContainer.style.opacity = 1;
+        heading.style.opacity = 1;
+    }
+    else {
+        callStackContainer.style.opacity = 0;
+        heading.style.opacity = 0;
+    }
+}
+
 function isInputFieldEmpty(element) {
     if (element === '') {
         alert('Please enter a value to search for in the input field.')
@@ -90,4 +104,8 @@ function isInputFieldEmpty(element) {
 // Add event listeners for different search algorithms.
 addEventListenerForSearch('linear-search', '/linear-search', function() {});
 addEventListenerForSearch('binary-search', '/binary-search', function() {});
-addEventListenerForSearch('recursive-search', '/recursive-search', updateCallStack);
+
+addEventListenerForSearch('recursive-search', '/recursive-search', function(step) {
+    setCallStackVisibility(true);
+    updateCallStack(step);
+});
