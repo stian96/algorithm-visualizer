@@ -19,6 +19,12 @@ function addEventListenerForSearch(elementId, url)
     {
         let element = document.getElementById('element').value;
 
+        // Check if element value is set.
+        if (element === '') {
+            alert('Please enter a value to search for in the input field.')
+            return;
+        }
+
         console.log(`Element to search for: ${element}`);
         let steps = await getSearchResult(url, element);
         let listItems = document.querySelectorAll('.flex-item');
