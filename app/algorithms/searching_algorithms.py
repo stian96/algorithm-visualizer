@@ -65,24 +65,31 @@ class SearchingAlgorithms:
         Public function that sets up the recursive call.
 
         :param element: The element to search for.
-        :return: Index of the element if found, None else.
+        :return: List of steps during the search process.
         """
-        return self._recursive_linear_search(element, 0)
+        steps = []
+        result = self._recursive_linear_search(element, 0, steps)
+        return steps
 
-    def _recursive_linear_search(self, element, index):
+    def _recursive_linear_search(self, element, index, steps):
         """
         Private internal recursive method executing a linear search.
 
         :param element: The element to search for.
         :param index: Index used to find the right element.
+        :param steps: List used to store the steps.
         :return: Index of the element if found, None else.
         """
         if index >= len(self.array):
             return None
-        elif element == self.array[index]:
-            return index
         else:
-            return self._recursive_linear_search(element, index + 1)
+            found = element == self.array[index]
+            steps.append({'value': self.array[index], 'found': found})
+
+            if found:
+                return index
+            else:
+                return self._recursive_linear_search(element, index + 1, steps)
 
     def recursive_binary_search(self, element):
         """
