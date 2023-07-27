@@ -68,6 +68,20 @@ async function getSearchResult(url, element) {
     }
 }
 
+function updateCallStack(element) {
+    let callStack = document.getElementById('call-stack');
+    let stackItem = document.createElement('li');
+    stackItem.textContent = element;
+    callStack.appendChild(stackItem);
+}
+
+function clearCallStack() {
+    let callStack = document.getElementById('call-stack');
+    while (callStack.firstChild) {
+        callStack.removeChild(callStack.firstChild);
+    }
+}
+
 
 // Add event listeners for different search algorithms.
 addEventListenerForSearch('linear-search', '/linear-search');
