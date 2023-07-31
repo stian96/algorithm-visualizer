@@ -69,7 +69,12 @@ function updateCallStack(element) {
     let callStack = document.getElementById('call-stack');
     let stackItem = document.createElement('li');
     stackItem.className = 'stack-item';
-    stackItem.textContent = element.value;
+    stackItem.textContent = `${element.step}`;
+
+    if (element.found) {
+        stackItem.style.backgroundColor = 'green';
+    }
+    
     callStack.appendChild(stackItem);
 }
 
