@@ -17,7 +17,15 @@ function resetBackgroundColors(elements) {
 
 // Sleep function to delay execution
 function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => {
+        setTimeout(function wait() {
+            if (paused) {
+                setTimeout(wait, 1000); 
+            } else {
+                resolve();
+            }
+        }, ms);
+    });
 }
 
 // Function to add an event listener to a specified element
