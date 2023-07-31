@@ -107,6 +107,10 @@ h2 {
     float: right;
 }
 
+#help-icon:hover {
+    color: #a5e99e;
+}
+
 .sidebar {
     height: 100%;
     width: 0;
