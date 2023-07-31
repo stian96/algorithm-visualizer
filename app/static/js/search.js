@@ -1,6 +1,13 @@
 // Gobal variable to track pause state.
 let paused = false;
 
+// Pause button event listener.
+document.getElementById('pause-button').addEventListener('click', function() {
+    paused = !paused;
+    this.textContent = paused ? "Resume" : "Paused";
+
+});
+
 // Function to reset background color of HTML elements
 function resetBackgroundColors(elements) {
     for (let item of elements) {
