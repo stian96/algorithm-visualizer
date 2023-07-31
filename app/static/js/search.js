@@ -11,7 +11,7 @@ document.getElementById('pause-button').addEventListener('click', function() {
 document.getElementById('help-icon').addEventListener('click', function() {
     let sidebar = document.getElementById('info-sidebar');
     if (sidebar.style.width === '0px') {
-        sidebar.style.width = '20rem';
+        sidebar.style.width = '25rem';
     }
     else {
         sidebar.style.width = '0px';
