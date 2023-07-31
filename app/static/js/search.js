@@ -1,3 +1,6 @@
+// Gobal variable to track pause state.
+let paused = false;
+
 // Function to reset background color of HTML elements
 function resetBackgroundColors(elements) {
     for (let item of elements) {
@@ -69,12 +72,14 @@ function updateCallStack(element) {
     let callStack = document.getElementById('call-stack');
     let stackItem = document.createElement('li');
     stackItem.className = 'stack-item';
-    stackItem.textContent = `${element.step}`;
+    stackItem.textContent = `${element.value}`;
 
     if (element.found) {
-        stackItem.style.backgroundColor = 'green';
+        setTimeout(() => {
+            stackItem.style.backgroundColor = 'green';
+        }, 100);
     }
-    
+
     callStack.appendChild(stackItem);
 }
 
