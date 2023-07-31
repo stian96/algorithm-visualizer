@@ -4,7 +4,7 @@ let paused = false;
 // Pause button event listener.
 document.getElementById('pause-button').addEventListener('click', function() {
     paused = !paused;
-    this.textContent = paused ? "Resume" : "Paused";
+    this.textContent = paused ? "Resume" : "Pause";
 
 });
 
@@ -21,7 +21,8 @@ function sleep(ms) {
         setTimeout(function wait() {
             if (paused) {
                 setTimeout(wait, 1000); 
-            } else {
+            } 
+            else {
                 resolve();
             }
         }, ms);
