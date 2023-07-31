@@ -11,10 +11,10 @@ document.getElementById('pause-button').addEventListener('click', function() {
 document.getElementById('help-icon').addEventListener('click', function() {
     let sidebar = document.getElementById('info-sidebar');
     if (sidebar.style.width === '0px') {
-        sidebar.style.width = '250px';
+        sidebar.style.width = '20rem';
     }
     else {
-        sidebar.style.width === '0px';
+        sidebar.style.width = '0px';
     }
 });
 
