@@ -1,4 +1,4 @@
-from app.datastructures.maxheap import MaxHeap
+from datastructures.maxheap import MaxHeap
 
 
 class SortingAlgorithms:
