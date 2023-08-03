@@ -25,6 +25,7 @@ body {
     display: flex;
     text-decoration: none;
     color: #fff;
+    transition: color 0.3s ease;
 }
 
 .logo-link:hover {
@@ -37,6 +38,7 @@ body {
 
 .green-text {
     color: #a5e99e;
+    transition: color 0.3s ease;
 }
 
 .navbar {
@@ -61,6 +63,7 @@ body {
     color: #fff;
     border: none;
     background: none;
+    transition: color 0.3s ease;
 }
 
 .method:hover {
