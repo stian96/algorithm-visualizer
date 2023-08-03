@@ -8,15 +8,19 @@ document.getElementById('pause-button').addEventListener('click', function() {
 
 });
 
-document.getElementById('help-icon').addEventListener('click', function() {
-    let sidebar = document.getElementById('info-sidebar');
-    if (sidebar.style.width === '0px') {
-        sidebar.style.width = '25rem';
-    }
-    else {
-        sidebar.style.width = '0px';
-    }
-});
+
+function openCloseInfoPage(elementId) {
+    document.getElementById(elementId).addEventListener('click', function() {
+        let sidebar = document.getElementById('info-sidebar');
+        if (sidebar.style.width === '0px') {
+            sidebar.style.width = '25rem';
+        }
+        else {
+            sidebar.style.width = '0px';
+        }
+    });
+}
+
 
 // Function to reset background color of HTML elements
 function resetBackgroundColors(elements) {
@@ -145,3 +149,6 @@ addEventListenerForSearch('recursive-search', '/recursive-search', function(step
     setCallStackVisibility(true);
     updateCallStack(step);
 });
+
+openCloseInfoPage('help-icon');
+openCloseInfoPage('close-icon');

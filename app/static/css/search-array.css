@@ -164,4 +164,16 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
+#close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+#close-icon:hover {
+    color: #a5e99e;
+}
+
 
