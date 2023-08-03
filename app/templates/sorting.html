@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Stian Rusvik">
-        <meta name="description" content="Visualization of an sorted array. Explore different search algorithms: Linear Search, Binary Search and Recursive Search.">
+        <meta name="description" content="Visualization of sorting algorithms. Explore Bubble, Insertion, Selection, Quick, Merge and Heap-sort.">
         <link rel="stylesheet" type="text/css" href="../static/css/node.css">
         <link rel="stylesheet" type="text/css" href="../static/css/search-array.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-        <title>Searching Algorithm Visualization</title>
+        <title>Sorting Algorithm Visualization</title>   
     </head>
     <body>
         <noscript>To use this site, please activate Javascript in the web browser.</noscript>
@@ -25,30 +25,8 @@
                     <li class="nav-items"><button class="method" id="recursive-search" aria-label="Recursive Search">Recursive Search</button></li>
                 </ul>
             </nav>
-            <div class="input-container">
-                <label for="element" class="element-label">Search For Element:</label>
-                <input type="number" id="element" name="element" min="12" max="98">
-            </div>
         </header>
         <main class="main-section">
-            <div class="flex-container">
-                <div class="call-stack-container">
-                    <h2 id="call-stack-heading">Call Stack</h2>
-                    <ul id="call-stack"></ul>
-                </div>
-                <ul class="flex-list">
-                    <li class="flex-item">12</li>
-                    <li class="flex-item">15</li>
-                    <li class="flex-item">17</li>
-                    <li class="flex-item">20</li>
-                    <li class="flex-item">32</li>
-                    <li class="flex-item">37</li>
-                    <li class="flex-item">43</li>
-                    <li class="flex-item">65</li>
-                    <li class="flex-item">98</li>
-                </ul>
-            </div>
-            <button id="pause-button">Pause</button>
             <i class="fa fa-question-circle" id="help-icon" title="Click for more information"></i>
             <div id="info-sidebar" class="sidebar">
                 <i class="fa fa-times" id="close-icon" title="Close"></i>
@@ -79,8 +57,6 @@
                 </div>
             </div>
         </main>
-        <footer class="footer-section">
-        </footer>
     </body>
     <script src="../static/js/search.js"></script>
 </html>

@@ -19,6 +19,11 @@ def register_routes(app, tree, search):
     def searching():
         return render_template('search_array.html')
 
+    @app.route('/sorting')
+    # Route to serve sorting page.
+    def sorting():
+        return render_template('sorting.html')
+
     @app.route('/<traversal_type>', methods=['GET'])
     # Route to handle different types of tree traversal
     def tree_traversal(traversal_type):
