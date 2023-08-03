@@ -16,7 +16,7 @@ function updateSlider() {
     let maxSlideIndex = items.length - 3;
 
     slideIndex = Math.max(0, Math.min(slideIndex, maxSlideIndex)); 
-    let percentage = slideIndex * (100 / 6); 
+    let percentage = slideIndex * (100 / items.length); 
     list.style.transform = `translateX(-${percentage}%)`;
 }
 
