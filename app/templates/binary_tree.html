@@ -81,29 +81,33 @@
             <i class="fa fa-question-circle" id="help-icon" title="Click for more information"></i>
             <div id="info-sidebar" class="sidebar">
                 <i class="fa fa-times" id="close-icon" title="Close"></i>
-                <h2>Information</h2>
+                <h2>Traversal Methods</h2>
                 <div class="algorithm-info">
-                    <h3>Linear Search</h3>
+                    <h3>Preorder</h3>
                     <p>
-                        Linear search is a simple search algorithm that checks every element in the list sequentially 
-                        until it finds an element that matches the target value.
+                        Preorder traversal visits the current node before its child nodes. 
+                        The order of traversal is root, left subtree, right subtree.
                     </p>
                 </div>
                 <div class="algorithm-info">
-                    <h3>Binary Search</h3>
+                    <h3>Postorder</h3>
                     <p>
-                        Binary search is an efficient algorithm that works on sorted lists. 
-                        It divides the list in half, comparing the middle element with the target. 
-                        In this visualization, if the middle element matches the target, it turns green. 
-                        If not, it turns red, and the search proceeds to the appropriate half of the list.
+                        Postorder traversal visits the current node after its child nodes. 
+                        The order of traversal is left subtree, right subtree, root.
                     </p>
                 </div>
                 <div class="algorithm-info">
-                    <h3>Recursive Search</h3>
+                    <h3>Inorder</h3>
                     <p>
-                        Recursive search involves breaking down a problem into smaller instances and using a 'call stack' to keep track of these instances.
-                        In this visualization, each element in the call stack represents a recursive call. The top-most element is the current active call. 
-                        When the searched element is found, its corresponding stack element is highlighted. 
+                        Inorder traversal visits the current node between its child nodes. 
+                        The order of traversal is left subtree, root, right subtree.
+                    </p>
+                </div>
+                <div class="algorithm-info">
+                    <h3>Level-order</h3>
+                    <p>
+                        Level-order traversal visits the nodes level by level from left to right. 
+                        It is also known as a breadth-first search.
                     </p>
                 </div>
             </div>
