@@ -1,0 +1,51 @@
+.nav-list {
+    position: absolute;
+    top: -15%;
+    background-color: transparent !important;
+    border-radius: 0 !important;
+}
+
+.slider-button {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #fff;
+    z-index: 1;
+}
+
+.slider-button:hover {
+    color: #a5e99e;
+}
+
+.left-slider-button {
+    left: 19%;
+    margin-top: 1rem;
+}
+
+.right-slider-button {
+    right: 19%;
+    margin-top: 1rem;
+}
+
+.slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 45%;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.14);
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+.nav-list {
+    transition: all 0.3s ease;
+    width: 200%;
+}
+
+.nav-items {
+    width: 15%;
+    text-align: center;
+}
