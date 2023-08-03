@@ -10,3 +10,7 @@
     -o-animation: fadeIn 3.5s;
     -ms-animation: fadeIn 3.5s;
 }
+
+#help-icon {
+    margin-top: 4.2rem !important;
+}
