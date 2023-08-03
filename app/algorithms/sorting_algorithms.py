@@ -19,6 +19,7 @@ class SortingAlgorithms:
         Sorts the array in ascending order using the selection sort algorithms.
         This algorithms has a time complexity of O(n^2), where n is the length of the list.
         """
+        steps = [self.array.copy()]
         n = len(self.array)
 
         # Iterate over all elements.
@@ -35,7 +36,9 @@ class SortingAlgorithms:
 
             # Swap elements.
             self.array[i], self.array[min_index] = self.array[min_index], self.array[i]
-        return self.array
+            steps.append(self.array.copy())
+
+        return steps
 
     def insertion_sort(self):
         """
@@ -107,6 +110,7 @@ class SortingAlgorithms:
         Sorts the array in ascending order using the bubble sort algorithms.
         This algorithms has a time complexity of O(n^2), where n is the length of the list.
         """
+        steps = [self.array.copy()]
         n = len(self.array)
 
         # Iterate over all elements
@@ -118,8 +122,9 @@ class SortingAlgorithms:
                 # If the current element is greater than the next, swap them.
                 if self.array[j] > self.array[j + 1]:
                     self.array[j], self.array[j + 1] = self.array[j + 1], self.array[j]
+                    steps.append(self.array.copy())
 
-        return self.array
+        return steps
 
     def merge_sort(self):
         """
