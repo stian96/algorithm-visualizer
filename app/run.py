@@ -2,6 +2,7 @@
 from flask import Flask
 from datastructures.binarytree import BinaryTree
 from algorithms.searching_algorithms import SearchingAlgorithms
+from algorithms.sorting_algorithms import SortingAlgorithms
 from routes import register_routes
 
 def create_app():
@@ -10,7 +11,8 @@ def create_app():
     
     tree = create_tree(app)
     search = create_search(app)
-    register_routes(app, tree, search)
+    sort = create_sort(app)
+    register_routes(app, tree, search, sort)
 
     return app
 
@@ -26,6 +28,10 @@ def create_tree(app):
 def create_search(app):
     search = SearchingAlgorithms(app.config['ARRAY_VALUES'])
     return search
+
+def create_sort(app):
+    sort = SortingAlgorithms(app.config['ARRAY_VALUES'])
+    return sort
 
 # When this script is run directly, create a Flask application and run it
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 from flask import render_template, jsonify, request
 
 
-def register_routes(app, tree, search):
+def register_routes(app, tree, search, sort):
 
     @app.route('/')
      # Route to serve home page
@@ -68,3 +68,14 @@ def register_routes(app, tree, search):
 
         steps = search.recursive_linear_search(int(element))
         return jsonify({'steps': steps})
+
+    @app.route('/sort/<algorithm_type>', methods=['POST'])
+    def sort_algorithm(algorithm_type):
+        try:
+            # Try to call the appropriate sorting method on the SortingAlgorithms object
+            steps = getattr(sort, f'{algorithm_type}')()
+            return jsonify({'steps': steps})
+        except AttributeError:
+            # If the sorting algorithm type is not recognized, return an error
+            return jsonify({'error': f'Invalid algorithm type: {algorithm_type}'}), 400
+
