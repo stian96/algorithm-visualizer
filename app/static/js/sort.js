@@ -34,3 +34,4 @@ function openCloseInfoPage(elementId) {
 }
 
 openCloseInfoPage('help-icon');
+openCloseInfoPage('close-icon');
