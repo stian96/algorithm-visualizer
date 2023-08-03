@@ -76,6 +76,19 @@ function addEventListenerForTraversal(elementId, url) {
     });
 }
 
+// Function that displays the information sidebar when help icon is clicked.
+function showInformationSidebar(elementId) {
+    document.getElementById(elementId).addEventListener('click', function() {
+        let sidebar = document.getElementById('info-sidebar');
+        if (sidebar.style.width === '0px') {
+            sidebar.style.width = '25rem';
+        }
+        else {
+            sidebar.style.width = '0px';
+        }
+    });
+}
+
 // Add event listeners for different tree traversal orders.
 addEventListenerForTraversal('preorder', '/preorder');
 addEventListenerForTraversal('postorder', '/postorder');
@@ -95,6 +108,8 @@ window.onload = function() {
 };
 
 window.onunload = function(){};
+showInformationSidebar('help-icon');
+showInformationSidebar('close-icon');
 
 
 
