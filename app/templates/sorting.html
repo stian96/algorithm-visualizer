@@ -35,53 +35,58 @@
             </nav>
         </header>
         <main class="main-section">
-            <i class="fa fa-question-circle" id="help-icon" title="Click for more information"></i>
-            <div id="info-sidebar" class="sidebar">
-                <i class="fa fa-times" id="close-icon" title="Close"></i>
-                <h2>Information</h2>
-                <div class="algorithm-info">
-                    <h3>Bubble Sort</h3>
-                    <p>
-                        Bubble Sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. 
-                        The process is repeated until no swaps are needed.
-                    </p>
+            <section class="algorithm-section sorting-visualization">
+
+            </section>
+            <section class="information-section">
+                <i class="fa fa-question-circle" id="help-icon" title="Click for more information"></i>
+                <div id="info-sidebar" class="sidebar">
+                    <i class="fa fa-times" id="close-icon" title="Close"></i>
+                    <h2>Information</h2>
+                    <div class="algorithm-info">
+                        <h3>Bubble Sort</h3>
+                        <p>
+                            Bubble Sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. 
+                            The process is repeated until no swaps are needed.
+                        </p>
+                    </div>
+                    <div class="algorithm-info">
+                        <h3>Insertion Sort</h3>
+                        <p>
+                            Insertion Sort builds the sorted list one element at a time. 
+                            It takes elements from the input list and inserts them in their correct position in the sorted list.
+                        </p>
+                    </div>
+                    <div class="algorithm-info">
+                        <h3>Selection Sort</h3>
+                        <p>
+                            Selection Sort divides the input list into a sorted and an unsorted region, and iteratively selects the smallest 
+                            (or largest) element from the unsorted region to place it in the sorted region.
+                        </p>
+                    </div>
+                    <div class="algorithm-info">
+                        <h3>Quick Sort</h3>
+                        <p>
+                            Quick Sort is a divide-and-conquer algorithm. It selects a 'pivot' element and partitions the other elements 
+                            into two sub-arrays, according to whether they are less than or greater than the pivot.
+                        </p>
+                    </div>
+                    <div class="algorithm-info">
+                        <h3>Merge Sort</h3>
+                        <p>
+                            Merge Sort divides the unsorted list into 'n' sublists, each containing one element, and then repeatedly merges 
+                            sublists to produce sorted ones until there is only one sublist remaining.
+                        </p>
+                    </div>
+                    <div class="algorithm-info">
+                        <h3>Heap Sort</h3>
+                        <p>
+                            Heap Sort divides the input into a sorted and an unsorted region, and iteratively shrinks the unsorted region 
+                            by extracting the largest element and moving that to the sorted region.
+                        </p>
+                    </div>
                 </div>
-                <div class="algorithm-info">
-                    <h3>Insertion Sort</h3>
-                    <p>
-                        Insertion Sort builds the sorted list one element at a time. 
-                        It takes elements from the input list and inserts them in their correct position in the sorted list.
-                    </p>
-                </div>
-                <div class="algorithm-info">
-                    <h3>Selection Sort</h3>
-                    <p>
-                        Selection Sort divides the input list into a sorted and an unsorted region, and iteratively selects the smallest 
-                        (or largest) element from the unsorted region to place it in the sorted region.
-                    </p>
-                </div>
-                <div class="algorithm-info">
-                    <h3>Quick Sort</h3>
-                    <p>
-                        Quick Sort is a divide-and-conquer algorithm. It selects a 'pivot' element and partitions the other elements 
-                        into two sub-arrays, according to whether they are less than or greater than the pivot.
-                    </p>
-                </div>
-                <div class="algorithm-info">
-                    <h3>Merge Sort</h3>
-                    <p>
-                        Merge Sort divides the unsorted list into 'n' sublists, each containing one element, and then repeatedly merges 
-                        sublists to produce sorted ones until there is only one sublist remaining.
-                    </p>
-                </div>
-                <div class="algorithm-info">
-                    <h3>Heap Sort</h3>
-                    <p>
-                        Heap Sort divides the input into a sorted and an unsorted region, and iteratively shrinks the unsorted region 
-                        by extracting the largest element and moving that to the sorted region.
-                    </p>
-                </div>
-            </div>
+            </section>
         </main>
     </body>
     <script src="../static/js/sort.js"></script>

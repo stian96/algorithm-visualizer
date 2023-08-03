@@ -63,3 +63,18 @@
     width: 15%;
     text-align: center;
 }
+
+.sorting-visualization {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar {
+    width: 10px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    background-color: #a5e99e;
+}
