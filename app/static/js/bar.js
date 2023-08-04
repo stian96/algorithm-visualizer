@@ -74,7 +74,10 @@ async function getDiagramValues(endpoint) {
 async function initializeBars() {
     const initialValues = await getDiagramValues('/diagram-values');
     originalOrder = [...initialValues];
+    
     render_steps(initialValues);
+    chooseAlgorithmToRun('bubble-sort', originalOrder);
+    chooseAlgorithmToRun('selection-sort', originalOrder);
 }
 
 function resetBars() {
@@ -90,6 +93,10 @@ document.getElementById('reset').addEventListener('click', function() {
     resetBars();
 });
 
-document.getElementById('bubble-sort').addEventListener('click', async function() {
-    visualizeSorting('bubble_sort', originalOrder);
-});
+function chooseAlgorithmToRun(elementId, array) {
+    document.getElementById(elementId).addEventListener('click', async function() {
+        visualizeSorting(elementId.replace(/-/g, '_'), array);
+    });
+}
+
+
