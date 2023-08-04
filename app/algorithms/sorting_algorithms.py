@@ -68,45 +68,49 @@ class SortingAlgorithms:
 
         return steps
 
-    def quicksort(self, array):
+    def quick_sort(self, array):
         """
-        Sorts the array in ascending order using the quick sort algorithms.
-        This algorithms has a time complexity of O(n log n), where n is the length of the list.
-        :return: All the steps of the sort.
+        Sorts the array in ascending order using the quicksort algorithm.
+        This algorithm has a time complexity of O(n log n), where n is the length of the list.
+        :return: A list of steps, each step containing a copy of the array in its current state
         """
         steps = []
-        self._quicksort(array, steps)
+        self._quicksort(array, 0, len(array) - 1, steps)
         return steps
 
-    def _quicksort(self, array, steps):
+    def _quicksort(self, array, low, high, steps):
         """
-        Internal recursive function executing the quicksort algorithms.
+        Internal recursive function executing the quicksort algorithm and saving steps.
         :param array: The array to be sorted.
-        :return: The sorted array.
+        :param low: The index of the lower bound of the current partition.
+        :param high: The index of the upper bound of the current partition.
+        :param steps: A list to store the steps of the sorting process.
         """
-        n = len(array)
+        if low < high:
+            partition_index = self._partition(array, low, high, steps)
+            self._quicksort(array, low, partition_index - 1, steps)
+            self._quicksort(array, partition_index + 1, high, steps)
 
-        # Base case: if the array contains 1 or 0 elements, it's already sorted
-        if n <= 1:
-            steps.append(array.copy())
-            return array
-        else:
-            # Choose the partition element (in this case, the middle element of the array)
-            partition = array[n // 2]
+    def _partition(self, array, low, high, steps):
+        """
+        Partitioning step of the quicksort algorithm.
+        :param array: The array to be sorted.
+        :param low: The index of the lower bound of the current partition.
+        :param high: The index of the upper bound of the current partition.
+        :param steps: A list to store the steps of the sorting process.
+        :return: The final index of the pivot element after partitioning.
+        """
+        pivot = array[high]
+        i = low - 1
 
-            # Split array into three parts:
-            # 'left' contains elements less than the partition
-            # 'middle' contains elements equal to the partition
-            # 'right' contains elements greater than the partition
-            left = [x for x in array if x < partition]
-            middle = [x for x in array if x == partition]
-            right = [x for x in array if x > partition]
+        for j in range(low, high):
+            if array[j] <= pivot:
+                i += 1
+                array[i], array[j] = array[j], array[i]
 
-            # Recursively sort the 'left' and 'right' parts and combine them with 'middle'
-            sorted_array = self._quicksort(left, steps) + middle + self._quicksort(right, steps)
-
-            steps.append(sorted_array.copy())
-            return sorted_array
+        array[i + 1], array[high] = array[high], array[i + 1]
+        steps.append(array.copy())  
+        return i + 1
 
     def bubble_sort(self, array):
         """
