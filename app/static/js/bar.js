@@ -49,6 +49,30 @@ function clearBars() {
     container.innerHTML = '';
 }
 
+async function getDiagramValues(endpoint) {
+    try {
+        const url = endpoint;
+        let response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        let data = await response.json();
+        return Object.values(data);
+    }
+    catch(error) {
+        console.log('There was a problem in fetching the data for the diagram:', error);
+    }
+}
+
+async function initializeBars() {
+    const initialValues = await getDiagramValues('/diagram-values');
+    render_steps(initialValues);
+}
+
+window.onload = function() {
+    initializeBars();
+}
+
 document.getElementById('bubble-sort').addEventListener('click', async function() {
     visualizeSorting('bubble_sort');
 });
