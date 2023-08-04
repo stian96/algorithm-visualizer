@@ -11,16 +11,16 @@ class SortingAlgorithms:
     5. Merge sort
     """
 
-    def __init__(self, array):
-        self.array = array
+    def __init__(self):
+        pass
 
-    def selection_sort(self):
+    def selection_sort(self, array):
         """
         Sorts the array in ascending order using the selection sort algorithms.
         This algorithms has a time complexity of O(n^2), where n is the length of the list.
         """
-        steps = [self.array.copy()]
-        n = len(self.array)
+        steps = [array.copy()]
+        n = len(array)
 
         # Iterate over all elements.
         for i in range(n):
@@ -31,53 +31,53 @@ class SortingAlgorithms:
             # If there is a smaller element, set
             # min index equal to this.
             for j in range(i + 1, n):
-                if self.array[j] < self.array[min_index]:
+                if array[j] < array[min_index]:
                     min_index = j
 
             # Swap elements.
-            self.array[i], self.array[min_index] = self.array[min_index], self.array[i]
-            steps.append(self.array.copy())
+            array[i], array[min_index] = array[min_index], array[i]
+            steps.append(array.copy())
 
         return steps
 
-    def insertion_sort(self):
+    def insertion_sort(self, array):
         """
         Sorts the array in ascending order using the insertion sort algorithms.
         This algorithms has a time complexity of O(n^2), where n is the length of the list.
         Returns: list: The sorted array
         """
-        n = len(self.array)
+        n = len(array)
 
         # Iterate through array, starting from the
         # second element.
         for i in range(1, n):
             # Hold on first and second element.
-            second = self.array[i]
+            second = array[i]
             first = i - 1
 
             # If second element is less than first,
             # switch places of the elements.
-            while first >= 0 and second < self.array[first]:
-                self.array[first + 1] = self.array[first]
+            while first >= 0 and second < array[first]:
+                array[first + 1] = array[first]
                 first -= 1
-            self.array[first + 1] = second
-        return self.array
+            array[first + 1] = second
+        return array
 
-    def quicksort(self):
+    def quicksort(self, array):
         """
         Sorts the array in ascending order using the quick sort algorithms.
         This algorithms has a time complexity of O(n log n), where n is the length of the list.
         :return: The sorted array
         """
-        n = len(self.array)
+        n = len(array)
 
         # Does the array only contain one element?
         if n <= 1:
-            return self.array
+            return array
         # Execute the quick sort algorithms.
         else:
-            self.array = self._quicksort(self.array)
-            return self.array
+            array = self._quicksort(array)
+            return array
 
     def _quicksort(self, array):
         """
@@ -105,13 +105,13 @@ class SortingAlgorithms:
             # Recursively sort the 'left' and 'right' parts and combine them with 'middle'
             return self._quicksort(left) + middle + self._quicksort(right)
 
-    def bubble_sort(self):
+    def bubble_sort(self, array):
         """
         Sorts the array in ascending order using the bubble sort algorithms.
         This algorithms has a time complexity of O(n^2), where n is the length of the list.
         """
-        steps = [self.array.copy()]
-        n = len(self.array)
+        steps = [array.copy()]
+        n = len(array)
 
         # Iterate over all elements
         for i in range(n):
@@ -120,19 +120,19 @@ class SortingAlgorithms:
             for j in range(n - i - 1):
 
                 # If the current element is greater than the next, swap them.
-                if self.array[j] > self.array[j + 1]:
-                    self.array[j], self.array[j + 1] = self.array[j + 1], self.array[j]
-                    steps.append(self.array.copy())
+                if array[j] > array[j + 1]:
+                    array[j], array[j + 1] = array[j + 1], array[j]
+                    steps.append(array.copy())
 
         return steps
 
-    def merge_sort(self):
+    def merge_sort(self, array):
         """
         Sorts the array in ascending order using the merge sort algorithm.
         This algorithm has a time complexity of O(n log n), where n is the length of the list.
         """
-        self.array = self._merge_sort(self.array)
-        return self.array
+        array = self._merge_sort(array)
+        return array
 
     def _merge_sort(self, array):
         """
@@ -182,20 +182,20 @@ class SortingAlgorithms:
         merged.extend(right[j:])
         return merged
 
-    def heap_sort(self):
+    def heap_sort(self, array):
         """
         Sorts the array in ascending order using the heap sort algorithm.
         This algorithm has a time complexity of O(n log n), where n is the length of the list.
         """
         heap = MaxHeap()
-        n = len(self.array)
+        n = len(array)
 
         # Add all array elements to the max-heap.
         for i in range(n):
-            heap.add(self.array[i])
+            heap.add(array[i])
 
         # Pop all the elements from the max-heap.
         for i in range(n - 1, -1, -1):
-            self.array[i] = heap.pop_max()
+            array[i] = heap.pop_max()
 
-        return self.array
+        return array

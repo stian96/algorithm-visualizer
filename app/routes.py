@@ -73,11 +73,15 @@ def register_routes(app, tree, search, sort):
     def get_diagram_values():
         return jsonify(app.config['DIAGRAM_VALUES'])
 
-    @app.route('/sort/<algorithm_type>', methods=['GET'])
+    @app.route('/sort/<algorithm_type>', methods=['POST'])
     def sort_algorithm(algorithm_type):
         try:
+            data = request.json
+            values = data.get('values')
+
             # Try to call the appropriate sorting method on the SortingAlgorithms object
-            steps = getattr(sort, f'{algorithm_type}')()
+            sort_method = getattr(sort, algorithm_type)
+            steps = sort_method(values)
             return jsonify({'steps': steps})
             
         except AttributeError:

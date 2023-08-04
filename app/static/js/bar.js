@@ -1,9 +1,9 @@
+let originalOrder;
 const container = document.querySelector('.bar-container');
-// let originalOrder;
 
-async function visualizeSorting(algorithmType) {
+async function visualizeSorting(algorithmType, values) {
     try {
-        const steps = await getSortingSteps(algorithmType);
+        const steps = await getSortingSteps(algorithmType, values);
 
         // Loop through each step with a delay to visualize sorting.
         for (const step of steps) {
@@ -17,10 +17,17 @@ async function visualizeSorting(algorithmType) {
     }
 }
 
-async function getSortingSteps(algorithmType) {
+async function getSortingSteps(algorithmType, values) {
     try {
         const url = `/sort/${algorithmType}`;
-        let response = await fetch(url);
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ values }),
+        };
+        let response = await fetch(url, options);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -65,7 +72,13 @@ async function getDiagramValues(endpoint) {
 }
 
 async function initializeBars() {
-    const originalOrder = await getDiagramValues('/diagram-values');
+    const initialValues = await getDiagramValues('/diagram-values');
+    originalOrder = [...initialValues];
+    render_steps(initialValues);
+}
+
+function resetBars() {
+    clearBars();
     render_steps(originalOrder);
 }
 
@@ -73,6 +86,10 @@ window.onload = function() {
     initializeBars();
 }
 
+document.getElementById('reset').addEventListener('click', function() {
+    resetBars();
+});
+
 document.getElementById('bubble-sort').addEventListener('click', async function() {
-    visualizeSorting('bubble_sort');
+    visualizeSorting('bubble_sort', originalOrder);
 });

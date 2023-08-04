@@ -11,7 +11,7 @@ def create_app():
     
     tree = create_tree(app)
     search = create_search(app)
-    sort = create_sort(app)
+    sort = create_sort()
     register_routes(app, tree, search, sort)
 
     return app
@@ -29,8 +29,8 @@ def create_search(app):
     search = SearchingAlgorithms(app.config['ARRAY_VALUES'])
     return search
 
-def create_sort(app):
-    sort = SortingAlgorithms(app.config['DIAGRAM_VALUES'])
+def create_sort():
+    sort = SortingAlgorithms()
     return sort
 
 # When this script is run directly, create a Flask application and run it
