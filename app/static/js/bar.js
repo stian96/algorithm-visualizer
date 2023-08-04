@@ -1,5 +1,5 @@
-
 const container = document.querySelector('.bar-container');
+// let originalOrder;
 
 async function visualizeSorting(algorithmType) {
     try {
@@ -39,7 +39,7 @@ function render_steps(step) {
     step.forEach((number, index) => {
         const bar = document.createElement('div');
         bar.className = 'bar';
-        bar.style.height = `${number * 2}px`;
+        bar.style.height = `${number * 2.5}px`;
         bar.style.left = `${index * 40}px`;
         container.appendChild(bar);
     });
@@ -65,8 +65,8 @@ async function getDiagramValues(endpoint) {
 }
 
 async function initializeBars() {
-    const initialValues = await getDiagramValues('/diagram-values');
-    render_steps(initialValues);
+    const originalOrder = await getDiagramValues('/diagram-values');
+    render_steps(originalOrder);
 }
 
 window.onload = function() {

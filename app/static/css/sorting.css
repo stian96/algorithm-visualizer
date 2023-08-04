@@ -69,19 +69,41 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 55rem;
     overflow: hidden;
 }
 
 .bar-container {
     position: relative;
+    height: 30rem;
     right: 19.4rem;
 }
 
 .bar {
     width: 1.8rem;
-    height: 100px;
     position: absolute;
     bottom: 0;
     background-color: #a5e99e;
 }
+
+.reset-bars {
+    position: relative;
+    left: 46%;
+    top: 5.5rem;
+    padding: 0.7rem;
+    font-size: 1.19em;
+    border-radius: 0.8rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.reset-bars:hover {
+    background-color: #a5e99e;
+    cursor: pointer;
+}
+
+#help-icon {
+    position: relative;
+    top: 7.5rem;
+    transition: color 0.3s ease;
+}
+
