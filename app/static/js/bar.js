@@ -1,18 +1,5 @@
-const container = document.querySelector('.sorting-visualization');
 
-function clearBars() {
-    container.innerHTML = '';
-}
-
-function render_steps(step) {
-    step.forEach((number, index) => {
-        const bar = document.createElement('div');
-        bar.className = 'bar';
-        bar.style.height = `${number}px`;
-        bar.style.left = `${index * 12}px`;
-        container.appendChild(bar);
-    });
-}
+const container = document.querySelector('.bar-container');
 
 async function visualizeSorting(algorithmType) {
     try {
@@ -33,12 +20,7 @@ async function visualizeSorting(algorithmType) {
 async function getSortingSteps(algorithmType) {
     try {
         const url = `/sort/${algorithmType}`;
-        let response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        let response = await fetch(url);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -53,4 +35,20 @@ async function getSortingSteps(algorithmType) {
     }
 }
 
-visualizeSorting('bubble_sort');
+function render_steps(step) {
+    step.forEach((number, index) => {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = `${number * 2}px`;
+        bar.style.left = `${index * 40}px`;
+        container.appendChild(bar);
+    });
+}
+
+function clearBars() {
+    container.innerHTML = '';
+}
+
+document.getElementById('bubble-sort').addEventListener('click', async function() {
+    visualizeSorting('bubble_sort');
+});

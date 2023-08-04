@@ -69,7 +69,7 @@ def register_routes(app, tree, search, sort):
         steps = search.recursive_linear_search(int(element))
         return jsonify({'steps': steps})
 
-    @app.route('/sort/<algorithm_type>', methods=['POST'])
+    @app.route('/sort/<algorithm_type>', methods=['GET'])
     def sort_algorithm(algorithm_type):
         try:
             # Try to call the appropriate sorting method on the SortingAlgorithms object
