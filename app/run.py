@@ -30,7 +30,7 @@ def create_search(app):
     return search
 
 def create_sort(app):
-    sort = SortingAlgorithms(app.config['ARRAY_VALUES'])
+    sort = SortingAlgorithms(app.config['DIAGRAM_VALUES'])
     return sort
 
 # When this script is run directly, create a Flask application and run it

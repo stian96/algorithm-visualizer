@@ -69,6 +69,10 @@ def register_routes(app, tree, search, sort):
         steps = search.recursive_linear_search(int(element))
         return jsonify({'steps': steps})
 
+    @app.route('/diagram-values', methods=['GET'])
+    def get_diagram_values():
+        return jsonify(app.config['DIAGRAM_VALUES'])
+
     @app.route('/sort/<algorithm_type>', methods=['GET'])
     def sort_algorithm(algorithm_type):
         try:
