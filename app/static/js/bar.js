@@ -78,6 +78,8 @@ async function initializeBars() {
     render_steps(initialValues);
     chooseAlgorithmToRun('bubble-sort', originalOrder);
     chooseAlgorithmToRun('selection-sort', originalOrder);
+    chooseAlgorithmToRun('insertion-sort', originalOrder);
+    chooseAlgorithmToRun('quick-sort', originalOrder);
 }
 
 function resetBars() {

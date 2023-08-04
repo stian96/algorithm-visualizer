@@ -46,6 +46,7 @@ class SortingAlgorithms:
         This algorithms has a time complexity of O(n^2), where n is the length of the list.
         Returns: list: The sorted array
         """
+        steps = []
         n = len(array)
 
         # Iterate through array, starting from the
@@ -61,25 +62,23 @@ class SortingAlgorithms:
                 array[first + 1] = array[first]
                 first -= 1
             array[first + 1] = second
-        return array
+
+            # Append a copy of the current state of the array to the steps.
+            steps.append(array.copy())
+
+        return steps
 
     def quicksort(self, array):
         """
         Sorts the array in ascending order using the quick sort algorithms.
         This algorithms has a time complexity of O(n log n), where n is the length of the list.
-        :return: The sorted array
+        :return: All the steps of the sort.
         """
-        n = len(array)
+        steps = []
+        self._quicksort(array, steps)
+        return steps
 
-        # Does the array only contain one element?
-        if n <= 1:
-            return array
-        # Execute the quick sort algorithms.
-        else:
-            array = self._quicksort(array)
-            return array
-
-    def _quicksort(self, array):
+    def _quicksort(self, array, steps):
         """
         Internal recursive function executing the quicksort algorithms.
         :param array: The array to be sorted.
@@ -89,6 +88,7 @@ class SortingAlgorithms:
 
         # Base case: if the array contains 1 or 0 elements, it's already sorted
         if n <= 1:
+            steps.append(array.copy())
             return array
         else:
             # Choose the partition element (in this case, the middle element of the array)
@@ -103,7 +103,10 @@ class SortingAlgorithms:
             right = [x for x in array if x > partition]
 
             # Recursively sort the 'left' and 'right' parts and combine them with 'middle'
-            return self._quicksort(left) + middle + self._quicksort(right)
+            sorted_array = self._quicksort(left, steps) + middle + self._quicksort(right, steps)
+
+            steps.append(sorted_array.copy())
+            return sorted_array
 
     def bubble_sort(self, array):
         """
