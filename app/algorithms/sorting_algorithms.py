@@ -138,10 +138,11 @@ class SortingAlgorithms:
         Sorts the array in ascending order using the merge sort algorithm.
         This algorithm has a time complexity of O(n log n), where n is the length of the list.
         """
-        array = self._merge_sort(array)
-        return array
+        steps = []
+        array = self._merge_sort(array, steps)
+        return steps
 
-    def _merge_sort(self, array):
+    def _merge_sort(self, array, steps):
         """
            Internal recursive function executing the merge sort algorithm.
            :param array: The array to be sorted.
@@ -159,13 +160,13 @@ class SortingAlgorithms:
         right = array[mid:]
 
         # Recursively sort each half
-        left = self._merge_sort(left)
-        right = self._merge_sort(right)
+        left = self._merge_sort(left, steps)
+        right = self._merge_sort(right, steps)
 
         # Merge the sorted halves
         return self._merge(left, right)
 
-    def _merge(self, left, right):
+    def _merge(self, left, right, steps):
         """
         Helper function to merge two sorted arrays.
         :param left: Sorted array.
@@ -187,6 +188,9 @@ class SortingAlgorithms:
         # If there are any elements left in either array, append them to the result.
         merged.extend(left[i:])
         merged.extend(right[j:])
+
+        # Add the merged array to steps.
+        steps.append(merged.copy())
         return merged
 
     def heap_sort(self, array):
