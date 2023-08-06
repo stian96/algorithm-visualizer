@@ -1,104 +1,156 @@
-let originalOrder;
-const algorithms = ['bubble-sort', 'selection-sort', 'insertion-sort', 'quick-sort', 'merge-sort', 'heap-sort'];
-const container = document.querySelector('.bar-container');
+(function() {
 
-async function visualizeSorting(algorithmType, values) {
-    try {
-        const steps = await getSortingSteps(algorithmType, values);
+    // Constant definition for algorithms and DOM-elements.
+    const ALGORITHMS = ['bubble-sort', 'selection-sort', 'insertion-sort', 'quick-sort', 'merge-sort', 'heap-sort'];
+    const CONTAINER = document.querySelector('.bar-container');
+    let originalOrder;
 
-        // Loop through each step with a delay to visualize sorting.
-        for (const step of steps) {
-            clearBars();
-            render_steps(step);
-            await new Promise(r => setTimeout(r, 100));
+    /**
+     * 
+     * @param {string} algorithmType - Type of sorting algorithm. 
+     * @param {Array} values - Array of values to be sorted. 
+     */
+    async function visualizeSorting(algorithmType, values) {
+        try {
+            const steps = getSortingSteps(algorithmType, values);
+            
+            // Animate each step with a delay for the visualization.
+            for (const step of steps) {
+                clearBars();
+                renderSteps(step);
+                await new Promise(r => setTimeout(r, 100));
+            }
+        } catch (error) {
+            logError('A problem occurred while visualizing the sorting', error);
         }
     }
-    catch(error) {
-        console.log('A problem occurred while visualizing the sorting', error);
-    }
-}
 
-async function getSortingSteps(algorithmType, values) {
-    try {
-        const url = `/sort/${algorithmType}`;
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ values }),
-        };
-        let response = await fetch(url, options);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+    /**
+     * 
+     * @param {string} algorithmType - Type of sorting algorithm.
+     * @param {Array} values - Array values to be sorted.
+     * @returns {Array} - A list of steps for sorting. 
+     */
+    async function getSortingSteps(algorithmType, values) {
+        try {
+            const url = `/sort/${algorithmType}`;
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ values }),
+            };
+            const response = await fetch(url, options);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            if (!data.hasOwnProperty('steps')) {
+                throw new Error("Missing 'steps' key in response.");
+            }
+
+            return data['steps'];
+        } 
+        catch (error) {
+            logError('A problem occurred while fetching the sorting steps', error);
         }
-        let data = await response.json();
-        if (!data.hasOwnProperty('steps')) {
-            throw new Error("Missing 'steps' key in response.");
+    }
+
+    /**
+     * Render bars for each step during visualization.
+     * @param {Array} step - Simple sortingstep that contains the number in a determine order.
+     */
+    function renderSteps(step) {
+        step.forEach((number, index) => {
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            bar.style.height = `${number * 2.5}px`;
+            bar.style.left = `${index * 40}px`;
+            CONTAINER.appendChild(bar);
+        });
+    }
+
+    /**
+     * Removes all bars from the container to prepare for the next render.
+     */
+    function clearBars() {
+        CONTAINER.innerHTML = '';
+    }
+
+    /**
+     * Gets values for the diagram from a particular endpoint.
+     * @param {string} endpoint - URL to the server to get the values.
+     * @returns {Array} - A list of values for the diagram.
+     */
+    async function getDiagramValues(endpoint) {
+        try {
+            const response = await fetch(endpoint);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            return Object.values(data);
+        } catch (error) {
+            logError('There was a problem in fetching the data for the diagram:', error);
         }
-        return data['steps'];
     }
-    catch(error) {
-        console.log('A problem occurred while fetching the sorting steps', error);
+
+    /**
+     * Initialize the bars and bind event listeners to the sorting buttons.
+     */
+    async function initializeBars() {
+        const initialValues = getDiagramValues('/diagram-values');
+        originalOrder = [...initialValues];
+
+        renderSteps(initialValues);
+        bindAlgorithms(originalOrder);
     }
-}
 
-function render_steps(step) {
-    step.forEach((number, index) => {
-        const bar = document.createElement('div');
-        bar.className = 'bar';
-        bar.style.height = `${number * 2.5}px`;
-        bar.style.left = `${index * 40}px`;
-        container.appendChild(bar);
-    });
-}
-
-function clearBars() {
-    container.innerHTML = '';
-}
-
-async function getDiagramValues(endpoint) {
-    try {
-        const url = endpoint;
-        let response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        let data = await response.json();
-        return Object.values(data);
+    /**
+     * Binds the sorting algorithms to their respective buttons. 
+     * @param {Array} values - Original values off the bars.
+     */
+    function bindAlgorithms(values) {
+        ALGORITHMS.forEach(element => {
+            chooseAlgorithmToRun(element, values);
+        });
     }
-    catch(error) {
-        console.log('There was a problem in fetching the data for the diagram:', error);
+
+    /**
+     * Bind a spesific algorithm to a button and starts visualization when clicked.
+     * @param {string} elementId - ID to the button.
+     * @param {Array} array - Values to be sorted.
+     */
+    function chooseAlgorithmToRun(elementId, array) {
+        document.getElementById(elementId).addEventListener('click', async () => {
+            visualizeSorting(elementId.replace(/-/g, '_'), array);
+        });
     }
-}
 
-async function initializeBars() {
-    const initialValues = await getDiagramValues('/diagram-values');
-    originalOrder = [...initialValues];
-    
-    render_steps(initialValues);
-    algorithms.forEach(element => {
-        chooseAlgorithmToRun(element, originalOrder);
-    });
-}
+    /**
+     * Resets the bars to their original order. 
+     */
+    function resetBars() {
+        clearBars();
+        renderSteps(originalOrder);
+    }
 
-function resetBars() {
-    clearBars();
-    render_steps(originalOrder);
-}
+    /**
+     * Logs error messages to the browser console.
+     * @param {string} message - Error message. 
+     * @param {Error} error - Error object.
+     */
+    function logError(message, error) {
+        console.log(message, error);
+    }
 
-window.onload = function() {
-    initializeBars();
-}
+    /**
+     * Start the function when the document is loaded.
+     */
+    window.onload = () => initializeBars();
+    document.getElementById('reset').addEventListener('click', () => resetBars());
 
-document.getElementById('reset').addEventListener('click', function() {
-    resetBars();
-});
-
-function chooseAlgorithmToRun(elementId, array) {
-    document.getElementById(elementId).addEventListener('click', async function() {
-        visualizeSorting(elementId.replace(/-/g, '_'), array);
-    });
-}
-
-
+})();
