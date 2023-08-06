@@ -16,7 +16,7 @@ async function visualizeSorting(algorithmType, values) {
         for (const step of steps) {
             clearBars();
             renderSteps(step);
-            await new Promise(r => setTimeout(r, 100));
+            await new Promise(r => setTimeout(r, getDelay()));
         }
     } 
     catch (error) {
@@ -139,6 +139,14 @@ function resetBars() {
 }
 
 /**
+ * Gets the correct delay from the animation slider. 
+ * @returns The delay value to be used in the visualization.
+ */
+function getDelay() {
+    return Number(document.getElementById('speed').value);
+}
+
+/**
 * Logs error messages to the browser console.
 * @param {string} message - Error message. 
 * @param {Error} error - Error object.
@@ -147,10 +155,34 @@ function logError(message, error) {
     console.log(message, error);
 }
 
-// TODO: Add slider button for animation speed.
+/**
+ * Adjusts the background color of the slider based on its value.
+ * The slider's color will transition from green (#a5e99e) to white (#ffffff)
+ * depending on its current position.
+ */
+function adjustSliderColor() {
+    let slider = document.getElementById('speed');
+    slider.addEventListener('input', function() {
+        let value = calculateSliderValue(slider);
+        slider.style.background = `linear-gradient(to right, #a5e99e ${value}%, #ffffff ${value}%)`;
+    });
+}
+
+/**
+ * Calculate the slider's position as a percentage.
+ * 
+ * @param {HTMLInputElement} slider - The input slider element.
+ * @returns {number} The position of the slider as a percentage of its range.
+ */
+function calculateSliderValue(slider) {
+    return ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+}
 
 /**
 * Start the function when the document is loaded.
 */
-window.onload = () => initializeBars();
+window.onload = () => {
+    initializeBars();
+    adjustSliderColor();
+}
 document.getElementById('reset').addEventListener('click', () => resetBars());

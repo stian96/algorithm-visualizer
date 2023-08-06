@@ -103,7 +103,12 @@
 
 #help-icon {
     position: relative;
-    top: 7.5rem;
-    transition: color 0.3s ease;
+    top: 8.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
+
+.speed-container {
+    top: 8rem;
+}
+
 

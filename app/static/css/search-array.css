@@ -109,6 +109,7 @@ h2 {
 
 #help-icon:hover {
     color: #a5e99e;
+    transform: scale(1.1);
 }
 
 .sidebar {
