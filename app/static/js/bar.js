@@ -80,6 +80,7 @@ async function initializeBars() {
     chooseAlgorithmToRun('selection-sort', originalOrder);
     chooseAlgorithmToRun('insertion-sort', originalOrder);
     chooseAlgorithmToRun('quick-sort', originalOrder);
+    chooseAlgorithmToRun('merge-sort', originalOrder);
 }
 
 function resetBars() {

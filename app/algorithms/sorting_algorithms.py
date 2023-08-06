@@ -138,16 +138,16 @@ class SortingAlgorithms:
         Sorts the array in ascending order using the merge sort algorithm.
         This algorithm has a time complexity of O(n log n), where n is the length of the list.
         """
-        steps = []
-        array = self._merge_sort(array, steps)
+        steps = [array.copy()]
+        array = self._merge_sort(array, steps, array.copy())
         return steps
 
-    def _merge_sort(self, array, steps):
+    def _merge_sort(self, array, steps, original_array, start_index=0):
         """
-           Internal recursive function executing the merge sort algorithm.
-           :param array: The array to be sorted.
-           :return: The sorted array.
-           """
+        Internal recursive function executing the merge sort algorithm.
+        :param array: The array to be sorted.
+        :return: The sorted array.
+        """
         n = len(array)
 
         # Base case: If array contains 0 or 1 element it is already sorted.
@@ -160,38 +160,48 @@ class SortingAlgorithms:
         right = array[mid:]
 
         # Recursively sort each half
-        left = self._merge_sort(left, steps)
-        right = self._merge_sort(right, steps)
+        left = self._merge_sort(left, steps, original_array, start_index)
+        right = self._merge_sort(right, steps, original_array, start_index + mid)
 
-        # Merge the sorted halves
-        return self._merge(left, right)
+        # Merge the sorted halves into the original array.
+        self._merge(left, right, original_array, start_index)
+        steps.append(original_array.copy())
+        return original_array[start_index : start_index + n]
 
-    def _merge(self, left, right, steps):
+    def _merge(self, left, right, original_array, left_start):
         """
-        Helper function to merge two sorted arrays.
+        Helper function to merge two sorted arrays into the original array, starting from left_start.
         :param left: Sorted array.
         :param right: Sorted array.
-        :return: Merged sorted array.
+        :param original_array: The array to place the merged elements into.
+        :param left_start: The starting index in the original array to place the merged elements.
+        :return: Updated original_array with the merged elements.
         """
-        merged = list()
         i = j = 0
+        k = left_start
 
         # Compare elements and insert the smallest into the result.
         while i < len(left) and j < len(right):
             if left[i] <= right[j]:
-                merged.append(left[i])
+                original_array[k] = left[i]
                 i += 1
             else:
-                merged.append(right[j])
+                original_array[k] = right[j]
                 j += 1
+            k += 1
 
-        # If there are any elements left in either array, append them to the result.
-        merged.extend(left[i:])
-        merged.extend(right[j:])
+        # If there are any elements left in either array, place them into the original array.
+        while i < len(left):
+            original_array[k] = left[i]
+            i += 1
+            k += 1
 
-        # Add the merged array to steps.
-        steps.append(merged.copy())
-        return merged
+        while j < len(right):
+            original_array[k] = right[j]
+            j += 1
+            k += 1
+
+        return original_array
 
     def heap_sort(self, array):
         """
