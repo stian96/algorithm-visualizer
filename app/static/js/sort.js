@@ -1,42 +1,50 @@
+// Set the initial slide index.
 let slideIndex = 0;
 
-function sliderButton(buttonId) {
+/**
+ * Bind click event listener to a slider button.
+ * @param {string} buttonId - The ID of the button ('next' or 'prev').
+ */
+function bindSliderButton(buttonId) {
     document.getElementById(buttonId).addEventListener('click', () => {
-        if (buttonId === 'next') {
-            slideIndex += 1;
-            updateSlider();
-        }
-        else {
-            slideIndex -= 1;
-            updateSlider();
-        }
+        // Increment or decrement the slide index based on the button clicked.
+        slideIndex += (buttonId === 'next') ? 1 : -1;
+        updateSlider();
     });
 }
 
+/**
+ * Update the position of the slider based on the current slide index.
+ */
 function updateSlider() {
-    let list = document.querySelector(".nav-list");
-    let items = document.querySelectorAll('.nav-items');
-    let maxSlideIndex = items.length - 3;
+    const list = document.querySelector(".nav-list");
+    const items = document.querySelectorAll('.nav-items');
 
-    slideIndex = Math.max(0, Math.min(slideIndex, maxSlideIndex)); 
-    let percentage = slideIndex * (100 / items.length); 
+    // Ensure slide index is within bounds.
+    const maxSlideIndex = items.length - 3;
+    slideIndex = Math.max(0, Math.min(slideIndex, maxSlideIndex));
+
+    // Calculate percentage to translate the slider.
+    const percentage = slideIndex * (100 / items.length);
     list.style.transform = `translateX(-${percentage}%)`;
 }
 
-function openCloseInfoPage(elementId) {
-    document.getElementById(elementId).addEventListener('click', function() {
-        let sidebar = document.getElementById('info-sidebar');
-        if (sidebar.style.width === '0px') {
-            sidebar.style.width = '25rem';
-        }
-        else {
-            sidebar.style.width = '0px';
-        }
+/**
+ * Bind click event listener to an element to open/close the info sidebar.
+ * @param {string} elementId - The ID of the element to bind the click event to.
+ */
+function toggleInfoSidebar(elementId) {
+    document.getElementById(elementId).addEventListener('click', () => {
+        const sidebar = document.getElementById('info-sidebar');
+        // Toggle sidebar width between 0 and 25rem.
+        sidebar.style.width = (sidebar.style.width === '0px') ? '25rem' : '0px';
     });
 }
 
-sliderButton('next');
-sliderButton('prev');
+// Bind the slider buttons.
+bindSliderButton('next');
+bindSliderButton('prev');
 
-openCloseInfoPage('help-icon');
-openCloseInfoPage('close-icon');
+// Bind the open/close actions for the info sidebar.
+toggleInfoSidebar('help-icon');
+toggleInfoSidebar('close-icon');

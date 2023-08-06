@@ -1,6 +1,6 @@
 (function() {
 
-    // Constant definition for algorithms and DOM-elements.
+    // Constant definitions for algorithms and DOM-elements.
     const ALGORITHMS = ['bubble-sort', 'selection-sort', 'insertion-sort', 'quick-sort', 'merge-sort', 'heap-sort'];
     const CONTAINER = document.querySelector('.bar-container');
     let originalOrder;
@@ -26,7 +26,7 @@
     }
 
     /**
-     * 
+     * Gets sortingsteps from the server for a given algorithm type and values.
      * @param {string} algorithmType - Type of sorting algorithm.
      * @param {Array} values - Array values to be sorted.
      * @returns {Array} - A list of steps for sorting. 
