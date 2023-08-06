@@ -1,14 +1,17 @@
 let slideIndex = 0;
 
-document.getElementById('next').addEventListener('click', function() {
-    slideIndex += 1;
-    updateSlider();
-});
-
-document.getElementById('prev').addEventListener('click', function() {
-    slideIndex -= 1;
-    updateSlider();
-});
+function sliderButton(buttonId) {
+    document.getElementById(buttonId).addEventListener('click', () => {
+        if (buttonId === 'next') {
+            slideIndex += 1;
+            updateSlider();
+        }
+        else {
+            slideIndex -= 1;
+            updateSlider();
+        }
+    });
+}
 
 function updateSlider() {
     let list = document.querySelector(".nav-list");
@@ -19,7 +22,6 @@ function updateSlider() {
     let percentage = slideIndex * (100 / items.length); 
     list.style.transform = `translateX(-${percentage}%)`;
 }
-
 
 function openCloseInfoPage(elementId) {
     document.getElementById(elementId).addEventListener('click', function() {
@@ -32,6 +34,9 @@ function openCloseInfoPage(elementId) {
         }
     });
 }
+
+sliderButton('next');
+sliderButton('prev');
 
 openCloseInfoPage('help-icon');
 openCloseInfoPage('close-icon');
