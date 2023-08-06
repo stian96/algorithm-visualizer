@@ -30,3 +30,38 @@
     border-radius: 10%;
     color: #a5e99e;
 }
+
+/* Try it out buttons */
+.tryout-btn {
+    background-color: rgba(255, 255, 255, 0.181);
+    color: #fff;
+    padding: 0.6rem;
+    font-size: 1.11em;
+    font-weight: bold;
+    border-radius: 0.6rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.tryout-btn:hover {
+    background-color: #a6e99ed4;
+    transform: scale(1.05);
+    color: #000;
+}
+
+.sorting-try {
+    position: relative;
+    left: 54rem;
+    top: 0.8rem;
+}
+
+.searching-try {
+    position: relative;
+    right: 31rem;
+    top: 3.1rem;
+}
+
+.traversal-try {
+    position: relative;
+    left: 54rem;
+    top: 3.5rem;
+}

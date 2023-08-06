@@ -88,3 +88,7 @@ def register_routes(app, tree, search, sort):
             # If the sorting algorithm type is not recognized, return an error
             return jsonify({'error': f'Invalid algorithm type: {algorithm_type}'}), 400
 
+    @app.route('/page-urls', methods=['GET'])
+    def get_page_urls():
+        return jsonify(app.config['PAGE_URLS'])
+
