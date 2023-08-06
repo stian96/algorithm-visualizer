@@ -1,4 +1,5 @@
 let originalOrder;
+const algorithms = ['bubble-sort', 'selection-sort', 'insertion-sort', 'quick-sort', 'merge-sort', 'heap-sort'];
 const container = document.querySelector('.bar-container');
 
 async function visualizeSorting(algorithmType, values) {
@@ -76,11 +77,9 @@ async function initializeBars() {
     originalOrder = [...initialValues];
     
     render_steps(initialValues);
-    chooseAlgorithmToRun('bubble-sort', originalOrder);
-    chooseAlgorithmToRun('selection-sort', originalOrder);
-    chooseAlgorithmToRun('insertion-sort', originalOrder);
-    chooseAlgorithmToRun('quick-sort', originalOrder);
-    chooseAlgorithmToRun('merge-sort', originalOrder);
+    algorithms.forEach(element => {
+        chooseAlgorithmToRun(element, originalOrder);
+    });
 }
 
 function resetBars() {

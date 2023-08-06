@@ -208,6 +208,7 @@ class SortingAlgorithms:
         Sorts the array in ascending order using the heap sort algorithm.
         This algorithm has a time complexity of O(n log n), where n is the length of the list.
         """
+        steps = [array.copy()]
         heap = MaxHeap()
         n = len(array)
 
@@ -218,5 +219,6 @@ class SortingAlgorithms:
         # Pop all the elements from the max-heap.
         for i in range(n - 1, -1, -1):
             array[i] = heap.pop_max()
-
-        return array
+            steps.append(array.copy())
+        
+        return steps
