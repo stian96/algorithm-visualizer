@@ -3,7 +3,7 @@ from app.algorithms.searching_algorithms import SearchingAlgorithms
 
 class TestSearchingAlgorithms:
 
-    def setup_method(self, method):
+    def setup_method(self):
 
         self.array = [x for x in range(1, 11)]
         self.search = SearchingAlgorithms(self.array)
@@ -104,4 +104,22 @@ class TestSearchingAlgorithms:
         assert result[-1]['found'] == False
         assert len(result) == len(self.array)
 
-        
+    def test_recursive_linear_search_element_at_start(self):
+
+        # Action
+        result = self.search.recursive_linear_search(1)
+
+        # Assert
+        assert result[0]['value'] == 1
+        assert result[0]['found'] == True
+        assert len(result) == 1
+
+    def test_recursive_linear_search_element_at_end(self):
+
+        # Action
+        result = self.search.recursive_linear_search(10)
+
+        # Assert
+        assert result[-1]['value'] == 10
+        assert result[-1]['found'] == True
+        assert len(result) == 10
