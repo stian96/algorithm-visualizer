@@ -325,3 +325,16 @@ figcaption {
     transform: translateY(20px);
     transition: opacity 1.8s, transform 1.8s, background-color 1s;
 }
+
+.from-left {
+    transform: translateX(-10%);
+    opacity: 0;
+    transition: transform 1.8s, opacity 1.8s;
+
+}
+
+.from-left.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
