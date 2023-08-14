@@ -317,11 +317,11 @@ figcaption {
 .fade {  
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 2s, transform 2s, background-color 1s;
+    transition: opacity 1.8s, transform 1.8s, background-color 1s;
 }
 
 .hidden {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 2s, transform 2s, background-color 1s;
+    transition: opacity 1.8s, transform 1.8s, background-color 1s;
 }

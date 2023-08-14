@@ -1,23 +1,31 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const elements = document.querySelectorAll('.fade');
+class ScrollFade {
+    constructor(elements, topFactor=0.85, bottomFactor=0.15) {
+        this.elements = elements
+        this.topFactor = topFactor
+        this.bottomFactor = bottomFactor
+        this.init()
+    }
 
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
+    isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
         const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
         const windowWidth = (window.innerWidth || document.documentElement.clientWidth);
-    
-        return (
-            rect.top <= windowHeight * 0.85 && 
-            rect.bottom >= windowHeight * 0.15 && 
-            rect.left >= 0 && 
-            rect.right <= windowWidth  
-        );
-    }
-    
 
-    function displayOnScroll() {
-        elements.forEach(element => {
-            if (isElementInViewport(element)) {
+        const calculateElementPosition = (top, bottom, left, right) => {
+            return (
+                top <= windowHeight * this.topFactor &&
+                bottom >= windowHeight * this.bottomFactor &&
+                left >= 0 &&
+                right <= windowWidth
+            );
+        };
+    
+        return calculateElementPosition(rect.top, rect.bottom, rect.left, rect.right);
+    }
+
+    displayOnScroll() {
+        this.elements.forEach(element => {
+            if (this.isElementInViewport(element)) {
                 element.classList.remove('hidden');
             }
             else {
@@ -26,6 +34,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    window.addEventListener('scroll', displayOnScroll);
-    displayOnScroll(); 
+    init() {
+        window.addEventListener('scroll', this.displayOnScroll.bind(this));
+        this.displayOnScroll();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new ScrollFade(document.querySelectorAll('.fade'));
 });
