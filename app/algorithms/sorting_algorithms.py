@@ -1,4 +1,4 @@
-from datastructures.maxheap import MaxHeap
+from ..datastructures.maxheap import MaxHeap
 
 
 class SortingAlgorithms:
@@ -44,7 +44,7 @@ class SortingAlgorithms:
         """
         Sorts the array in ascending order using the insertion sort algorithms.
         This algorithms has a time complexity of O(n^2), where n is the length of the list.
-        Returns: list: The sorted array
+        Returns: list: The steps of the sorted array
         """
         steps = []
         n = len(array)
