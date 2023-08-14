@@ -308,3 +308,22 @@ figcaption {
     margin-right: 7.5rem;
     margin-top: 2rem;
 }
+
+.category-card p {
+    margin-bottom: 1.2rem;
+}
+
+.learn-more-link {
+    text-decoration: none;
+    color: #a5e99e;
+    font-size: 1em;
+}
+
+.fa-arrow-right {
+    transition: transform 1s ease;
+    transform: translateX(0);
+}
+
+.learn-more-link:hover .fa-arrow-right  {
+    transform: translateX(8px);
+}
