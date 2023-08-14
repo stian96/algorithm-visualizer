@@ -78,9 +78,8 @@ body {
 
 #categories {
     padding: 2rem;
-    background-color: #2b2f37;
+    background-color: #24272ce6;
     color: #fff;
-    border-radius: 2.5rem;
 }
 
 .category-title {
@@ -237,10 +236,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-}
-
-footer {
-    border-radius: 2.5rem;
 }
 
 .footer-content {
