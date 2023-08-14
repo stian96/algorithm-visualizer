@@ -19,6 +19,7 @@ body {
     margin-bottom: 5rem;
 }
 
+
 .logo {
     font-size: 2.2em;
     color: #fff;
@@ -72,14 +73,16 @@ body {
 
 #introduction p {
     font-size: 1.2em;
-    line-height: 1.5em;
+    line-height: 1.9em;
     margin-bottom: 3.5rem;
 }
 
 #categories {
+    position: relative;
     padding: 2rem;
     background-color: #24272ce6;
     color: #fff;
+    z-index: 1;
 }
 
 .category-title {
@@ -95,16 +98,15 @@ body {
 }
 
 .category-card {
-    background-color: #3b3f47;
+    background-color: #35383f;
     padding: 2rem;
     border-radius: 8px;
     width: 30%;
     margin-bottom: 2rem;
-    transition: transform 0.2s ease-in-out;
 }
 
 .category-card:hover {
-    transform: scale(1.05);
+    background-color: #3d4047;
 }
 
 .category-card h3 {
@@ -165,11 +167,6 @@ body {
 .category-image img {
     width: 75%;
     height: auto;
-    transition: transform 0.2s ease-in-out;
-}
-
-.category-image img:hover {
-    transform: scale(1.05);
 }
 
 .category-list {
@@ -208,15 +205,9 @@ body {
     margin-left: -1.3em;
 }
 
-
 .searching-image img {
     width: 100%;
     height: auto;
-    transition: transform 0.2s ease-in-out;
-}
-
-.searching-image img:hover {
-    transform: scale(1.05);
 }
 
 .traversal-container {
@@ -229,7 +220,7 @@ body {
 }
 
 footer {
-    background-color: #2b2f37;
+    background-color: #24272ce6;
     padding: 2rem;
     color: #fff;
     display: flex;
@@ -321,4 +312,16 @@ figcaption {
 
 .learn-more-link:hover .fa-arrow-right  {
     transform: translateX(8px);
+}
+
+.fade {  
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 2s, transform 2s, background-color 1s;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 2s, transform 2s, background-color 1s;
 }

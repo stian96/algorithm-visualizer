@@ -33,10 +33,10 @@
             </nav>
         </header>
         <main class="main-content">
-            <section id="introduction">
-                <h2>Welcome to Algorithm Visualizer!</h2>
+            <section id="introduction" class="hidden fade">
+                <h2>Visualize for better learning!</h2>
                 <p>
-                    Algorithm Visualizer is an interactive online tool designed to bring the 
+                    AlgoViz is an interactive online tool designed to bring the 
                     beauty of algorithms and data structures to life. Originally developed as 
                     a learning aid for the "Algorithms and Data Structures" university course, 
                     this tool offers both students and enthusiasts a unique and visually engaging 
@@ -55,17 +55,17 @@
         <section id="categories">
             <h2 class="category-title">Our Algorithm Categories</h2>
             <div class="category-container">
-                <div class="category-card">
+                <div class="category-card hidden fade">
                     <h3>Sorting Algorithms</h3>
                     <p>Explore our selection of sorting algorithms, including bubble sort, insertion sort, and more.</p>
                     <a href="#" class="learn-more-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="category-card">
+                <div class="category-card hidden fade">
                     <h3>Searching Algorithms</h3>
                     <p>Discover the most efficient ways to search data with our searching algorithms.</p>
                     <a href="#" class="learn-more-link">Learn more <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="category-card">
+                <div class="category-card hidden fade">
                     <h3>Graph Algorithm</h3>
                     <p>Understand complex data structures with our graph algorithms.</p>
                     <a href="#" class="learn-more-link">Learn more <i class="fas fa-arrow-right"></i></a>
@@ -76,7 +76,7 @@
             <h2 class="explore-title">Explore Key Algorithms in Computer Science</h2>
             <div class="sorting-container">
                 <figure class="category-image">
-                    <img src="../static/img/image.png" alt="Sorting Algorithms Image">
+                    <img class="hidden fade" src="../static/img/image.png" alt="Sorting Algorithms Image">
                     <figcaption class="image-align">Illustration of sorting algorithms.</figcaption>
                     <button class="tryout-btn sorting-try" id="sort-btn">Try Sort</button>
                 </figure>
@@ -103,14 +103,14 @@
                     </p>
                 </div>
                 <figure class="searching-image">
-                    <img src="../static/img/image2.png" alt="Searching Algorithms Image">
+                    <img class="hidden fade" src="../static/img/image2.png" alt="Searching Algorithms Image">
                     <figcaption>Illustration of searching algorithms.</figcaption>
                     <button class="tryout-btn searching-try" id="search-btn">Try Search</button>
                 </figure>
             </div>
             <div class="sorting-container traversal-container">
                 <figure class="category-image bintree-image">
-                    <img src="../static/img/image3.png" alt="Binary Tree Image">
+                    <img class="hidden fade" src="../static/img/image3.png" alt="Binary Tree Image">
                     <figcaption class="image-align">Illustration of a binary tree.</figcaption>
                     <button class="tryout-btn traversal-try" id="traverse-btn">Try Traversal</button>
                 </figure>
@@ -131,7 +131,7 @@
         </section>
     </main>
     <footer>
-        <div class="footer-content">
+        <div class="footer-content hidden fade">
             <div class="contact-info">
                 <h3>Contact</h3>
                 <p>Email: stiankru@hiof.no</p>
@@ -155,4 +155,5 @@
 </body>
 <script src="../static/js/fade.js"></script>
 <script src="../static/js/buttons.js"></script>
+<script src="../static/js/visibility.js"></script>
 </html>
