@@ -394,7 +394,7 @@ figcaption {
     }
 
     .tryout-btn {
-        margin-left: 9rem !important;
+        margin-left: 9rem;
     }
 
     #algorithms {
@@ -406,7 +406,57 @@ figcaption {
     }
 
     @media screen and (max-width: 1000px) {
+
+        .sorting-container {
+            flex-direction: column;
+        }
+
+        .from-left {
+            transform: translateX(0);
+            opacity: 1;
+            transition: none;
+        }
+    
+        .from-left.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
         
+        .hidden {
+            opacity: 1;
+        }
+
+        .category-image {
+            width: 90%;
+        }
+
+        .category-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 5rem 0 5rem;
+
+        }
+
+        .category-1 h3 {
+            font-size: 1.8em;
+            margin-top: 2rem;
+        }
+
+        .algorithm-description {
+            font-size: 1.2em;
+            float: none;
+            margin-top: 2rem;
+        }
+
+        #sort-btn {
+            margin: 3rem auto;
+            font-size: 1.3em;
+            width: 20%;
+        }
+
+        /* Continue here! */
+
     }
 
 }
