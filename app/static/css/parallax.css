@@ -1,17 +1,11 @@
 .parallax-background {
-    background-image: url("../img/parallax.jpg");
-    height: 100vh;
+    background-image: 
+        linear-gradient(rgba(29, 32, 38, 0.773), rgba(29, 32, 38, 0.773)),
+        url("../img/parallax.jpg");
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.parallax-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);  
-    z-index: 0;  
-}
 

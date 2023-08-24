@@ -6,17 +6,21 @@
 }
 
 body {
-    background-color:#1d2026;
     min-height: 100vh;
     width: 100%;
+}
+
+.main-content {
+    max-width: 89rem;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
+    padding-top: 2rem;
+    max-width: 89rem;
+    margin: 0 auto;
 }
 
 
@@ -25,7 +29,7 @@ body {
     color: #fff;
     text-shadow: 2px 2px 4px #000000;
     cursor: pointer;
-    width: 18px;
+    margin-left: 6rem;
 }
 
 .green-text {
@@ -33,25 +37,22 @@ body {
 }
 
 .navbar {
-    width: 70%;
+    display: flex;
+    margin-right: 6rem;
 }
 
 .nav-list {
     display: flex;
-    width: 55%;
-    float: right;
     list-style: none;
     padding: 1.7rem 2.2rem 1.7rem 2.2rem;
     gap: 2rem;
     background-color: rgba(255, 255, 255, 0.14);
     border-radius: 2.5rem;
-    opacity: 0.98;
 }
 
 .nav-links {
     text-decoration: none;
     color:white;
-    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -60,10 +61,8 @@ body {
 }
 
 #introduction {
-    padding: 2rem;
+    padding: 10rem 6rem 2rem 6rem;
     color: #fff;
-    width: 90%;
-    margin: 0 auto;
 }
 
 #introduction h2 {
@@ -80,7 +79,7 @@ body {
 #categories {
     position: relative;
     padding: 2rem;
-    background-color: #24272ce6;
+    background-color: #24272cd9;
     color: #fff;
     z-index: 1;
 }
@@ -143,7 +142,7 @@ body {
 #algorithms {
     padding: 2.2rem;
     color: #fff;
-    background-color: #1d2026;
+    background-color: #1d2026dd;
 }
 
 #algorithms h2 {
@@ -220,7 +219,7 @@ body {
 }
 
 footer {
-    background-color: #24272ce6;
+    background-color:#24272cd9;
     padding: 2rem;
     color: #fff;
     display: flex;
@@ -338,3 +337,41 @@ figcaption {
     opacity: 1;
 }
 
+
+#categories, #algorithms {
+    position: relative;
+    z-index: 1;
+}
+
+#categories::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw; 
+    height: 100%; 
+    background: #24272cd9;
+    z-index: -1; 
+}
+
+#algorithms::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw; 
+    height: 100%; 
+    background: #1d2026dd;
+    z-index: -1;
+}
+
+@media screen and (min-width: 89rem) {
+
+    .main-content, .header {
+        max-width: 100rem;
+    }
+
+    
+}
