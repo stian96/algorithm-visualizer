@@ -61,25 +61,24 @@ body {
 }
 
 #introduction {
-    padding: 10rem 6rem 2rem 6rem;
+    padding: 10rem 6rem 8rem 6rem;
     color: #fff;
 }
 
 #introduction h2 {
     font-size: 2em;
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
 }
 
 #introduction p {
     font-size: 1.2em;
-    line-height: 1.9em;
+    line-height: 1.8em;
     margin-bottom: 3.5rem;
 }
 
 #categories {
     position: relative;
     padding: 2rem;
-    background-color: #24272cd9;
     color: #fff;
     z-index: 1;
 }
@@ -87,7 +86,7 @@ body {
 .category-title {
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
 }
 
 .category-container {
@@ -114,7 +113,7 @@ body {
 }
 
 .category-card p {
-    line-height: 1.5em;
+    line-height: 1.8em;
     font-size: 1.1em;
 }
 
@@ -136,7 +135,7 @@ body {
 }
 
 .explore-title {
-    margin-top: 2.5rem;
+    margin-top: 8rem;
 }
 
 #algorithms {
@@ -219,8 +218,8 @@ body {
 }
 
 footer {
-    background-color:#24272cd9;
-    padding: 2rem;
+    background-color:#2b2f35d9;
+    padding: 3.5rem;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -232,7 +231,6 @@ footer {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    margin: 1rem 0 1rem 0;
 }
 
 .footer-content div {
@@ -351,7 +349,7 @@ figcaption {
     transform: translateX(-50%);
     width: 100vw; 
     height: 100%; 
-    background: #24272cd9;
+    background: #2b2f35d9;
     z-index: -1; 
 }
 
@@ -367,11 +365,18 @@ figcaption {
     z-index: -1;
 }
 
-@media screen and (min-width: 89rem) {
+@media screen and (min-width: 91rem) {
 
-    .main-content, .header {
-        max-width: 100rem;
+    .main-content, .header, .footer-content {
+        max-width: 100.80rem;
     }
 
-    
+    #introduction p, #introduction h2 {
+        width: 80%;
+    }
+
+    .category-container {
+        gap: 4rem;
+        padding: 0.5rem 0 0.5rem 0;
+    }
 }

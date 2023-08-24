@@ -48,20 +48,7 @@
     color: #000;
 }
 
-.sorting-try {
-    position: relative;
-    left: 54rem;
-    top: 0.8rem;
-}
-
-.searching-try {
-    position: relative;
-    right: 31rem;
-    top: 3.1rem;
-}
-
-.traversal-try {
-    position: relative;
-    left: 54rem;
-    top: 3.5rem;
+.tryout-btn {
+    margin-left: 10rem;
+    margin-top: 2rem;
 }
