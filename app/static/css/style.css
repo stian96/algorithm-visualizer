@@ -380,3 +380,33 @@ figcaption {
         padding: 0.5rem 0 0.5rem 0;
     }
 }
+
+@media screen and (max-width: 1273px) {
+
+    #introduction p {
+        font-size: 1.08em;
+    }
+
+    .algorithm-description {
+        width: 100%;
+        font-size: 1.08em;
+
+    }
+
+    .tryout-btn {
+        margin-left: 9rem !important;
+    }
+
+    #algorithms {
+        padding: 2.2rem 0 2.2rem 0;
+    }
+
+    .category-card p {
+        font-size: 1.08em;
+    }
+
+    @media screen and (max-width: 1000px) {
+        
+    }
+
+}
