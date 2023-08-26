@@ -48,6 +48,7 @@ body {
     gap: 2rem;
     background-color: rgba(255, 255, 255, 0.14);
     border-radius: 2.5rem;
+    margin-right: -2.9rem;
 }
 
 .nav-links {
@@ -569,31 +570,70 @@ figcaption {
         #menu {
             opacity: 0;
             flex-direction: column;
-            background-color: rgb(92, 131, 116);
+            background-color: #1d2026;
             width: 100%;
-            text-align: center;
+            height: 100vh;
+            text-align: start;
             position: absolute;
             border-radius: 0;
             top: 0;
             left: 0;
+            gap: 0;
             z-index: 1;
-            transition: opacity 0.5s ease, max-height 0.5s ease-in-out;
         }
 
         #menu.active {
             opacity: 1;
-            max-height: 500px;
+            transition: opacity 0.5s ease;
         }
 
         #menu li {
-            padding: 10px;
             width: 100%;
+        }
+
+        #menu li:nth-child(1) {
+            margin-top: 5rem;
+        }
+
+        .dropdown .dropdown-menu {
+            display: block;
+            position: relative;
+            box-shadow: none;
+            margin-left: 1rem;
+            margin-top: 1rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            background-color: transparent !important;
+        }
+
+        .dropdown-menu a {
+            font-size: 1.2rem;
+        }
+
+        .nav-items {
+            padding: 2rem 0 2rem 0;
+        }
+
+        .nav-links {
+            font-size: 1.6rem;
+        }
+
+        .nav-links:hover {
+            color: #fff;
         }
 
         .logo {
             margin-left: 2.5rem;
             z-index: 2;
             font-size: 2em;
+        }
+
+        .bottom-line {
+            height: 1px;
+            width: 100%;
+            background-color: #fff;
+            margin-top: 2rem;
         }
     }
 

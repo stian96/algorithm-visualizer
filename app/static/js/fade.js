@@ -7,4 +7,5 @@ function toggleMenu() {
     menu.classList.toggle("active");
 }
 
+
 document.querySelector('.hamburger-menu').addEventListener('click', toggleMenu);
