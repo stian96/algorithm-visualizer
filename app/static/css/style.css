@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.1rem 0 1.1rem 0;
+    padding: 1rem 0 1rem 0;
     margin: 0 auto;
     position: fixed;
     top: 0;
@@ -36,7 +36,6 @@ body {
 .logo {
     font-size: 2.1em;
     color: #fff;
-    text-shadow: 2px 2px 4px #000000;
     cursor: pointer;
     margin-left: 6rem;
 }
@@ -71,7 +70,7 @@ body {
 }
 
 #introduction {
-    padding: 10rem 6rem 8rem 6rem;
+    padding: 14rem 6rem 8rem 6rem;
     color: #fff;
 }
 
@@ -587,6 +586,7 @@ figcaption {
 
         #menu {
             opacity: 0;
+            visibility: hidden;
             flex-direction: column;
             background-color: #1d2026;
             width: 100%;
@@ -601,6 +601,7 @@ figcaption {
         }
 
         #menu.active {
+            visibility: visible;
             opacity: 1;
             transition: opacity 0.5s ease;
         }
@@ -666,6 +667,10 @@ figcaption {
             background-color: #fff;
             margin-top: 2rem;
         }
+
+        #algorithms .explore-title {
+            font-size: 1.7em;
+        }
     }
 
     @media screen and (max-width: 830px) {
@@ -683,15 +688,78 @@ figcaption {
     }
 
     @media screen and (max-width: 748px) {
+        #introduction {
+            padding: 10rem 2.5rem 8rem 2.5rem;
+        }
+
+        .category-card {
+            width: 90%;
+        }
+
         .footer-content {
             flex-direction: column;
             align-items: flex-start;
             gap: 2.5rem;
         }
 
+        .category-list {
+            padding: 3rem 4rem 0 4rem;
+        }
+
         .contact-info, .social-links, .copyright-info {
             margin: 0;
             text-align: start;
+        }
+    }
+
+    @media screen and (max-width: 550px) {
+        #introduction {
+            padding: 10rem 1.5rem 8rem 1.5rem;
+        }
+
+        #categories {
+            padding: 2rem 0 2rem 0;
+        }
+
+        .category-card {
+            width: 100%;
+        }
+
+        .category-image img {
+            padding: 2rem 0.8rem 0 0.8rem;
+        }
+
+        .category-list {
+            padding: 3rem 0.8rem 0 0.8rem;
+        }
+
+        .category-list h3 {
+            font-size: 1.5em;
+        }
+
+        .algorithm-description {
+            font-size: 1em;
+        }
+
+        .logo {
+            margin-left: 1rem;
+        }
+
+        .hamburger-menu {
+            margin-right: -4.5rem;
+        }
+
+        .category-title {
+            font-size: 1.7rem;
+
+        }
+
+        .tryout-btn {
+            width: 40%;
+        }
+
+        footer {
+            padding: 3.5rem 1rem 3.5rem 1rem;
         }
     }
 
