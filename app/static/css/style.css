@@ -518,11 +518,13 @@ figcaption {
 
         .category-2 {
             order: 2;
+            margin-right: 0;
         }
 
         .algorithm-description {
             font-size: 1.2em;
             float: none;
+            text-align: center;
             margin-top: 2.5rem;
         }
 
