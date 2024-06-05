@@ -4,7 +4,7 @@
 ![Python 3.9](https://img.shields.io/badge/Python-3.9-blue) 
 ![License MIT](https://img.shields.io/badge/License-MIT-orange)
 
-Algorithm Visualizer is an interactive and visually appealing learning tool designed to help students and enthusiasts understand and appreciate the beauty of algorithms and data structures taught in the "Algorithms and Data Structures" university course. This project not only provides the code for these algorithms but also visualizes their steps using HTML, CSS and Javascript, making learning a delightful experience.
+Algorithm Visualizer is an interactive and visually appealing learning tool designed to help students and enthusiasts understand and appreciate the beauty of algorithms and data structures taught in the "Algorithms and Data Structures" university course. This project not only provides the code for these algorithms but also visualizes their steps using HTML, CSS and Javascript, making learning a delightful experience. **Please note that this project is currently a work in progress and some features are not yet complete**.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ Algorithm Visualizer is an interactive and visually appealing learning tool desi
 
 Clone the repository to your local machine
 ```bash
-git clone https://github.com/stian96/Algorithm-visualizer.git
+git clone https://github.com/stian96/algorithm-visualizer.git
 ```
 
 Navigate to the project directory:
@@ -52,7 +52,7 @@ The project includes the following algorithms:
    - Linear Search
    - Binary Search
    - Recurive Search
-3. Graph Algorithms
+3. Graph Algorithms (Work in Progress)
    - Depth-First Search (DFS)
    - Breadth-First Search (BFS)
    - Dijkstra's Algorithm
@@ -63,14 +63,14 @@ The project includes the following algorithms:
 The project includes the following data structures:
 
 1. Array
-2. Linked List
+2. Linked List (Work in Progress)
 3. Stack
-4. Queue
+4. Queue (Work in Progress)
 5. Binary Tree
 6. Binary Search Tree
-7. Heap
-8. Graph
-9. Hash Table
+7. Heap (Work in Progress)
+8. Graph (Work in Progress)
+9. Hash Table (Work in Progress)
 
 ## Contribution
 
